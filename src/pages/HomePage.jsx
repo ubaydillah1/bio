@@ -1,37 +1,25 @@
 import ThemeIcon from "../components/Elements/ThemeIcon";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useRef } from "react";
+import {} from "react";
+import CurrentTime from "../components/Elements/currentTime";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function HomePage() {
-  const themeIconRef = useRef(null);
-
-  console.log(themeIconRef.current);
-  useEffect(() => {
-    gsap.to(themeIconRef.current, {
-      opacity: 0,
-      scale: 0.5,
-      duration: 1,
-      scrollTrigger: {
-        trigger: themeIconRef.current,
-        start: "top 20%",
-        end: "bottom bottom",
-        toggleActions: "play none none reverse",
-        markers: true,
-      },
-    });
-  }, []);
   return (
-    <div className="">
-      <nav className="text-center my-[1000px]">
-        <div ref={themeIconRef}>
-          <ThemeIcon />
-        </div>
-      </nav>
+    <div className="mb-[1000px] px-[100px]">
+      <div className="fixed top-10 right-10">
+        <CurrentTime />
+      </div>
 
-      <main></main>
+      <div className="text-center fixed top-10 left-1/2">
+        <ThemeIcon />
+      </div>
+
+      <main>
+        <div className="bio-card"></div>
+      </main>
     </div>
   );
 }

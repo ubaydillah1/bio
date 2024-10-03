@@ -1,26 +1,58 @@
-/* eslint-disable react/display-name */
-/* eslint-disable no-unused-vars */
-import { forwardRef, useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useContext } from "react";
+import { DarkMode } from "../../../contexts/DarkMode";
+import gsap from "gsap";
 
-const ThemeIcon = forwardRef((_, ref) => {
-  console.log("ThemeIcon rendered");
-  const [theme, setTheme] = useState(() => {
-    const localTheme = localStorage.getItem("data-theme");
-    return localTheme || "winter";
-  });
+const ThemeIcon = () => {
+  const { theme, handleTheme } = useContext(DarkMode);
+
+  const themeRef = useRef();
+  const [scrollDirection, setScrollDirection] = useState("down");
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("data-theme", theme);
-  }, [theme]);
+    let lastScrollY = window.scrollY;
 
-  const handleTheme = () => {
-    const currentTheme = theme === "winter" ? "black" : "winter";
-    setTheme(currentTheme);
-  };
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      console.log(currentScrollY);
+      if (currentScrollY > 0) {
+        if (currentScrollY > lastScrollY) {
+          setScrollDirection("down");
+        } else {
+          setScrollDirection("up");
+        }
+      } else {
+        setScrollDirection("up");
+      }
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (scrollDirection === "down") {
+      gsap.fromTo(
+        themeRef.current,
+        { y: -100, opacity: 1 },
+        { y: 0, opacity: 1, duration: 0.5, ease: "bounce.out" }
+      );
+    } else if (scrollDirection === "up") {
+      gsap.to(themeRef.current, {
+        y: -100,
+        opacity: 1,
+        duration: 0.5,
+        ease: "power1.out",
+      });
+    }
+  }, [scrollDirection]);
 
   return (
-    <label className="swap swap-rotate">
+    <label className="swap swap-rotate" ref={themeRef}>
       <input
         type="checkbox"
         className="theme-controller"
@@ -46,6 +78,6 @@ const ThemeIcon = forwardRef((_, ref) => {
       </svg>
     </label>
   );
-});
+};
 
 export default ThemeIcon;

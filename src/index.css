@@ -26,6 +26,10 @@
     pointer-events: none;
   }
 
+  .theme-transition {
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+
   body {
     font-family: "Inter", sans-serif;
   }
@@ -38,7 +42,7 @@
   }
 
   .neon-light {
-    filter: drop-shadow(0 0 5px rgb(2, 255, 133));
-    fill: rgb(2, 255, 133);
+    filter: drop-shadow(0 0 2px #007bff88) drop-shadow(0 0 2px #007bff2a);
+    fill: #007aff;
   }
 }
