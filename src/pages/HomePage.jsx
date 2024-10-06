@@ -17,7 +17,7 @@ function HomePage() {
         <ThemeIcon />
       </div>
 
-      <main>
+      <main className="flex">
         <div className="bio-card"></div>
       </main>
     </div>
