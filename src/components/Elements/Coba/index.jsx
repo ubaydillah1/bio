@@ -1,18 +1,9 @@
-import { useMemo, useState } from "react";
-
 const CobaEl = () => {
   return (
-    <div>
-      <Button />
+    <div className="w-screen h-screen flex justify-center items-center flex-col gap-10">
+      <input type="text" placeholder="Masukkan todo" />
     </div>
   );
-};
-
-const Button = () => {
-  const [state, setState] = useState();
-
-  const memo = useMemo(() => {}, []);
-  return <button>Klik me</button>;
 };
 
 export default CobaEl;
