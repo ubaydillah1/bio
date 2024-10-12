@@ -6,6 +6,7 @@ import CurrentTime from "../components/Elements/currentTime";
 import { DarkMode } from "../contexts/DarkMode";
 import Badge from "../components/Elements/Badge";
 import CardProfile from "../components/Fragments/CardProfile";
+import Navigation from "../components/Fragments/Navigation";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,6 +23,8 @@ function HomePage() {
         <ThemeIcon />
       </div>
 
+      <Navigation />
+
       <main
         className={`flex w-full px-[80px] pt-[40px] gap-[45px] relative ${
           theme != "black" && "text-black"
@@ -29,20 +32,19 @@ function HomePage() {
       >
         <CardProfile />
 
-        <nav
-          className={`fixed right-40 top-52 border-[.1px] rounded-full px-7 py-5 flex flex-col gap-10 ${
-            theme == "black" ? "border-[#FFFFFF66]" : "border-black"
-          }`}
-        >
-          <div>Home</div>
-          <div>Person</div>
-          <div>Bag</div>
-          <div>Setting</div>
-          <div>Contact</div>
-        </nav>
-
         <section className="max-w-[800px] ml-[300px]">
-          <Badge className="my-10">🚀 INTRODUCE</Badge>
+          <Badge className="my-10 px-3 gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="20px"
+              className={theme === "black" ? "fill-white" : "fill-black"}
+            >
+              <path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z" />
+            </svg>
+            INTRODUCE
+          </Badge>
 
           <div className="text-[72px] leading-[90px]">
             Say Hi from{" "}
