@@ -32,16 +32,16 @@ function HomePage() {
       >
         <CardProfile />
 
-        <section className="max-w-[800px] ml-[300px]">
+        <section className="max-w-[800px] ml-[300px] w-full">
           <Badge className="my-10 px-3 gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              height="24px"
-              viewBox="0 -960 960 960"
-              width="20px"
-              className={theme === "black" ? "fill-white" : "fill-black"}
+              width="20"
+              height="20"
+              className={`${theme == "black" ? "fill-white" : "fill-black"}`}
+              viewBox="0 0 256 256"
             >
-              <path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z" />
+              <path d="M219.31,108.68l-80-80a16,16,0,0,0-22.62,0l-80,80A15.87,15.87,0,0,0,32,120v96a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V160h32v56a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V120A15.87,15.87,0,0,0,219.31,108.68ZM208,208H160V152a8,8,0,0,0-8-8H104a8,8,0,0,0-8,8v56H48V120l80-80,80,80Z"></path>
             </svg>
             INTRODUCE
           </Badge>
@@ -68,6 +68,25 @@ function HomePage() {
             I develop intuitive designs that enhance user engagement. <br />
             Simple as that!
           </p>
+
+          <div className="w-full h-full flex justify-end">
+            <div className="relative h-[165px]">
+              <div className="w-[165px] h-[165px] rounded-full border border-[#999999]">
+                <p>My Projects</p>
+              </div>
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="35"
+                height="35"
+                fill="#fff"
+                viewBox="0 0 256 256"
+                className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2"
+              >
+                <path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"></path>
+              </svg>
+            </div>
+          </div>
         </section>
       </main>
     </div>

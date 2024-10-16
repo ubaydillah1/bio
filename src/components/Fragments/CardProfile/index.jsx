@@ -27,8 +27,8 @@ const CardProfile = () => {
         ? "border-primary-dark"
         : "border-primary-light"
       : theme === "black"
-      ? "border-slate-500"
-      : "border-slate-600";
+      ? "border-[#999]"
+      : "border-[#64748b]";
   };
 
   const fillStroke = (bool) => {
@@ -69,10 +69,13 @@ const CardProfile = () => {
 
         <div className="flex justify-center my-7 gap-4">
           <a
-            href="https://www.instagram.com/ubaydillah.p/"
+            href="https://github.com/ubaydillah1"
             className={`w-[47px] h-[47px] rounded-full border-[1.6px] transition-all duration-300 ${borderColor(
               isGithubHover
             )} cursor-pointer flex justify-center items-center`}
+            npm
+            run
+            dev
             onMouseEnter={toggleGithub}
             onMouseLeave={toggleGithub}
           >
