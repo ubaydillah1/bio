@@ -17,7 +17,7 @@ export default {
         },
       },
       animation: {
-        rotate: "rotate 2s linear infinite",
+        rotate: "rotate 5s linear infinite",
       },
     },
   },

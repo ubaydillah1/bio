@@ -43,7 +43,7 @@ const CardProfile = () => {
 
   return (
     <div
-      className={`bio-card border-[1px]  max-w-[350px] w-full px-8 py-7 rounded-[30px] fixed left-[80px] ${
+      className={`bio-card border-[1px]  md:max-w-[350px] w-full px-8 py-7 rounded-[30px] md:fixed sticky md:left-[80px] ${
         theme == "black" ? "border-[#FFFFFF66]" : "border-black"
       }`}
     >
@@ -55,11 +55,11 @@ const CardProfile = () => {
         </div>
       </div>
 
-      <div className="mt-7  w-full">
+      <div className="mt-7 w-full px-[10px]">
         <img
           src="./assets/img/mySelf.webp"
           alt="mySelf"
-          className="rounded-[30px] object-cover  w-[270px] h-[230px] mx-auto"
+          className="rounded-[30px] object-cover h-full w-full mx-aut md:max-h-[230px]"
         />
       </div>
 
@@ -73,9 +73,6 @@ const CardProfile = () => {
             className={`w-[47px] h-[47px] rounded-full border-[1.6px] transition-all duration-300 ${borderColor(
               isGithubHover
             )} cursor-pointer flex justify-center items-center`}
-            npm
-            run
-            dev
             onMouseEnter={toggleGithub}
             onMouseLeave={toggleGithub}
           >

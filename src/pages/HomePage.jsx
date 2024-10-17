@@ -7,6 +7,7 @@ import { DarkMode } from "../contexts/DarkMode";
 import Badge from "../components/Elements/Badge";
 import CardProfile from "../components/Fragments/CardProfile";
 import Navigation from "../components/Fragments/Navigation";
+import CircleProject from "../components/Elements/CircleProject";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,7 +15,7 @@ function HomePage() {
   const { theme } = useContext(DarkMode);
 
   return (
-    <div className="mb-[1000px] px-[100px]">
+    <div className="mb-[1000px] md:px-[100px] sm:px-[40px] px-[20px]">
       <div className="fixed top-10 right-10">
         <CurrentTime />
       </div>
@@ -26,14 +27,14 @@ function HomePage() {
       <Navigation />
 
       <main
-        className={`flex w-full px-[80px] pt-[40px] gap-[45px] relative ${
+        className={`flex w-full md:px-[80px] pt-[40px] sm:gap-[30px] gap-[20px] flex-col relative ${
           theme != "black" && "text-black"
         }`}
       >
         <CardProfile />
 
-        <section className="max-w-[800px] ml-[300px] w-full">
-          <Badge className="my-10 px-3 gap-2">
+        <section className="max-w-[800px] md:ml-[300px] w-full">
+          <Badge className="md:my-10 my-5 px-3 gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -46,46 +47,32 @@ function HomePage() {
             INTRODUCE
           </Badge>
 
-          <div className="text-[72px] leading-[90px]">
-            Say Hi from{" "}
-            <span
-              className={`${
-                theme == "black" ? "text-primary-dark" : "text-primary-light"
-              }`}
-            >
-              Ubay
+          <div className="md:text-[72px] md:leading-[90px] flex flex-col sm:text-[56px] text-[37px] sm:leading-[64px]">
+            <span>
+              Say Hi from{" "}
+              <span
+                className={`${
+                  theme == "black" ? "text-primary-dark" : "text-primary-light"
+                }`}
+              >
+                Ubay,
+              </span>{" "}
             </span>
-            , <br />
-            Front End Developer and <br />
-            Blockchain Enthusiast
+
+            <span>Front End Developer and Blockchain Enthusiast</span>
           </div>
 
           <p
-            className={`text-xl mt-8  ${
+            className={`text-xl md:my-8 my-6 md:flex md:flex-col ${
               theme == "black" ? "text-[#999999]" : "text-slate-500"
             }`}
           >
-            I develop intuitive designs that enhance user engagement. <br />
-            Simple as that!
+            I develop intuitive designs that enhance user engagement.{" "}
+            <span>Simple as that!</span>
           </p>
 
-          <div className="w-full h-full flex justify-end">
-            <div className="relative h-[165px]">
-              <div className="w-[165px] h-[165px] rounded-full border border-[#999999]">
-                <p>My Projects</p>
-              </div>
-
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="35"
-                height="35"
-                fill="#fff"
-                viewBox="0 0 256 256"
-                className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2"
-              >
-                <path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"></path>
-              </svg>
-            </div>
+          <div className="w-full h-full flex md:justify-end">
+            <CircleProject />
           </div>
         </section>
       </main>

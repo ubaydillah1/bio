@@ -6,7 +6,7 @@ const Navigation = () => {
   const { theme } = useContext(DarkMode);
   return (
     <nav
-      className={`fixed right-20 top-52 border-[.1px] rounded-full px-5 py-6 flex flex-col gap-8 ${
+      className={`fixed md:right-20 md:top-52 md:w-auto md:bottom-auto md:left-auto border-[.1px] rounded-full py-6 flex md:flex-col gap-8 left-10 right-10 bottom-5 justify-between px-5 z-[999] ${
         theme == "black"
           ? "border-[#FFFFFF66] text-white"
           : "border-black text-black"
@@ -38,7 +38,6 @@ const Navigation = () => {
         <svg
           stroke="currentColor"
           fill="none"
-          stroke-width="1.3"
           viewBox="0 0 24 24"
           height="20"
           width="20"
