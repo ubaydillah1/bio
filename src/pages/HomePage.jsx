@@ -10,6 +10,7 @@ import HeroSection from "../components/Layouts/HeroSection.jsx";
 import AboutSection from "../components/Layouts/AboutSection.jsx/index.jsx";
 import SkillsSection from "../components/Layouts/SkillsSection.jsx/index.jsx";
 import Badge from "../components/Elements/Badge/index.jsx";
+import PortfolioBox from "../components/Elements/PortfolioBox/index.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,7 +18,7 @@ function HomePage() {
   const { theme } = useContext(DarkMode);
 
   return (
-    <div className="mb-[1000px] md:px-[100px] sm:px-[40px] px-[20px]">
+    <div className="mb-[1000px] md:px-[100px] sm:px-[40px] px-[20px] md:pr-[400px]">
       <div className="fixed top-10 right-10">
         <CurrentTime />
       </div>
@@ -64,21 +65,12 @@ function HomePage() {
           </div>
 
           <div className="my-[40px] flex flex-col gap-[40px]">
-            <div className="w-full h-full relative">
-              <div className="w-full h-full rounded-[20px] overflow-hidden relative">
-                <video src="./assets/video/bgVideo.mp4" loop muted />
-
-                <img
-                  src="./assets/img/videoBelajar.png"
-                  alt="Video Belajar"
-                  className="absolute left-1/2 top-[45%] -translate-x-1/2 -translate-y-1/2 w-3/4"
-                />
-              </div>
-
-              <p className="mt-5 text-[24px]">
-                Video Belajar - CRUD with Redux
-              </p>
-            </div>
+            <PortfolioBox src="./assets/img/videoBelajar.png">
+              Video Belajar - CRUD with Redux
+            </PortfolioBox>
+            <PortfolioBox src="./assets/img/linea.png">
+              Linea Studio - Landing Page with animation from GSAP
+            </PortfolioBox>
           </div>
         </section>
       </main>
