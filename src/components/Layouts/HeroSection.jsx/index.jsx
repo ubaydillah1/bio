@@ -6,8 +6,8 @@ import CircleProject from "../../Elements/CircleProject";
 const HeroSection = () => {
   const { theme } = useContext(DarkMode);
   return (
-    <section className="max-w-[850px] md:ml-[300px] w-full">
-      <Badge className="md:my-10 my-5 px-3 gap-2">
+    <section className="max-w-[850px] lg:ml-[300px] w-full">
+      <Badge className="lg:my-10 my-5 px-3 gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
@@ -20,7 +20,7 @@ const HeroSection = () => {
         INTRODUCE
       </Badge>
 
-      <div className="md:text-[72px] md:leading-[90px] flex flex-col sm:text-[56px] text-[37px] sm:leading-[64px]">
+      <div className="lg:text-[72px] lg:leading-[90px] flex flex-col sm:text-[56px] text-[37px] sm:leading-[64px]">
         <span>
           Say Hi from{" "}
           <span
@@ -36,7 +36,7 @@ const HeroSection = () => {
       </div>
 
       <p
-        className={`text-xl md:my-8 my-6 md:flex md:flex-col ${
+        className={`text-xl lg:my-8 my-6 lg:flex lg:flex-col ${
           theme == "black" ? "text-[#999999]" : "text-slate-500"
         }`}
       >
@@ -44,7 +44,7 @@ const HeroSection = () => {
         <span>Simple as that!</span>
       </p>
 
-      <div className="w-full h-full flex md:justify-end">
+      <div className="w-full h-full flex lg:justify-end">
         <CircleProject />
       </div>
     </section>

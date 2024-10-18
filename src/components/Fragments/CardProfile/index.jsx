@@ -43,7 +43,7 @@ const CardProfile = () => {
 
   return (
     <div
-      className={`bio-card border-[1px] md:max-w-[350px] w-full px-8 py-7 rounded-[30px] md:fixed sticky md:left-[80px] ${
+      className={`bio-card border-[1px] lg:max-w-[350px] w-full px-8 py-7 rounded-[30px] lg:fixed sticky lg:left-[80px] ${
         theme == "black" ? "border-[#FFFFFF66]" : "border-black"
       }`}
     >
@@ -59,7 +59,7 @@ const CardProfile = () => {
         <img
           src="./assets/img/mySelf.webp"
           alt="mySelf"
-          className="rounded-[30px] object-cover h-full w-full mx-aut md:max-h-[230px]"
+          className="rounded-[30px] object-cover h-full w-full mx-aut lg:max-h-[230px]"
         />
       </div>
 

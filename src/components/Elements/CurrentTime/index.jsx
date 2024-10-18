@@ -12,14 +12,16 @@ const CurrentTime = () => {
 
     return () => clearInterval(timerId);
   }, []);
-  
+
   const hours = time.getHours().toString().padStart(2, "0");
   const minutes = time.getMinutes().toString().padStart(2, "0");
   const seconds = time.getSeconds().toString().padStart(2, "0");
 
   return (
     <div
-      className={`flex gap-3 items-center ${theme != "black" && "text-black"}`}
+      className={`flex gap-3 items-center ${
+        theme != "black" && "text-black"
+      }  lg:flex hidden`}
     >
       <span className="font-mono text-xl">
         JAKARTA.

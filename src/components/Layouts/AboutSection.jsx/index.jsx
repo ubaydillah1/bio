@@ -5,8 +5,8 @@ import { DarkMode } from "../../../contexts/DarkMode";
 const AboutSection = () => {
   const { theme } = useContext(DarkMode);
   return (
-    <section className="max-w-[850px] md:ml-[300px] w-full mt-[40px]">
-      <Badge className="md:my-10 my-5 px-3 gap-2">
+    <section className="max-w-[850px] lg:ml-[300px] w-full mt-[40px]">
+      <Badge className="lg:my-10 my-5 px-3 gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
@@ -19,7 +19,7 @@ const AboutSection = () => {
         ABOUT
       </Badge>
 
-      <div className="sm:text-[48px] text-[37px] md:max-w-[800px]">
+      <div className="sm:text-[48px] text-[37px] lg:max-w-[800px]">
         Every Design Starts with a Vision, Every Vision{" "}
         <span
           className={
@@ -31,7 +31,7 @@ const AboutSection = () => {
       </div>
 
       <p
-        className={`text-xl md:my-8 my-6 md:flex md:flex-col md:max-w-[700px] ${
+        className={`text-xl lg:my-8 my-6 lg:flex lg:flex-col lg:max-w-[700px] ${
           theme == "black" ? "text-[#999999]" : "text-slate-500"
         }`}
       >

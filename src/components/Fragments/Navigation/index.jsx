@@ -6,7 +6,7 @@ const Navigation = () => {
   const { theme } = useContext(DarkMode);
   return (
     <nav
-      className={`fixed md:right-20 md:top-52 md:w-auto md:bottom-auto md:left-auto border-[.1px] rounded-full py-6 flex md:flex-col gap-8 left-10 right-10 bottom-5 justify-between px-5 z-[999] ${
+      className={`fixed lg:right-20 lg:top-52 lg:w-auto lg:bottom-auto lg:left-auto border-[.1px] rounded-full py-6 flex lg:flex-col gap-8 left-10 right-10 bottom-5 justify-between px-5 z-[999] ${
         theme == "black"
           ? "border-[#FFFFFF66] text-white"
           : "border-black text-black"
