@@ -9,7 +9,7 @@ const Button = forwardRef((props, ref) => {
   return (
     <button
       ref={ref}
-      className={`w-full py-3 font-normal rounded-full border-2 transition-all ease-in duration-200 ${
+      className={`py-3 font-normal rounded-full border-2 transition-all ease-in duration-200 ${
         theme === "black"
           ? "bg-primary-dark text-black border-primary-dark hover:bg-black hover:text-primary-dark"
           : "bg-primary-light text-white border-primary-light hover:bg-white hover:text-primary-light"

@@ -142,7 +142,10 @@ const ContactSection = () => {
           </div>
         </div>
 
-        <Button className="w-auto px-10 mt-5 mb-10" type="submit">
+        <Button
+          className="md:w-auto px-10 mt-5 mb-[120px] w-full"
+          type="submit"
+        >
           Send Message
         </Button>
       </form>

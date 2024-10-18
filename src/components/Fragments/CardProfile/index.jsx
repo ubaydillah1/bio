@@ -135,7 +135,7 @@ const CardProfile = () => {
         </div>
 
         <div>
-          <Button>WORK WITH ME</Button>
+          <Button className="w-full">WORK WITH ME</Button>
         </div>
 
         <p
