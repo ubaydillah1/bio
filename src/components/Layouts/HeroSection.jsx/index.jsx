@@ -6,7 +6,7 @@ import CircleProject from "../../Elements/CircleProject";
 const HeroSection = () => {
   const { theme } = useContext(DarkMode);
   return (
-    <section className="max-w-[800px] md:ml-[300px] w-full">
+    <section className="max-w-[850px] md:ml-[300px] w-full">
       <Badge className="md:my-10 my-5 px-3 gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"

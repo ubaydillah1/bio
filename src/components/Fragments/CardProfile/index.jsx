@@ -43,7 +43,7 @@ const CardProfile = () => {
 
   return (
     <div
-      className={`bio-card border-[1px]  md:max-w-[350px] w-full px-8 py-7 rounded-[30px] md:fixed sticky md:left-[80px] ${
+      className={`bio-card border-[1px] md:max-w-[350px] w-full px-8 py-7 rounded-[30px] md:fixed sticky md:left-[80px] ${
         theme == "black" ? "border-[#FFFFFF66]" : "border-black"
       }`}
     >
