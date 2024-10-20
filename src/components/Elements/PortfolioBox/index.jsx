@@ -1,9 +1,12 @@
 /* eslint-disable react/prop-types */
 
 const PortfolioBox = (props) => {
-  const { children, src } = props;
+  const { children, src, onClick } = props;
   return (
-    <div className="w-full h-full relative group cursor-pointer">
+    <div
+      className="w-full h-full relative group cursor-pointer"
+      onClick={onClick}
+    >
       <div className="w-full h-full rounded-[20px] overflow-hidden relative">
         <video
           src="./assets/video/bgVideo.mp4"

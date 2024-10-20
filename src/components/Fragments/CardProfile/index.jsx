@@ -2,7 +2,8 @@ import { useContext, useState } from "react";
 import Button from "../../Elements/Button";
 import { DarkMode } from "../../../contexts/DarkMode";
 
-const CardProfile = () => {
+const CardProfile = (props) => {
+  const { onClickToContact } = props;
   const { theme } = useContext(DarkMode);
 
   const [isGithubHover, setIsGithubHover] = useState(false);
@@ -135,7 +136,9 @@ const CardProfile = () => {
         </div>
 
         <div>
-          <Button className="w-full">WORK WITH ME</Button>
+          <Button className="w-full" onClick={onClickToContact}>
+            WORK WITH ME
+          </Button>
         </div>
 
         <p

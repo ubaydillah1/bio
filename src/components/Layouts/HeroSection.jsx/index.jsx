@@ -1,12 +1,15 @@
+/* eslint-disable react/prop-types */
 import { useContext } from "react";
 import Badge from "../../Elements/Badge";
 import { DarkMode } from "../../../contexts/DarkMode";
 import CircleProject from "../../Elements/CircleProject";
 
-const HeroSection = () => {
+const HeroSection = (props) => {
+  const { onClickToProject } = props;
+
   const { theme } = useContext(DarkMode);
   return (
-    <section className="max-w-[850px] lg:ml-[300px] w-full">
+    <section className="max-w-[850px] lg:ml-[300px] w-full" id="hero">
       <Badge className="lg:my-10 my-5 px-3 gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +48,7 @@ const HeroSection = () => {
       </p>
 
       <div className="w-full h-full flex lg:justify-end">
-        <CircleProject />
+        <CircleProject onClickToProject={onClickToProject} />
       </div>
     </section>
   );

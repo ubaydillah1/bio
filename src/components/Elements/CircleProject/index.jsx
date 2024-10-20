@@ -1,7 +1,9 @@
+/* eslint-disable react/prop-types */
 import { useContext } from "react";
 import { DarkMode } from "../../../contexts/DarkMode";
 
-const CircleProject = () => {
+const CircleProject = (props) => {
+  const { onClickToProject } = props;
   const { theme } = useContext(DarkMode);
 
   return (
@@ -9,6 +11,7 @@ const CircleProject = () => {
       className={`w-[180px] h-[180px] border-[1px] rounded-full flex justify-center items-center cursor-pointer ${
         theme === "black" ? "border-[#999999]" : "border-black"
       }`}
+      onClick={onClickToProject}
     >
       <div className="relative h-[165px]">
         <div className="circle relative w-[165px] h-[165px] rounded-full flex justify-center items-center ">

@@ -6,7 +6,10 @@ import { DarkMode } from "../../../contexts/DarkMode";
 const PortfolioSection = () => {
   const { theme } = useContext(DarkMode);
   return (
-    <section className="max-w-[850px] lg:ml-[300px] w-full mt-[40px]">
+    <section
+      className="max-w-[850px] lg:ml-[300px] w-full mt-[40px]"
+      id="portfolio"
+    >
       <Badge className="lg:my-10 my-5 px-3 gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -32,10 +35,20 @@ const PortfolioSection = () => {
       </div>
 
       <div className="my-[40px] flex flex-col gap-[40px]">
-        <PortfolioBox src="./assets/img/videoBelajar.png">
+        <PortfolioBox
+          src="./assets/img/videoBelajar.png"
+          onClick={() =>
+            (window.location.href = "https://video-belajar-api.vercel.app/")
+          }
+        >
           Video Belajar - CRUD with Redux
         </PortfolioBox>
-        <PortfolioBox src="./assets/img/linea.png">
+        <PortfolioBox
+          src="./assets/img/linea.png"
+          onClick={() =>
+            (window.location.href = "https://linea-alpha.vercel.app/")
+          }
+        >
           Linea Studio - Landing Page with animation from GSAP
         </PortfolioBox>
       </div>

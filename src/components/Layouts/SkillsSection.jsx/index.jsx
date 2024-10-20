@@ -7,7 +7,10 @@ const SkillsSection = () => {
   const { theme } = useContext(DarkMode);
 
   return (
-    <section className="max-w-[850px] lg:ml-[300px] w-full mt-[40px]">
+    <section
+      className="max-w-[850px] lg:ml-[300px] w-full mt-[40px]"
+      id="skills"
+    >
       <Badge className="lg:my-10 my-5 px-3 gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
