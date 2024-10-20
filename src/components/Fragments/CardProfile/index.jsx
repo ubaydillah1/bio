@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useContext, useState } from "react";
 import Button from "../../Elements/Button";
 import { DarkMode } from "../../../contexts/DarkMode";
