@@ -7,9 +7,11 @@ import { DarkMode } from "../../../contexts/DarkMode";
 const ContactSection = () => {
   const { theme } = useContext(DarkMode);
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // mulai loading
     const formData = new FormData(e.target);
 
     try {
@@ -27,18 +29,10 @@ const ContactSection = () => {
       }
     } catch (error) {
       console.error("Error:", error);
+    } finally {
+      setLoading(false); // stop loading
     }
   };
-
-  if (submitted) {
-    return (
-      <section className="max-w-[850px] lg:ml-[300px] w-full mt-[40px]">
-        <div className="text-[24px] my-5">
-          Thank you for your message! We'll get back to you soon.
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section
@@ -148,10 +142,27 @@ const ContactSection = () => {
         <Button
           className="md:w-auto px-10 mt-5 mb-[120px] w-full"
           type="submit"
+          disabled={loading}
         >
-          Send Message
+          {loading ? "Sending..." : "Send Message"}
         </Button>
       </form>
+
+      {/* Popup Thank You */}
+      {submitted && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
+          <div className="bg-white dark:bg-gray-900 rounded-lg p-8 max-w-sm text-center shadow-lg">
+            <h2 className="text-xl font-semibold mb-4">Thank You!</h2>
+            <p className="mb-6">
+              Your message has been sent successfully. We'll get back to you
+              soon.
+            </p>
+            <Button onClick={() => setSubmitted(false)} className="w-full">
+              Close
+            </Button>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

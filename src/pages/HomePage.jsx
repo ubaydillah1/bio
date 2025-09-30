@@ -31,14 +31,10 @@ function HomePage() {
 
   const handleToContact = () => {
     contactRef.current.scrollIntoView({ behavior: "smooth" });
-
-    console.log("hello");
   };
 
   const handleToProject = () => {
     portfolioRef.current.scrollIntoView({ behavior: "smooth" });
-
-    console.log("hello");
   };
 
   return (

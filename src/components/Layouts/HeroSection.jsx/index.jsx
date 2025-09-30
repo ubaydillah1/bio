@@ -35,7 +35,16 @@ const HeroSection = (props) => {
           </span>{" "}
         </span>
 
-        <span>Front End Developer and Blockchain Enthusiast</span>
+        <span>
+          <span
+            className={`${
+              theme == "black" ? "text-primary-dark" : "text-primary-light"
+            }`}
+          >
+            Fullstack
+          </span>{" "}
+          Developer and AI Enthusiast
+        </span>
       </div>
 
       <p
@@ -43,8 +52,8 @@ const HeroSection = (props) => {
           theme == "black" ? "text-[#999999]" : "text-slate-500"
         }`}
       >
-        I develop intuitive designs that enhance user engagement.{" "}
-        <span>Simple as that!</span>
+        I craft user-friendly web experiences that combine clean design with
+        <span>smooth functionality.</span>
       </p>
 
       <div className="w-full h-full flex lg:justify-end">

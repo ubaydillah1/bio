@@ -34,22 +34,43 @@ const PortfolioSection = () => {
         </span>
       </div>
 
-      <div className="my-[40px] flex flex-col gap-[40px]">
+      <div className="my-[40px] flex flex-col gap-[60px]">
         <PortfolioBox
-          src="./assets/img/videoBelajar.png"
+          src="./assets/img/ravine-bg.png"
           onClick={() =>
-            (window.location.href = "https://video-belajar-api.vercel.app/")
+            (window.location.href = "https://ravine-coffee-shop.vercel.app")
           }
+          underDev={true}
+          githubLink="https://github.com/ubaydillah1/ravine-coffee-shop"
         >
-          Video Belajar - CRUD with Redux
+          Ravine Coffee - Online Order System
+        </PortfolioBox>
+        <PortfolioBox
+          src="./assets/img/stora-bg.png"
+          onClick={() =>
+            (window.location.href =
+              "https://stora-storage-management.vercel.app")
+          }
+          underDev={true}
+          githubLink="https://github.com/ubaydillah1/-stora-storage-management"
+        >
+          Stora - Storage Management
         </PortfolioBox>
         <PortfolioBox
           src="./assets/img/linea.png"
           onClick={() =>
-            (window.location.href = "https://linea-alpha.vercel.app/")
+            (window.location.href = "https://linea-alpha.vercel.app")
           }
         >
-          Linea Studio - Landing Page with animation from GSAP
+          Linea Studio - Landing Page with animation
+        </PortfolioBox>
+        <PortfolioBox
+          src="./assets/img/videoBelajar.png"
+          onClick={() =>
+            (window.location.href = "https://video-belajar-api.vercel.app")
+          }
+        >
+          CRUD with Redux
         </PortfolioBox>
       </div>
     </section>
