@@ -2,7 +2,6 @@ import ThemeIcon from "../components/Elements/ThemeIcon";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useContext, useRef } from "react";
-import CurrentTime from "../components/Elements/currentTime";
 import { DarkMode } from "../contexts/DarkMode";
 import CardProfile from "../components/Fragments/CardProfile";
 import Navigation from "../components/Fragments/Navigation";
@@ -11,6 +10,8 @@ import AboutSection from "../components/Layouts/AboutSection.jsx";
 import SkillsSection from "../components/Layouts/SkillsSection.jsx";
 import PortfolioSection from "../components/Layouts/PortfolioSection.jsx";
 import ContactSection from "../components/Layouts/ContactSection/index.jsx";
+import CurrentTime from "../components/Elements/CurrentTime/index.jsx";
+import ResumeSection from "../components/Layouts/ResumeSection/index.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,6 +23,7 @@ function HomePage() {
   const skillsRef = useRef(null);
   const portfolioRef = useRef(null);
   const contactRef = useRef(null);
+  const resumeRef = useRef(null);
 
   const scrollToSection = (ref) => {
     if (ref && ref.current) {
@@ -39,11 +41,11 @@ function HomePage() {
 
   return (
     <div className="lg:px-[100px] sm:px-[40px] px-[20px] lg:pr-[400px] ">
-      <div className="fixed top-10 right-10">
+      <div className="fixed top-10 right-10 z-[99]">
         <CurrentTime />
       </div>
 
-      <div className="text-center fixed top-10 left-1/2 z-50 lg:block hidden">
+      <div className="text-center fixed top-10 left-1/2 z-50 lg:blockden">
         <ThemeIcon />
       </div>
 
@@ -55,6 +57,7 @@ function HomePage() {
           skills: skillsRef,
           portfolio: portfolioRef,
           contact: contactRef,
+          resume: resumeRef,
         }}
       />
 
@@ -70,12 +73,16 @@ function HomePage() {
         <div ref={aboutRef}>
           <AboutSection />
         </div>
+        <div ref={resumeRef}>
+          <ResumeSection />
+        </div>
         <div ref={skillsRef}>
           <SkillsSection />
         </div>
         <div ref={portfolioRef}>
           <PortfolioSection />
         </div>
+
         <div ref={contactRef}>
           <ContactSection />
         </div>

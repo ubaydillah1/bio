@@ -2,6 +2,7 @@ import PortfolioBox from "../../Elements/PortfolioBox";
 import Badge from "../../Elements/Badge";
 import { useContext } from "react";
 import { DarkMode } from "../../../contexts/DarkMode";
+import { config } from "../../../lib/config";
 
 const PortfolioSection = () => {
   const { theme } = useContext(DarkMode);
@@ -36,14 +37,20 @@ const PortfolioSection = () => {
 
       <div className="my-[40px] flex flex-col gap-[60px]">
         <PortfolioBox
+          src="./assets/img/straight-deal.png"
+          onClick={() =>
+            (window.location.href = `${config.BASE_URL}/straight-deal`)
+          }
+        >
+          Straight Deal - Car Selling Workflow (Backend)
+        </PortfolioBox>
+        <PortfolioBox
           src="./assets/img/ravine-bg.png"
           onClick={() =>
-            (window.location.href = "https://ravine-coffee-shop.vercel.app")
+            (window.location.href = `${config.BASE_URL}/ravine-coffee`)
           }
-          underDev={true}
-          githubLink="https://github.com/ubaydillah1/ravine-coffee-shop"
         >
-          Ravine Coffee - Online Order System
+          Ravine Coffee - Ravince Coffee – Cafe POS and Online Ordering System
         </PortfolioBox>
         <PortfolioBox
           src="./assets/img/stora-bg.png"
@@ -52,7 +59,6 @@ const PortfolioSection = () => {
               "https://stora-storage-management.vercel.app")
           }
           underDev={true}
-          githubLink="https://github.com/ubaydillah1/-stora-storage-management"
         >
           Stora - Storage Management
         </PortfolioBox>

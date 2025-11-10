@@ -91,8 +91,7 @@ const ContactSection = () => {
                   name="phone"
                   type="tel"
                   className="outline-none text-[18px] bg-transparent placeholder:text-[#757575]"
-                  placeholder="Your Phone Number"
-                  required
+                  placeholder="Optional"
                 />
               </div>
             </div>

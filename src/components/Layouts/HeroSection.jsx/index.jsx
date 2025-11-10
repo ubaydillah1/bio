@@ -43,7 +43,15 @@ const HeroSection = (props) => {
           >
             Fullstack
           </span>{" "}
-          Developer and AI Enthusiast
+          Developer and{" "}
+          <span
+            className={`${
+              theme == "black" ? "text-primary-dark" : "text-primary-light"
+            }`}
+          >
+            AI
+          </span>{" "}
+          Enthusiast
         </span>
       </div>
 

@@ -35,14 +35,12 @@ const AboutSection = () => {
           theme == "black" ? "text-[#999999]" : "text-slate-500"
         }`}
       >
-        Since starting my journey as a fullstack developer after graduating from
-        Harisenin.com bootcamp, I’ve worked on personal projects and
-        collaborated with talented individuals in developing digital products.
-        Although I don’t have extensive professional experience yet, I’m
-        constantly honing my skills and knowledge in building digital solutions
-        for both business and consumer needs. I am quietly confident, naturally
-        curious, and always working on improving my coding skills, one problem
-        at a time.
+        I’m a Fullstack Web Developer specializing in React, Next.js, and
+        Express. Over the past year, I’ve built and contributed to several
+        projects, including developing the backend for the Straight Deal
+        platform at Odama. I focus on creating scalable, efficient, and
+        user-centered web applications, and I’m always eager to learn new
+        technologies to craft impactful digital solutions.
       </p>
     </section>
   );

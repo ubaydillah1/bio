@@ -8,15 +8,10 @@ const CardProfile = (props) => {
   const { theme } = useContext(DarkMode);
 
   const [isGithubHover, setIsGithubHover] = useState(false);
-  const [isInstagramHover, setIsInstagramHover] = useState(false);
   const [isLikedinHover, setIslinkedinHover] = useState(false);
 
   const toggleGithub = () => {
     setIsGithubHover(!isGithubHover);
-  };
-
-  const toggleInstagram = () => {
-    setIsInstagramHover(!isInstagramHover);
   };
 
   const toggleLinkedin = () => {
@@ -52,8 +47,8 @@ const CardProfile = (props) => {
       <div className="flex justify-between">
         <p className="font-bold text-3xl">UBAY</p>
         <div className="text-end text-sm font-medium">
-          <p>Front End Developer &</p>
-          <p>Blockchain Enthusiast</p>
+          <p>Full Developer &</p>
+          <p>AI Enthusiast</p>
         </div>
       </div>
 
@@ -91,28 +86,6 @@ const CardProfile = (props) => {
             </svg>
           </a>
           <a
-            href="https://www.instagram.com/ubaydillah.p/"
-            className={`w-[47px] h-[47px] rounded-full border-[1.6px] transition-all duration-300 ${borderColor(
-              isInstagramHover
-            )}  cursor-pointer flex justify-center items-center`}
-            onMouseEnter={toggleInstagram}
-            onMouseLeave={toggleInstagram}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke={fillStroke(isInstagramHover)}
-              className="transition-all duration-300"
-            >
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-            </svg>
-          </a>
-          <a
             href="https://www.linkedin.com/in/ubay-dillah/"
             className={`w-[47px] h-[47px] rounded-full border-[1.6px] transition-all duration-300 ${borderColor(
               isLikedinHover
@@ -147,7 +120,7 @@ const CardProfile = (props) => {
             theme == "black" ? "text-[#999999]" : "text-slate-500"
           }`}
         >
-          © 2024 Ubay Dillah. All Rights Reserved
+          © 2025 Ubay Dillah. All Rights Reserved
         </p>
       </div>
     </div>

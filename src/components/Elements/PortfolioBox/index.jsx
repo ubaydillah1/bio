@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
-import { Github } from "lucide-react";
 
 const PortfolioBox = (props) => {
-  const { children, src, onClick, githubLink, underDev = false } = props;
+  const { children, src, onClick, underDev = false } = props;
 
   return (
     <div
@@ -16,18 +15,6 @@ const PortfolioBox = (props) => {
               Under Development
             </span>
           </div>
-        )}
-
-        {githubLink && (
-          <a
-            href={githubLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            className="absolute bottom-6 left-6 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-black hover:bg-black/80 transition"
-          >
-            <Github className="text-white" size={24} />
-          </a>
         )}
 
         <img

@@ -3,13 +3,23 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ReactLenis } from "lenis/react";
 import "./index.css";
-import HomePage from "./pages/homePage";
 import DarkModeProvider from "./contexts/DarkMode";
+import HomePage from "./pages/HomePage";
+import StraightDeal from "./pages/StraightDeal";
+import RavineCoffee from "./pages/RavineCoffee";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomePage />,
+  },
+  {
+    path: "/straight-deal",
+    element: <StraightDeal />,
+  },
+  {
+    path: "/ravine-coffee",
+    element: <RavineCoffee />,
   },
 ]);
 
