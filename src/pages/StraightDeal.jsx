@@ -56,7 +56,6 @@ const StraightDeal = () => {
 
   return (
     <div className="max-w-[900px] mx-auto px-4 py-10">
-      {/* Back Button */}
       <button
         onClick={() => window.history.back()}
         className={`flex items-center gap-2 text-sm transition mb-6 ${
@@ -159,7 +158,6 @@ const StraightDeal = () => {
         >
           Try It Yourself
         </h2>
-
         <div className="flex flex-wrap gap-3">
           <a
             href="https://www.straightdeal.com"
