@@ -22,10 +22,6 @@ Link demo: https://bio-ubay.vercel.app
 
 Open http://localhost:3000 in your browser to view the website.
 
-## Build for Production
-    npm run build
-    npm run start
-    
 ## Dependensi Utama
 - React
 - Tailwind CSS
