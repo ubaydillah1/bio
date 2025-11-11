@@ -1,42 +1,31 @@
 # Personal Website
-
-Personal website untuk menampilkan portfolio, pengalaman, dan kontak saya. 
+Personal website to display my portfolio, experiences, and contacts.
 
 ## Demo
-Link demo: [masukkan link website kamu di sini]
+Link demo: https://bio-ubay.vercel.app
 
 ## Fitur
-- Halaman landing interaktif
-- Bagian portfolio dan pengalaman
-- Kontak dan social media links
+- Interactive landing page
+- Portfolio and experiences section
+- Contact and social media links
 - Dark mode support
-
+- 
 ## Instalasi
-
-Clone repository ini:
-
-    git clone https://github.com/username/nama-repo.git](https://github.com/ubaydillah1/bio.git
+Clone this repository:
+    git clone https://github.com/ubaydillah1/bio.git
     cd nama-repo
-
 Install dependencies:
-
     npm install
-
-Jalankan development server:
-
+Run development server:
     npm run dev
-
-Buka [http://localhost:3000](http://localhost:3000) di browser untuk melihat website.
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the website.
 
 ## Build untuk Production
-
     npm run build
     npm run start
-
+    
 ## Dependensi Utama
 - React
 - Tailwind CSS
-
 ---
-
-Dibuat dengan ❤️ oleh Ubay Dillah
+Made with ❤️ by Ubay Dillah
