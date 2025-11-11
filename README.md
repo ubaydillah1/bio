@@ -9,7 +9,7 @@ Link demo: https://bio-ubay.vercel.app
 - Portfolio and experiences section
 - Contact and social media links
 - Dark mode support
-- 
+
 ## Instalasi
 Clone this repository:
     git clone https://github.com/ubaydillah1/bio.git
