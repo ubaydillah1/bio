@@ -139,8 +139,8 @@ const RavineCoffee = () => {
           theme === "black" ? "text-red-400" : "text-red-600"
         }`}
       >
-        *Realtime and WebSocket features work only when running locally due to
-        client policy restrictions.*
+        *Realtime and WebSocket features are only available when running
+        locally.*
       </p>
 
       {/* Media Viewer */}
@@ -407,8 +407,9 @@ const RavineCoffee = () => {
             }`}
           >
             <b>
-              Next.js, Tailwind CSS, TanStack Query, Zustand, Express.js, Prisma
-              ORM, Supabase PostgreSQL, Midtrans QRIS, WebSocket, Vercel, Render
+              Next.js, Typescript, Tailwind CSS, TanStack Query, Zustand,
+              Express.js, Prisma ORM, Supabase PostgreSQL, Midtrans QRIS,
+              WebSocket, Vercel, Render
             </b>
           </p>
         </div>

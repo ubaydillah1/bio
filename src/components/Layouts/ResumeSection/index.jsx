@@ -14,8 +14,18 @@ const ResumeSection = () => {
       roles: [
         {
           title: "Backend Developer",
-          description:
-            "Built backend system for a car-selling platform with RBAC, JWT, and integrations like Twilio and SendGrid.",
+          description: `Odama Studio | BACKEND DEVELOPER
+
+Worked on the backend of a car-selling platform, focusing on building secure and scalable systems. Key responsibilities and achievements include:
+
+1. Developed backend architecture with Role-Based Access Control (RBAC) and JWT authentication.
+2. Integrated third-party services such as Twilio for SMS notifications and SendGrid for email delivery.
+3. Communicated regularly with clients via WhatsApp to gather requirements, provide updates, and clarify issues.
+4. Collaborated with a remote team using Notion for task management, documentation, and project planning.
+5. Designed and optimized database schemas for better performance and scalability.
+6. Handled real-world production issues, debugging, and API improvements.
+
+Skills: Node.js, Express.js, API Design, JWT, RBAC, Notion, Client Communication, Database Design, Twilio, SendGrid`,
         },
       ],
     },

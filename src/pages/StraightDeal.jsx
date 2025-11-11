@@ -247,7 +247,7 @@ const StraightDeal = () => {
           >
             The goal was to build a robust, secure, and maintainable backend
             system that supports the entire car-selling workflow efficiently.
-            Each step—from data submission to final transaction—is handled with
+            Each step from data submission to final transaction is handled with
             high reliability and minimal latency.
           </p>
         </section>
@@ -267,7 +267,7 @@ const StraightDeal = () => {
           >
             The system serves car owners seeking a quick and trusted selling
             experience, and admins responsible for verifying submissions,
-            managing offers, and completing deals—all through a unified backend
+            managing offers, and completing deals all through a unified backend
             service.
           </p>
         </section>
@@ -307,8 +307,8 @@ const StraightDeal = () => {
             }`}
           >
             <b>
-              Express.js, Prisma ORM, Supabase PostgreSQL, JWT, Google OAuth2,
-              Twilio, SendGrid, Vercel
+              Express.js, Typescript, Prisma ORM, Supabase PostgreSQL, JWT,
+              Google OAuth2, Twilio, SendGrid, Vercel
             </b>
           </p>
         </div>

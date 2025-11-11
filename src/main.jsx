@@ -7,6 +7,8 @@ import DarkModeProvider from "./contexts/DarkMode";
 import HomePage from "./pages/HomePage";
 import StraightDeal from "./pages/StraightDeal";
 import RavineCoffee from "./pages/RavineCoffee";
+import MaduraKita from "./pages/MaduraKita";
+import Linea from "./pages/Linea";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +22,14 @@ const router = createBrowserRouter([
   {
     path: "/ravine-coffee",
     element: <RavineCoffee />,
+  },
+  {
+    path: "/madura-kita",
+    element: <MaduraKita />,
+  },
+  {
+    path: "/linea",
+    element: <Linea />,
   },
 ]);
 

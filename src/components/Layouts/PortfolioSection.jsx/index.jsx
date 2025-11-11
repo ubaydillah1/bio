@@ -6,6 +6,7 @@ import { config } from "../../../lib/config";
 
 const PortfolioSection = () => {
   const { theme } = useContext(DarkMode);
+
   return (
     <section
       className="max-w-[850px] lg:ml-[300px] w-full mt-[40px]"
@@ -42,7 +43,7 @@ const PortfolioSection = () => {
             (window.location.href = `${config.BASE_URL}/straight-deal`)
           }
         >
-          Straight Deal - Car Selling Workflow (Backend)
+          Straight Deal - Car Selling Workflow (Backend - Odama Studio)
         </PortfolioBox>
         <PortfolioBox
           src="./assets/img/ravine-bg.png"
@@ -54,19 +55,22 @@ const PortfolioSection = () => {
         </PortfolioBox>
         <PortfolioBox
           src="./assets/img/stora-bg.png"
-          onClick={() =>
-            (window.location.href =
-              "https://stora-storage-management.vercel.app")
-          }
+          onClick={() => (window.location.href = `${config.BASE_URL}/stora`)}
           underDev={true}
         >
           Stora - Storage Management
         </PortfolioBox>
         <PortfolioBox
-          src="./assets/img/linea.png"
+          src="./assets/img/madura-bg.png"
           onClick={() =>
-            (window.location.href = "https://linea-alpha.vercel.app")
+            (window.location.href = `${config.BASE_URL}/madura-kita`)
           }
+        >
+          MaduraKita - Empowering Local MSMEs in Madura
+        </PortfolioBox>
+        <PortfolioBox
+          src="./assets/img/linea.png"
+          onClick={() => (window.location.href = `${config.BASE_URL}/linea`)}
         >
           Linea Studio - Landing Page with animation
         </PortfolioBox>
