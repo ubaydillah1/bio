@@ -1,7 +1,7 @@
 import ThemeIcon from "../components/Elements/ThemeIcon";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useContext, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { DarkMode } from "../contexts/DarkMode";
 import CardProfile from "../components/Fragments/CardProfile";
 import Navigation from "../components/Fragments/Navigation";
@@ -12,11 +12,16 @@ import PortfolioSection from "../components/Layouts/PortfolioSection.jsx";
 import ContactSection from "../components/Layouts/ContactSection/index.jsx";
 import CurrentTime from "../components/Elements/CurrentTime/index.jsx";
 import ResumeSection from "../components/Layouts/ResumeSection/index.jsx";
+import { config } from "../lib/config.js";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function HomePage() {
   const { theme } = useContext(DarkMode);
+
+  useEffect(() => {
+    console.log(config.BASE_URL);
+  }, []);
 
   const aboutRef = useRef(null);
   const heroRef = useRef(null);
