@@ -74,14 +74,14 @@ const PortfolioSection = () => {
         >
           Linea Studio - Landing Page with animation
         </PortfolioBox>
-        <PortfolioBox
+        {/* <PortfolioBox
           src="./assets/img/videoBelajar.png"
           onClick={() =>
             (window.location.href = "https://video-belajar-api.vercel.app")
           }
         >
           CRUD with Redux
-        </PortfolioBox>
+        </PortfolioBox> */}
       </div>
     </section>
   );

@@ -9,6 +9,7 @@ import StraightDeal from "./pages/StraightDeal";
 import RavineCoffee from "./pages/RavineCoffee";
 import MaduraKita from "./pages/MaduraKita";
 import Linea from "./pages/Linea";
+import Stora from "./pages/Stora";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: "/linea",
     element: <Linea />,
+  },
+  {
+    path: "/stora",
+    element: <Stora />,
   },
 ]);
 
