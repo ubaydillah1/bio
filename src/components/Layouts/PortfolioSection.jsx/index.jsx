@@ -56,7 +56,6 @@ const PortfolioSection = () => {
         <PortfolioBox
           src="./assets/img/stora-bg.png"
           onClick={() => (window.location.href = `${config.BASE_URL}/stora`)}
-          underDev={true}
         >
           Stora - Storage Management
         </PortfolioBox>
