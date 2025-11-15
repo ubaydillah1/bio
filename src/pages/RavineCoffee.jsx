@@ -76,7 +76,7 @@ const RavineCoffee = () => {
               theme === "black" ? "text-white" : "text-black"
             }`}
           >
-            Ravine Coffee – Café Order Management System
+            Ravine Coffee – Cafe Order Management System
           </h1>
         </div>
       </div>
@@ -289,7 +289,7 @@ const RavineCoffee = () => {
               theme === "black" ? "text-[#999999]" : "text-slate-500"
             }`}
           >
-            <b>Ravine Coffee</b> is an in-store café order and management system
+            <b>Ravine Coffee</b> is an in-store cafe order and management system
             built to streamline every step of the customer experience. Customers
             can <b>place orders directly from their tables</b> via QR code or
             order at the cashier. Payments are handled securely through{" "}
@@ -319,10 +319,10 @@ const RavineCoffee = () => {
             <b>Supabase PostgreSQL</b> database. <b>Midtrans webhooks</b> handle
             real-time QRIS payments, while <b>WebSocket</b> ensures live order
             updates between cashier and kitchen screens. The project is deployed
-            with <b>Vercel (frontend)</b> and <b>Render (backend)</b> for
-            scalability and reliability. Additionally, <b>infinite scroll</b> is
-            implemented to dynamically load menus or items, improving user
-            experience on long lists.
+            with <b>Vercel (frontend & backend)</b> for scalability and
+            reliability. Additionally, <b>infinite scroll</b> is implemented to
+            dynamically load menus or items, improving user experience on long
+            lists.
           </p>
         </section>
 
@@ -340,7 +340,7 @@ const RavineCoffee = () => {
             }`}
           >
             The goal is to create a{" "}
-            <b>fast, connected, and user-friendly café ordering experience</b>.
+            <b>fast, connected, and user-friendly cafe ordering experience</b>.
             Each role—customer, cashier, and admin—has dedicated tools to ensure
             smooth operations, minimize manual work, and deliver consistent
             service even during busy hours.
@@ -409,7 +409,7 @@ const RavineCoffee = () => {
             <b>
               Next.js, Typescript, Tailwind CSS, TanStack Query, Zustand,
               Express.js, Prisma ORM, Supabase PostgreSQL, Midtrans QRIS,
-              WebSocket, Vercel, Render
+              WebSocket, Vercel
             </b>
           </p>
         </div>
