@@ -14,7 +14,7 @@ const Navigation = ({ scrollToSection, sections }) => {
   const { theme } = useContext(DarkMode);
 
   const iconProps = {
-    size: 20,
+    className: "size-[18px] sm:size-[20px]",
     color: theme === "black" ? "white" : "black",
   };
 
@@ -59,7 +59,7 @@ const Navigation = ({ scrollToSection, sections }) => {
         <button
           key={index}
           onClick={item.action}
-          className="transition-transform hover:scale-110 focus:outline-none"
+          className="transition-transform hover:scale-110 focus:outline-none "
           aria-label={`Scroll to ${Object.keys(sections)[index]} section`}
         >
           {item.icon}
