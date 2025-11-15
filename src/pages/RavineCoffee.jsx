@@ -6,7 +6,8 @@ import {
   X,
   ExternalLink,
   Play,
-  Github,
+  Book,
+  GithubIcon,
 } from "lucide-react";
 import { DarkMode } from "../contexts/DarkMode";
 
@@ -224,7 +225,7 @@ const RavineCoffee = () => {
           </a>
 
           <a
-            href="https://github.com/ubaydillah1/ravine-coffee-shop"
+            href="https://GithubIcon .com/ubaydillah1/ravine-coffee-shop"
             target="_blank"
             rel="noreferrer"
             className={`flex items-center gap-2 text-sm whitespace-nowrap border rounded-lg px-4 py-2 transition w-fit ${
@@ -234,11 +235,11 @@ const RavineCoffee = () => {
             }`}
           >
             Frontend Repo
-            <Github size={16} />
+            <GithubIcon size={16} />
           </a>
 
           <a
-            href="https://github.com/ubaydillah1/ravine-coffee-be"
+            href="https://GithubIcon .com/ubaydillah1/ravine-coffee-be"
             target="_blank"
             rel="noreferrer"
             className={`flex items-center gap-2 text-sm whitespace-nowrap border rounded-lg px-4 py-2 transition w-fit ${
@@ -248,7 +249,21 @@ const RavineCoffee = () => {
             }`}
           >
             Backend Repo
-            <Github size={16} />
+            <GithubIcon size={16} />
+          </a>
+
+          <a
+            href="https://documenter.getpostman.com/view/33200982/2sB3WwowG9#intro"
+            target="_blank"
+            rel="noreferrer"
+            className={`flex items-center gap-2 text-sm whitespace-nowrap border rounded-lg px-4 py-2 transition w-fit ${
+              theme === "black"
+                ? "border-[#444] text-[#ccc] hover:bg-[#1a1a1a]"
+                : "border-slate-300 text-slate-700 hover:bg-slate-100"
+            }`}
+          >
+            Postman API Docs
+            <Book size={16} />
           </a>
         </div>
 
