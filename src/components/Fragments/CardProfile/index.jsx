@@ -56,6 +56,9 @@ const CardProfile = (props) => {
         <img
           src="./assets/img/mySelf.webp"
           alt="mySelf"
+          fetchPriority="high"
+          loading="eager"
+          decoding="sync"
           className="rounded-[30px] object-cover h-full w-full mx-aut lg:max-h-[230px]"
         />
       </div>
