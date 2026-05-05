@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "postbuild": "react-snap",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -37,8 +36,5 @@
     "tailwindcss": "^3.4.13",
     "vite": "^5.4.1",
     "vite-plugin-sitemap": "^0.8.2"
-  },
-  "reactSnap": {
-    "source": "dist"
   }
 }

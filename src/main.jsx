@@ -1,5 +1,5 @@
 import { StrictMode } from "react";
-import { createRoot, hydrateRoot } from "react-dom/client";
+import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ReactLenis } from "lenis/react";
 import { HelmetProvider } from "react-helmet-async";
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
   },
 ]);
 
-const app = (
+createRoot(document.getElementById("root")).render(
   <StrictMode>
     <HelmetProvider>
       <ReactLenis root>
@@ -50,10 +50,3 @@ const app = (
     </HelmetProvider>
   </StrictMode>
 );
-
-const rootElement = document.getElementById("root");
-if (rootElement.hasChildNodes()) {
-  hydrateRoot(rootElement, app);
-} else {
-  createRoot(rootElement).render(app);
-}
