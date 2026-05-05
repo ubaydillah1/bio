@@ -1,7 +1,8 @@
 import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import { createRoot, hydrateRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ReactLenis } from "lenis/react";
+import { HelmetProvider } from "react-helmet-async";
 import "./index.css";
 import DarkModeProvider from "./contexts/DarkMode";
 import HomePage from "./pages/HomePage";
@@ -38,12 +39,21 @@ const router = createBrowserRouter([
   },
 ]);
 
-createRoot(document.getElementById("root")).render(
+const app = (
   <StrictMode>
-    <ReactLenis root>
-      <DarkModeProvider>
-        <RouterProvider router={router} />
-      </DarkModeProvider>
-    </ReactLenis>
+    <HelmetProvider>
+      <ReactLenis root>
+        <DarkModeProvider>
+          <RouterProvider router={router} />
+        </DarkModeProvider>
+      </ReactLenis>
+    </HelmetProvider>
   </StrictMode>
 );
+
+const rootElement = document.getElementById("root");
+if (rootElement.hasChildNodes()) {
+  hydrateRoot(rootElement, app);
+} else {
+  createRoot(rootElement).render(app);
+}

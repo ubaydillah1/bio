@@ -5,7 +5,7 @@ import { DarkMode } from "../../../contexts/DarkMode";
 const AboutSection = () => {
   const { theme } = useContext(DarkMode);
   return (
-    <section className="max-w-[850px] lg:ml-[300px] w-full mt-[40px]">
+    <section className="lg:ml-[300px] w-full mt-[40px] pr-4 lg:pr-20">
       <Badge className="lg:my-10 my-5 px-3 gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -19,29 +19,90 @@ const AboutSection = () => {
         ABOUT
       </Badge>
 
-      <div className="sm:text-[48px] text-[37px] lg:max-w-[800px]">
-        Every Design Starts with a Vision, Every Vision{" "}
+      <div className="sm:text-[48px] text-[37px] lg:leading-[60px] font-medium">
+        Every Great Product Begins with an even{" "}
         <span
           className={
             theme == "black" ? "text-primary-dark" : "text-primary-light"
           }
         >
-          Tells a Story
+          Better Story
         </span>
       </div>
 
-      <p
-        className={`text-xl lg:my-8 my-6 lg:flex lg:flex-col lg:max-w-[700px] ${
+      <div
+        className={`text-[17px] lg:text-[19px] leading-relaxed lg:my-10 my-8 space-y-6 ${
           theme == "black" ? "text-[#999999]" : "text-slate-500"
         }`}
       >
-        I’m a Fullstack Web Developer specializing in React, Next.js, and
-        Express. Over the past year, I’ve built and contributed to several
-        projects, including developing the backend for the Straight Deal
-        platform at Odama. I focus on creating scalable, efficient, and
-        user-centered web applications, and I’m always eager to learn new
-        technologies to craft impactful digital solutions.
-      </p>
+        <p>
+          I’m a{" "}
+          <span className={theme === "black" ? "text-white" : "text-black"}>
+            Fullstack Developer
+          </span>{" "}
+          with a backend focus, dedicated to building reliable, scalable systems
+          that truly perform in production.
+        </p>
+        <p>
+          On the frontend, I craft responsive interfaces using{" "}
+          <span className={theme === "black" ? "text-white" : "text-black"}>
+            React, Next.js, and TypeScript
+          </span>{" "}
+          paired with{" "}
+          <span className={theme === "black" ? "text-white" : "text-black"}>
+            Tailwind CSS
+          </span>
+          . For the backend, I architect structured APIs and efficient data
+          flows using{" "}
+          <span className={theme === "black" ? "text-white" : "text-black"}>
+            Express, Prisma ORM
+          </span>
+          , and SQL databases.
+        </p>
+        <p>
+          Most recently, I engineered the backend for{" "}
+          <span className={theme === "black" ? "text-white" : "text-black"}>
+            Straight Deal
+          </span>
+          , a live car-selling platform serving 1,400+ users, where I handled
+          secure RBAC, JWT authentication, and third-party integrations with
+          Twilio and SendGrid.
+        </p>
+        <p>
+          I’m always open to full-time roles, freelance projects, or just a good
+          technical conversation. Reach me at:{" "}
+          <span className={theme === "black" ? "text-white" : "text-black"}>
+            ubaydillah1737@gmail.com
+          </span>
+        </p>
+      </div>
+
+      <div className="flex flex-wrap gap-12 lg:gap-24 mt-16 pb-10">
+        <div>
+          <h3
+            className={`text-6xl font-bold ${theme === "black" ? "text-primary-dark" : "text-primary-light"}`}
+          >
+            1+
+          </h3>
+          <p
+            className={`text-xs uppercase tracking-widest mt-3 font-semibold ${theme === "black" ? "text-[#666]" : "text-slate-400"}`}
+          >
+            Years of Experience
+          </p>
+        </div>
+        <div>
+          <h3
+            className={`text-6xl font-bold ${theme === "black" ? "text-primary-dark" : "text-primary-light"}`}
+          >
+            7+
+          </h3>
+          <p
+            className={`text-xs uppercase tracking-widest mt-3 font-semibold ${theme === "black" ? "text-[#666]" : "text-slate-400"}`}
+          >
+            Projects Completed
+          </p>
+        </div>
+      </div>
     </section>
   );
 };

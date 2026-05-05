@@ -36,7 +36,7 @@ const ContactSection = () => {
 
   return (
     <section
-      className="max-w-[850px] lg:ml-[300px] w-full mt-[40px]"
+      className="lg:ml-[300px] w-full mt-[40px]"
       id="contact"
     >
       <Badge className="lg:my-10 my-5 px-3 gap-2">

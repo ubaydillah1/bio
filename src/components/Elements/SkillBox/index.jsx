@@ -4,7 +4,14 @@ import { useContext, useRef, useState } from "react";
 import { DarkMode } from "../../../contexts/DarkMode";
 
 const SkillBoxes = (props) => {
-  const { text, children, viewBox = false } = props;
+  const { 
+    text, 
+    children, 
+    viewBox = "0 0 24 24", 
+    size = "",
+    width = "42",
+    height = "42"
+  } = props;
 
   const { theme } = useContext(DarkMode);
   const boxRef = useRef();
@@ -36,7 +43,6 @@ const SkillBoxes = (props) => {
       ref={boxRef}
       onMouseEnter={mouseEnter}
       onMouseLeave={mouseLeave}
-      stroke-width="0"
       className={`border-[2px] font-medium ${
         hovered
           ? borderHover()
@@ -53,11 +59,11 @@ const SkillBoxes = (props) => {
           hovered ? colorHover() : theme === "black" ? "#BCBCBC" : "#64748b"
         }
         role="img"
-        viewBox={viewBox ? viewBox : "0 0 24 24"}
-        height="42"
-        width="42"
+        viewBox={viewBox}
+        width={width}
+        height={height}
         xmlns="http://www.w3.org/2000/svg"
-        className={`transition-all duration-300 ${hovered && "scale-[1.2]"}`}
+        className={`transition-all duration-300 ${hovered ? "scale-[1.1]" : ""} ${size}`}
       >
         {children}
       </svg>

@@ -9,7 +9,7 @@ const HeroSection = (props) => {
 
   const { theme } = useContext(DarkMode);
   return (
-    <section className="max-w-[850px] lg:ml-[300px] w-full" id="hero">
+    <section className="lg:ml-[300px] w-full" id="hero">
       <Badge className="lg:my-10 my-5 px-3 gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -23,7 +23,7 @@ const HeroSection = (props) => {
         INTRODUCE
       </Badge>
 
-      <div className="lg:text-[72px] lg:leading-[90px] flex flex-col sm:text-[56px] text-[37px] sm:leading-[64px]">
+      <h1 className="lg:text-[72px] lg:leading-[90px] flex flex-col sm:text-[56px] text-[37px] sm:leading-[64px]">
         <span>
           Say Hi from{" "}
           <span
@@ -31,7 +31,7 @@ const HeroSection = (props) => {
               theme == "black" ? "text-primary-dark" : "text-primary-light"
             }`}
           >
-            Ubay,
+            Ubay Dillah,
           </span>{" "}
         </span>
 
@@ -53,10 +53,10 @@ const HeroSection = (props) => {
           </span>{" "}
           Enthusiast
         </span>
-      </div>
+      </h1>
 
       <p
-        className={`text-xl lg:my-8 my-6 lg:flex lg:flex-col ${
+        className={`text-xl lg:my-8 my-6 ${
           theme == "black" ? "text-[#999999]" : "text-slate-500"
         }`}
       >

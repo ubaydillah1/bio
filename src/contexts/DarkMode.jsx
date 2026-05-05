@@ -12,7 +12,7 @@ const DarkModeProvider = ({ children }) => {
       return localTheme;
     }
 
-    return prefersDarkScheme.matches ? "black" : "winter";
+    return "black";
   });
 
   useEffect(() => {

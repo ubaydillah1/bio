@@ -47,7 +47,7 @@ const CardProfile = (props) => {
       <div className="flex justify-between">
         <p className="font-bold text-3xl">UBAY</p>
         <div className="text-end text-sm font-medium">
-          <p>Full Developer &</p>
+          <p>Fullstack Developer &</p>
           <p>AI Enthusiast</p>
         </div>
       </div>
@@ -59,7 +59,7 @@ const CardProfile = (props) => {
           fetchPriority="high"
           loading="eager"
           decoding="sync"
-          className="rounded-[30px] object-cover h-full w-full mx-aut lg:max-h-[230px]"
+          className="rounded-[30px] object-cover h-full w-full mx-auto lg:max-h-[230px]"
         />
       </div>
 
@@ -123,7 +123,7 @@ const CardProfile = (props) => {
             theme == "black" ? "text-[#999999]" : "text-slate-500"
           }`}
         >
-          © 2025 Ubay Dillah. All Rights Reserved
+          © 2026 Ubay Dillah. All Rights Reserved
         </p>
       </div>
     </div>

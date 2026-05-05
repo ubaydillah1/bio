@@ -12,6 +12,7 @@ import PortfolioSection from "../components/Layouts/PortfolioSection.jsx";
 import ContactSection from "../components/Layouts/ContactSection/index.jsx";
 import CurrentTime from "../components/Elements/CurrentTime/index.jsx";
 import ResumeSection from "../components/Layouts/ResumeSection/index.jsx";
+import { Helmet } from "react-helmet-async";
 import { config } from "../lib/config.js";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -46,6 +47,18 @@ function HomePage() {
 
   return (
     <div className="lg:px-[100px] sm:px-[40px] px-[20px] lg:pr-[400px] ">
+      <Helmet>
+        <title>Ubay Dillah - Fullstack Web Developer</title>
+        <meta name="description" content="Portfolio resmi Ubay Dillah, seorang Fullstack Web Developer dari Indonesia. Berpengalaman membangun aplikasi scalable dengan React, Next.js, Node.js, dan Express." />
+        <meta name="keywords" content="Ubay Dillah, Fullstack Developer, Web Developer, React, Next.js, Node.js, Portfolio Ubay Dillah" />
+        <meta property="og:title" content="Ubay Dillah - Fullstack Web Developer" />
+        <meta property="og:description" content="Lihat karya dan pengalaman saya sebagai Fullstack Web Developer." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.ubaydillah.tech/" />
+        {/* Tambahkan og:image nanti jika ada screenshot web, contoh: <meta property="og:image" content="https://www.ubaydillah.tech/preview.jpg" /> */}
+        <link rel="canonical" href="https://www.ubaydillah.tech/" />
+      </Helmet>
+
       <div className="fixed top-10 right-10 z-[99]">
         <CurrentTime />
       </div>
