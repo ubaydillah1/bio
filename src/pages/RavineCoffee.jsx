@@ -9,6 +9,7 @@ import {
   Book,
   GithubIcon,
 } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 import { DarkMode } from "../contexts/DarkMode";
 
 const RavineCoffee = () => {
@@ -56,6 +57,16 @@ const RavineCoffee = () => {
 
   return (
     <div className="max-w-[900px] mx-auto px-4 py-10">
+      <Helmet>
+        <title>Ravine Coffee - Order Management System | Portfolio Ubay Dillah</title>
+        <meta name="description" content="Ravine Coffee adalah sistem manajemen pesanan cafe realtime dengan integrasi pembayaran QRIS Midtrans. Dibangun oleh Ubay Dillah." />
+        <meta property="og:title" content="Ravine Coffee - Smart Cafe System" />
+        <meta property="og:description" content="Solusi digital untuk manajemen pesanan cafe secara realtime dan otomatis." />
+        <meta property="og:image" content="https://www.ubaydillah.tech/assets/img/mySelf.webp" />
+        <meta property="og:url" content="https://www.ubaydillah.tech/ravine-coffee" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://www.ubaydillah.tech/assets/img/mySelf.webp" />
+      </Helmet>
       {/* Back Button */}
       <button
         onClick={() => window.history.back()}

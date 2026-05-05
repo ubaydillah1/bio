@@ -55,7 +55,9 @@ function HomePage() {
         <meta property="og:description" content="Lihat karya dan pengalaman saya sebagai Fullstack Web Developer." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.ubaydillah.tech/" />
-        {/* Tambahkan og:image nanti jika ada screenshot web, contoh: <meta property="og:image" content="https://www.ubaydillah.tech/preview.jpg" /> */}
+        <meta property="og:image" content="https://www.ubaydillah.tech/assets/img/mySelf.webp" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://www.ubaydillah.tech/assets/img/mySelf.webp" />
         <link rel="canonical" href="https://www.ubaydillah.tech/" />
       </Helmet>
 

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { useState, useContext, useEffect, useCallback } from "react";
 import {
   ArrowLeft,
@@ -56,6 +57,16 @@ const StraightDeal = () => {
 
   return (
     <div className="max-w-[900px] mx-auto px-4 py-10">
+      <Helmet>
+        <title>Straight Deal - Car Selling Workflow | Portfolio Ubay Dillah</title>
+        <meta name="description" content="Straight Deal adalah infrastruktur backend canggih untuk alur kerja penjualan mobil yang aman dan transparan. Dibangun oleh Ubay Dillah." />
+        <meta property="og:title" content="Straight Deal - Backend Infrastructure" />
+        <meta property="og:description" content="Sistem backend yang kuat untuk manajemen transaksi jual beli mobil." />
+        <meta property="og:image" content="https://www.ubaydillah.tech/assets/img/mySelf.webp" />
+        <meta property="og:url" content="https://www.ubaydillah.tech/straight-deal" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://www.ubaydillah.tech/assets/img/mySelf.webp" />
+      </Helmet>
       <button
         onClick={() => window.history.back()}
         className={`flex items-center gap-2 text-sm transition mb-6 ${

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { useContext } from "react";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { DarkMode } from "../contexts/DarkMode";
@@ -9,6 +10,16 @@ const MaduraKita = () => {
 
   return (
     <div className="max-w-[900px] mx-auto px-4 py-10">
+      <Helmet>
+        <title>MaduraKita - Empowering MSMEs | Portfolio Ubay Dillah</title>
+        <meta name="description" content="MaduraKita adalah platform inovasi untuk memberdayakan UMKM lokal di Madura melalui teknologi digital. Dibangun oleh Ubay Dillah." />
+        <meta property="og:title" content="MaduraKita - Digital Hub UMKM Madura" />
+        <meta property="og:description" content="Menghubungkan warisan budaya dengan inovasi digital untuk UMKM Madura." />
+        <meta property="og:image" content="https://www.ubaydillah.tech/assets/img/mySelf.webp" />
+        <meta property="og:url" content="https://www.ubaydillah.tech/madura-kita" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://www.ubaydillah.tech/assets/img/mySelf.webp" />
+      </Helmet>
       {/* Back Button */}
       <button
         onClick={() => window.history.back()}
