@@ -73,7 +73,7 @@ const RavineCoffee = () => {
         className={`flex items-center gap-2 text-sm transition mb-6 ${
           theme === "black"
             ? "text-[#999999] hover:text-white"
-            : "text-slate-500 hover:text-black"
+            : "text-slate-500 hover:text-black" //
         }`}
       >
         <ArrowLeft size={18} />
