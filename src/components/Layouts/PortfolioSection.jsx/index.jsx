@@ -37,6 +37,26 @@ const PortfolioSection = () => {
       </div>
 
       <div className="my-[40px] flex flex-col gap-[60px]">
+        {/* OrbiChat - Video Card */}
+        <div
+          className="w-full h-full relative group cursor-pointer"
+          onClick={() => (window.location.href = `${config.BASE_URL}/orbichat`)}
+        >
+          <div className="w-full h-full rounded-[20px] overflow-hidden relative">
+            <video
+              src="./assets/video/orbi-video.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+            />
+          </div>
+          <p className="mt-5 text-[24px]">
+            OrbiChat - AI Chatbot Platform for Business
+          </p>
+        </div>
+
         <PortfolioBox
           src="./assets/img/straight-deal.png"
           onClick={() =>
