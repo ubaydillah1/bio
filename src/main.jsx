@@ -9,7 +9,7 @@ import HomePage from "./pages/HomePage";
 import StraightDeal from "./pages/StraightDeal";
 import RavineCoffee from "./pages/RavineCoffee";
 import MaduraKita from "./pages/MaduraKita";
-import Linea from "./pages/Linea";
+// import Linea from "./pages/Linea";
 import Stora from "./pages/Stora";
 import OrbiChat from "./pages/OrbiChat";
 
@@ -30,10 +30,10 @@ const router = createBrowserRouter([
     path: "/madura-kita",
     element: <MaduraKita />,
   },
-  {
+/* {
     path: "/linea",
     element: <Linea />,
-  },
+  }, */
   {
     path: "/stora",
     element: <Stora />,
