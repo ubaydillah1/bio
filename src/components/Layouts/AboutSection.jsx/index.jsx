@@ -55,9 +55,13 @@ const AboutSection = () => {
           . For the backend, I architect structured APIs and efficient data
           flows using{" "}
           <span className={theme === "black" ? "text-white" : "text-black"}>
-            Express, Prisma ORM
+            NestJS, Express, Prisma ORM
           </span>
-          , and SQL databases.
+          , and databases like{" "}
+          <span className={theme === "black" ? "text-white" : "text-black"}>
+            PostgreSQL & MongoDB
+          </span>
+          .
         </p>
         <p>
           Most recently, I engineered the backend for{" "}
