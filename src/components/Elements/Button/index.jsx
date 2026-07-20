@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { forwardRef, useContext } from "react";
 import { DarkMode } from "../../../contexts/DarkMode";
 

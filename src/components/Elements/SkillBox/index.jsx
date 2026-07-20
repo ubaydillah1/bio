@@ -1,5 +1,3 @@
-/* eslint-disable react/no-unknown-property */
-/* eslint-disable react/prop-types */
 import { useContext, useRef, useState } from "react";
 import { DarkMode } from "../../../contexts/DarkMode";
 

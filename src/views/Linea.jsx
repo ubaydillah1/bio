@@ -1,27 +1,20 @@
-import { Helmet } from "react-helmet-async";
+"use client";
+
 import { useContext } from "react";
+import { useRouter } from "next/navigation";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { DarkMode } from "../contexts/DarkMode";
 
 const Linea = () => {
   const { theme } = useContext(DarkMode);
+  const router = useRouter();
 
   const coverImage = "/assets/img/linea.png";
 
   return (
     <div className="max-w-[900px] mx-auto px-4 py-10">
-      <Helmet>
-        <title>Linea - Landing Page Animation | Portfolio Ubay Dillah</title>
-        <meta name="description" content="Linea adalah landing page modern dengan animasi halus yang dibangun menggunakan HTML, CSS, dan JavaScript." />
-        <meta property="og:title" content="Linea - Modern Landing Page" />
-        <meta property="og:description" content="Eksplorasi landing page perbankan bisnis yang minimalis dan responsif." />
-        <meta property="og:image" content="https://www.ubaydillah.tech/assets/img/mySelf.webp" />
-        <meta property="og:url" content="https://www.ubaydillah.tech/linea" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://www.ubaydillah.tech/assets/img/mySelf.webp" />
-      </Helmet>
       <button
-        onClick={() => window.history.back()}
+        onClick={() => router.back()}
         className={`flex items-center gap-2 text-sm transition mb-6 ${
           theme === "black"
             ? "text-[#999999] hover:text-white"

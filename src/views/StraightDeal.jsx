@@ -1,5 +1,7 @@
-import { Helmet } from "react-helmet-async";
+"use client";
+
 import { useState, useContext, useEffect, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import {
   ArrowLeft,
   ChevronLeft,
@@ -20,6 +22,7 @@ const StraightDeal = () => {
   const [showViewer, setShowViewer] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const { theme } = useContext(DarkMode);
+  const router = useRouter();
 
   const images = [
     "/assets/img/straight-deal-cover.png",
@@ -64,18 +67,9 @@ const StraightDeal = () => {
 
   return (
     <div className="max-w-[900px] mx-auto px-4 py-10">
-      <Helmet>
-        <title>Straight Deal - Car Selling Workflow | Portfolio Ubay Dillah</title>
-        <meta name="description" content="Straight Deal is a production-grade backend infrastructure for secure and transparent car-selling workflows. Built by Ubay Dillah." />
-        <meta property="og:title" content="Straight Deal - Backend Infrastructure" />
-        <meta property="og:description" content="Robust backend system for 1,400+ users and car transaction management." />
-        <meta property="og:image" content="https://www.ubaydillah.tech/assets/img/mySelf.webp" />
-        <meta property="og:url" content="https://www.ubaydillah.tech/straight-deal" />
-      </Helmet>
-
       {/* Back Button */}
       <button
-        onClick={() => window.history.back()}
+        onClick={() => router.back()}
         className={`flex items-center gap-2 text-sm transition mb-6 ${
           theme === "black"
             ? "text-[#999999] hover:text-white"

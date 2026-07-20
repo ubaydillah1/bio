@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { DarkMode } from "../../../contexts/DarkMode";
 
-/* eslint-disable react/prop-types */
 const Badge = (props) => {
   const { children, className } = props;
   const { theme } = useContext(DarkMode);

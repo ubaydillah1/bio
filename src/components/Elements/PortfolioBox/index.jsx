@@ -1,10 +1,9 @@
-/* eslint-disable react/prop-types */
-
 const PortfolioBox = (props) => {
-  const { children, src, onClick, underDev = false } = props;
+  const { children, src, href, onClick, underDev = false } = props;
 
   return (
-    <div
+    <a
+      href={href}
       className="w-full h-full relative group cursor-pointer"
       onClick={onClick}
     >
@@ -18,19 +17,20 @@ const PortfolioBox = (props) => {
         )}
 
         <img
-          src="./assets/img/porto-bg.png"
+          src="/assets/img/porto-bg.png"
+          alt="Portfolio preview background"
           className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
         />
 
         <img
           src={src}
-          alt="Portfolio"
+          alt={`${children} portfolio preview`}
           className="absolute left-1/2 top-[45%] -translate-x-1/2 -translate-y-1/2 w-3/4 transition duration-300 group-hover:scale-110"
         />
       </div>
 
       <p className="mt-5 text-[24px]">{children}</p>
-    </div>
+    </a>
   );
 };
 

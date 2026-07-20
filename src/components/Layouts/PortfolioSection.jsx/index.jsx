@@ -2,7 +2,6 @@ import PortfolioBox from "../../Elements/PortfolioBox";
 import Badge from "../../Elements/Badge";
 import { useContext } from "react";
 import { DarkMode } from "../../../contexts/DarkMode";
-import { config } from "../../../lib/config";
 
 const PortfolioSection = () => {
   const { theme } = useContext(DarkMode);
@@ -38,13 +37,13 @@ const PortfolioSection = () => {
 
       <div className="my-[40px] flex flex-col gap-[60px]">
         {/* OrbiChat - Video Card */}
-        <div
+        <a
+          href="/orbichat"
           className="w-full h-full relative group cursor-pointer"
-          onClick={() => (window.location.href = `${config.BASE_URL}/orbichat`)}
         >
           <div className="w-full h-full rounded-[20px] overflow-hidden relative">
             <video
-              src="./assets/video/orbi-video.mp4"
+              src="/assets/video/orbi-video.mp4"
               autoPlay
               muted
               loop
@@ -55,35 +54,29 @@ const PortfolioSection = () => {
           <p className="mt-5 text-[24px]">
             OrbiChat - AI Chatbot Platform for Business
           </p>
-        </div>
+        </a>
 
         <PortfolioBox
-          src="./assets/img/straight-deal.png"
-          onClick={() =>
-            (window.location.href = `${config.BASE_URL}/straight-deal`)
-          }
+          src="/assets/img/straight-deal.png"
+          href="/straight-deal"
         >
           Straight Deal - Car Selling Workflow (Backend - Odama Studio)
         </PortfolioBox>
         <PortfolioBox
-          src="./assets/img/ravine-bg.png"
-          onClick={() =>
-            (window.location.href = `${config.BASE_URL}/ravine-coffee`)
-          }
+          src="/assets/img/ravine-bg.png"
+          href="/ravine-coffee"
         >
           Ravine Coffee - Ravince Coffee – Cafe POS and Online Ordering System
         </PortfolioBox>
         <PortfolioBox
-          src="./assets/img/stora-bg.png"
-          onClick={() => (window.location.href = `${config.BASE_URL}/stora`)}
+          src="/assets/img/stora-bg.png"
+          href="/stora"
         >
           Stora - Storage Management
         </PortfolioBox>
         <PortfolioBox
-          src="./assets/img/madura-bg.png"
-          onClick={() =>
-            (window.location.href = `${config.BASE_URL}/madura-kita`)
-          }
+          src="/assets/img/madura-bg.png"
+          href="/madura-kita"
         >
           MaduraKita - Empowering Local MSMEs in Madura
         </PortfolioBox>

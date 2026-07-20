@@ -1,19 +1,19 @@
-/* eslint-disable react/prop-types */
+"use client";
+
 import { createContext, useEffect, useState } from "react";
 
 const DarkModeContext = createContext();
 
 const DarkModeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(() => {
+  const [theme, setTheme] = useState("black");
+
+  useEffect(() => {
     const localTheme = localStorage.getItem("data-theme");
-    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
     if (localTheme) {
-      return localTheme;
+      setTheme(localTheme);
     }
-
-    return "black";
-  });
+  }, []);
 
   useEffect(() => {
     const root = document.documentElement;

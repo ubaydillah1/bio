@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useContext } from "react";
 import Badge from "../../Elements/Badge";
 import { DarkMode } from "../../../contexts/DarkMode";

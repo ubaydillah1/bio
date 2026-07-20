@@ -1,4 +1,7 @@
+"use client";
+
 import { useState, useContext, useEffect, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import {
   ArrowLeft,
   ChevronLeft,
@@ -8,13 +11,13 @@ import {
   Github,
   Play,
 } from "lucide-react";
-import { Helmet } from "react-helmet-async";
 import { DarkMode } from "../contexts/DarkMode";
 
 const Stora = () => {
   const [showViewer, setShowViewer] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const { theme } = useContext(DarkMode);
+  const router = useRouter();
 
   const media = [
     { type: "image", src: "/assets/img/stora-cover.png" },
@@ -57,19 +60,9 @@ const Stora = () => {
 
   return (
     <div className="max-w-[900px] mx-auto px-4 py-10">
-      <Helmet>
-        <title>Stora - Storage Management | Portfolio Ubay Dillah</title>
-        <meta name="description" content="Stora adalah aplikasi Storage Management yang efisien untuk mengelola stok dan inventaris. Dibangun oleh Ubay Dillah." />
-        <meta property="og:title" content="Stora - Storage Management Project" />
-        <meta property="og:description" content="Sistem manajemen penyimpanan cerdas untuk efisiensi bisnis." />
-        <meta property="og:image" content="https://www.ubaydillah.tech/assets/img/mySelf.webp" />
-        <meta property="og:url" content="https://www.ubaydillah.tech/stora" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://www.ubaydillah.tech/assets/img/mySelf.webp" />
-      </Helmet>
       {/* Back Button */}
       <button
-        onClick={() => window.history.back()}
+        onClick={() => router.back()}
         className={`flex items-center gap-2 text-sm transition mb-6 ${
           theme === "black"
             ? "text-[#999999] hover:text-white"

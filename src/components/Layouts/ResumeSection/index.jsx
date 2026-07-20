@@ -2,7 +2,6 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { Briefcase } from "lucide-react";
 import Badge from "../../Elements/Badge";
 import { DarkMode } from "../../../contexts/DarkMode";
-import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const ResumeSection = () => {

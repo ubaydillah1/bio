@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import Button from "../../Elements/Button";
 import Badge from "../../Elements/Badge";
 import { useContext, useState } from "react";

@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useContext, useState } from "react";
 import Button from "../../Elements/Button";
 import { DarkMode } from "../../../contexts/DarkMode";
@@ -54,8 +53,8 @@ const CardProfile = (props) => {
 
       <div className="mt-7 w-full px-[10px]">
         <img
-          src="./assets/img/mySelf.webp"
-          alt="mySelf"
+          src="/assets/img/mySelf.webp"
+          alt="Ubay Dillah, Fullstack Web Developer Indonesia"
           fetchPriority="high"
           loading="eager"
           decoding="sync"
@@ -70,6 +69,9 @@ const CardProfile = (props) => {
         <div className="flex justify-center my-7 gap-4">
           <a
             href="https://github.com/ubaydillah1"
+            aria-label="Ubay Dillah on GitHub"
+            target="_blank"
+            rel="noreferrer"
             className={`w-[47px] h-[47px] rounded-full border-[1.6px] transition-all duration-300 ${borderColor(
               isGithubHover
             )} cursor-pointer flex justify-center items-center`}
@@ -90,6 +92,9 @@ const CardProfile = (props) => {
           </a>
           <a
             href="https://www.linkedin.com/in/ubay-dillah/"
+            aria-label="Ubay Dillah on LinkedIn"
+            target="_blank"
+            rel="noreferrer"
             className={`w-[47px] h-[47px] rounded-full border-[1.6px] transition-all duration-300 ${borderColor(
               isLikedinHover
             )}  cursor-pointer flex justify-center items-center`}

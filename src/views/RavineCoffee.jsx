@@ -1,4 +1,7 @@
+"use client";
+
 import { useState, useContext, useEffect, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import {
   ArrowLeft,
   ChevronLeft,
@@ -9,21 +12,18 @@ import {
   Book,
   GithubIcon,
   Server,
-  Cpu,
   Database,
   Layout,
-  Lock,
   Users,
-  Activity,
   CreditCard,
 } from "lucide-react";
-import { Helmet } from "react-helmet-async";
 import { DarkMode } from "../contexts/DarkMode";
 
 const RavineCoffee = () => {
   const [showViewer, setShowViewer] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const { theme } = useContext(DarkMode);
+  const router = useRouter();
 
   const media = [
     { type: "image", src: "/assets/img/ravine-bg.png" },
@@ -65,18 +65,9 @@ const RavineCoffee = () => {
 
   return (
     <div className="max-w-[900px] mx-auto px-4 py-10">
-      <Helmet>
-        <title>Ravine Coffee - Order Management System | Portfolio Ubay Dillah</title>
-        <meta name="description" content="Ravine Coffee is an end-to-end cafe management system featuring real-time ordering and Midtrans QRIS integration. Built by Ubay Dillah." />
-        <meta property="og:title" content="Ravine Coffee - Smart Cafe System" />
-        <meta property="og:description" content="Fullstack digital solution for real-time cafe order management." />
-        <meta property="og:image" content="https://www.ubaydillah.tech/assets/img/mySelf.webp" />
-        <meta property="og:url" content="https://www.ubaydillah.tech/ravine-coffee" />
-      </Helmet>
-
       {/* Back Button */}
       <button
-        onClick={() => window.history.back()}
+        onClick={() => router.back()}
         className={`flex items-center gap-2 text-sm transition mb-6 ${
           theme === "black"
             ? "text-[#999999] hover:text-white"
