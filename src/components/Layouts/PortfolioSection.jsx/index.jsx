@@ -80,12 +80,12 @@ const PortfolioSection = () => {
         >
           MaduraKita - Empowering Local MSMEs in Madura
         </PortfolioBox>
-        {/* <PortfolioBox
-          src="./assets/img/linea.png"
-          onClick={() => (window.location.href = `${config.BASE_URL}/linea`)}
+        <PortfolioBox
+          src="/assets/img/linea.png"
+          href="/linea"
         >
           Linea Studio - Landing Page with animation
-        </PortfolioBox> */}
+        </PortfolioBox>
         {/* <PortfolioBox
           src="./assets/img/videoBelajar.png"
           onClick={() =>

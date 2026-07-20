@@ -195,7 +195,7 @@ export function createMetadata(page) {
       description: page.description,
       url: page.path,
       siteName: siteConfig.name,
-      locale: "id_ID",
+      locale: "en_US",
       type: "website",
       images: [
         {
@@ -259,7 +259,7 @@ export function websiteJsonLd() {
       "@type": "Person",
       name: siteConfig.author,
     },
-    inLanguage: "id-ID",
+    inLanguage: "en-US",
   };
 }
 
@@ -295,7 +295,7 @@ export function projectJsonLd(page) {
     },
     applicationCategory: page.applicationCategory,
     operatingSystem: "Web",
-    inLanguage: "id-ID",
+    inLanguage: "en-US",
   };
 }
 

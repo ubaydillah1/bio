@@ -117,6 +117,32 @@ const CardProfile = (props) => {
           </a>
         </div>
 
+        <div className="flex justify-center gap-3 mb-7 text-xs">
+          <a
+            href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.ubaydillah.tech%2F"
+            target="_blank"
+            rel="noreferrer"
+            className={`transition hover:underline ${
+              theme == "black" ? "text-[#999999]" : "text-slate-500"
+            }`}
+          >
+            Share on LinkedIn
+          </a>
+          <span className={theme == "black" ? "text-[#555]" : "text-slate-300"}>
+            /
+          </span>
+          <a
+            href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.ubaydillah.tech%2F&text=Ubay%20Dillah%20-%20Fullstack%20Web%20Developer"
+            target="_blank"
+            rel="noreferrer"
+            className={`transition hover:underline ${
+              theme == "black" ? "text-[#999999]" : "text-slate-500"
+            }`}
+          >
+            Share on X
+          </a>
+        </div>
+
         <div>
           <Button className="w-full" onClick={onClickToContact}>
             WORK WITH ME

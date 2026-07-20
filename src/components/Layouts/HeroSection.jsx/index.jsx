@@ -59,8 +59,9 @@ const HeroSection = (props) => {
           theme == "black" ? "text-[#999999]" : "text-slate-500"
         }`}
       >
-        I craft user-friendly web experiences that combine clean design with
-        <span>smooth functionality.</span>
+        Say hi from Ubay Dillah, a Fullstack Developer and AI Enthusiast who
+        crafts user-friendly web experiences with clean design and smooth
+        functionality.
       </p>
 
       <div className="w-full h-full flex lg:justify-end">

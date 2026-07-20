@@ -30,13 +30,14 @@ export const metadata = {
   },
   icons: {
     icon: "/favicon.ico",
+    apple: "/assets/img/mySelf.webp",
   },
   openGraph: {
     title: siteConfig.title,
     description: siteConfig.description,
     url: "/",
     siteName: siteConfig.name,
-    locale: "id_ID",
+    locale: "en_US",
     type: "website",
     images: [
       {
@@ -58,7 +59,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="id" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body>
         <Providers>{children}</Providers>
       </body>
