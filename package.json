@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && node scripts/export-to-dist.mjs",
     "lint": "eslint .",
-    "start": "next start"
+    "start": "npx serve@latest dist"
   },
   "dependencies": {
     "eslint-config-next": "^16.2.10",

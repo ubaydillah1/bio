@@ -1,5 +1,7 @@
 import { absoluteUrl, orderedSeoPages } from "../lib/seo";
 
+export const dynamic = "force-static";
+
 const lastModified = new Date("2026-07-20");
 
 export default function sitemap() {
