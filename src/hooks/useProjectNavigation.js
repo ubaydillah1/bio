@@ -3,12 +3,10 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useLenis } from "lenis/react";
-import { useLocale } from "../contexts/LocaleContext";
 
 export function useProjectNavigation(theme) {
   const router = useRouter();
   const lenis = useLenis();
-  const { href } = useLocale();
 
   useEffect(() => {
     const scrollToTop = () => {
@@ -24,7 +22,7 @@ export function useProjectNavigation(theme) {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("data-theme", theme);
     document.cookie = `data-theme=${theme}; path=/; max-age=31536000; SameSite=Lax`;
-    router.push(href("/"), { scroll: false });
+    router.back();
   };
 
   return { backToPortfolio };

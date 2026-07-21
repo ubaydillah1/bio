@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect } from "react";
 import { defaultLocale, getDictionary, localizedPath, normalizeLocale } from "../i18n";
 
 const LocaleContext = createContext({
@@ -11,6 +11,11 @@ const LocaleContext = createContext({
 
 export function LocaleProvider({ locale = defaultLocale, children }) {
   const normalizedLocale = normalizeLocale(locale);
+
+  useEffect(() => {
+    localStorage.setItem("preferred-locale", normalizedLocale);
+  }, [normalizedLocale]);
+
   const value = {
     locale: normalizedLocale,
     t: getDictionary(normalizedLocale),
