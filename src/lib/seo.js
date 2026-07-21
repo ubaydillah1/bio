@@ -150,6 +150,25 @@ export const seoPages = {
     type: "SoftwareApplication",
     applicationCategory: "BusinessApplication",
   },
+  blog: {
+    path: "/blog",
+    title: "Blog - Ubay Dillah",
+    description:
+      "Catatan teknis, pembelajaran, dan cerita engineering dari Ubay Dillah tentang web development, backend, frontend, dan AI.",
+    keywords: [
+      "Blog Ubay Dillah",
+      "Web Development Blog",
+      "Fullstack Developer Blog",
+      "Backend Engineering",
+      "Frontend Development",
+      "AI Development",
+    ],
+    image: "/assets/img/mySelf.webp",
+    imageAlt: "Blog Ubay Dillah",
+    priority: 0.7,
+    changeFrequency: "weekly",
+    type: "Blog",
+  },
 };
 
 export const orderedSeoPages = [
@@ -160,14 +179,19 @@ export const orderedSeoPages = [
   seoPages.linea,
   seoPages.stora,
   seoPages.orbichat,
+  seoPages.blog,
 ];
 
 export function absoluteUrl(path = "/") {
   return new URL(path, siteConfig.url).toString();
 }
 
+export function imageUrl(path = siteConfig.image) {
+  return new URL(path || siteConfig.image, siteConfig.url).toString();
+}
+
 export function createMetadata(page) {
-  const imageUrl = absoluteUrl(page.image);
+  const metadataImageUrl = imageUrl(page.image);
 
   return {
     title: page.title,
@@ -199,7 +223,7 @@ export function createMetadata(page) {
       type: "website",
       images: [
         {
-          url: imageUrl,
+          url: metadataImageUrl,
           width: 1200,
           height: 630,
           alt: page.imageAlt,
@@ -212,7 +236,7 @@ export function createMetadata(page) {
       description: page.description,
       images: [
         {
-          url: imageUrl,
+          url: metadataImageUrl,
           alt: page.imageAlt,
         },
       ],
@@ -317,5 +341,46 @@ export function breadcrumbJsonLd(page) {
         item: absoluteUrl(page.path),
       },
     ],
+  };
+}
+
+export function blogJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: seoPages.blog.title,
+    description: seoPages.blog.description,
+    url: absoluteUrl(seoPages.blog.path),
+    author: {
+      "@type": "Person",
+      name: siteConfig.author,
+      url: siteConfig.url,
+    },
+    inLanguage: "en-US",
+  };
+}
+
+export function blogPostJsonLd(post) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    url: absoluteUrl(`/blog/${post.slug}`),
+    image: imageUrl(post.coverImage),
+    datePublished: post.publishedAt,
+    dateModified: post.updatedAt || post.publishedAt,
+    author: {
+      "@type": "Person",
+      name: siteConfig.author,
+      url: siteConfig.url,
+    },
+    publisher: {
+      "@type": "Person",
+      name: siteConfig.author,
+      url: siteConfig.url,
+    },
+    keywords: Array.isArray(post.tags) ? post.tags.join(", ") : undefined,
+    inLanguage: "en-US",
   };
 }

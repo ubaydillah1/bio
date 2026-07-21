@@ -22,6 +22,18 @@ Link demo: https://bio-ubay.vercel.app
 
 Open http://localhost:3000 in your browser to view the website.
 
+## Blog API
+The `/blog` pages read published posts from a separate backend API.
+
+Set this environment variable in Vercel:
+
+    BLOG_API_BASE_URL=https://your-backend-domain.com
+
+Expected endpoints:
+
+    GET /blogs
+    GET /blogs/:slug
+
 ## Dependensi Utama
 - React
 - Tailwind CSS

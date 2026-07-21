@@ -141,6 +141,15 @@ const CardProfile = (props) => {
           </Button>
         </div>
 
+        <a
+          href="/blog"
+          className={`mt-4 block text-sm font-medium transition hover:underline ${
+            theme == "black" ? "text-primary-dark" : "text-primary-light"
+          }`}
+        >
+          Read my blog
+        </a>
+
         <p
           className={`text-sm mt-7 w-[90%] mx-auto ${
             theme == "black" ? "text-[#999999]" : "text-[#7a5b42]"
