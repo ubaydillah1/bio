@@ -49,11 +49,16 @@ function HomePage({ locale = "en" }) {
       if (cancelled || userInteracted) return;
 
       const delta = target.getBoundingClientRect().top - returnPosition.viewportTop;
-      if (Math.abs(delta) < 1) return;
-
       const targetScrollY = window.scrollY + delta;
-      window.scrollTo({ top: targetScrollY, left: 0, behavior: "instant" });
-      lenis?.scrollTo(targetScrollY, { immediate: true });
+
+      if (Math.abs(delta) >= 1) {
+        window.scrollTo({ top: targetScrollY, left: 0, behavior: "instant" });
+      }
+
+      if (lenis) {
+        lenis.resize();
+        lenis.scrollTo(targetScrollY, { immediate: true, force: true });
+      }
     };
 
     const resizeObserver = new ResizeObserver(restorePosition);
@@ -65,6 +70,8 @@ function HomePage({ locale = "en" }) {
     };
 
     const handleInteraction = () => {
+      lenis?.resize();
+      lenis?.reset();
       userInteracted = true;
       finishRestoration();
     };
@@ -86,7 +93,10 @@ function HomePage({ locale = "en" }) {
 
     const interactionEvents = ["wheel", "touchstart", "pointerdown", "keydown"];
     interactionEvents.forEach((eventName) =>
-      window.addEventListener(eventName, handleInteraction, { once: true }),
+      window.addEventListener(eventName, handleInteraction, {
+        once: true,
+        capture: true,
+      }),
     );
 
     return () => {
@@ -97,7 +107,7 @@ function HomePage({ locale = "en" }) {
       resizeObserver.disconnect();
       window.history.scrollRestoration = "auto";
       interactionEvents.forEach((eventName) =>
-        window.removeEventListener(eventName, handleInteraction),
+        window.removeEventListener(eventName, handleInteraction, true),
       );
     };
   }, [lenis]);
