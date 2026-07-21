@@ -17,11 +17,13 @@ import {
   Activity,
 } from "lucide-react";
 import { DarkMode } from "../contexts/DarkMode";
+import { useLocale } from "../contexts/LocaleContext";
 
 const StraightDeal = () => {
   const [showViewer, setShowViewer] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const { theme } = useContext(DarkMode);
+  const { locale, t } = useLocale();
   const router = useRouter();
 
   const images = [
@@ -77,7 +79,7 @@ const StraightDeal = () => {
         }`}
       >
         <ArrowLeft size={18} />
-        Back
+        {t.common.back}
       </button>
 
       {/* Title Area */}
@@ -88,7 +90,9 @@ const StraightDeal = () => {
               theme === "black" ? "text-white" : "text-black"
             }`}
           >
-            Straight Deal – Car Selling Workflow
+            {locale === "id"
+              ? "Straight Deal - Workflow Penjualan Mobil"
+              : "Straight Deal - Car Selling Workflow"}
           </h1>
           <div className="flex items-center gap-3">
             <p
@@ -96,7 +100,7 @@ const StraightDeal = () => {
                 theme === "black" ? "text-[#999999]" : "text-slate-500"
               }`}
             >
-              Backend Infrastructure by{" "}
+              {locale === "id" ? "Infrastruktur Backend oleh " : "Backend Infrastructure by "}
               <a
                 href="https://odama.io"
                 target="_blank"
@@ -107,7 +111,7 @@ const StraightDeal = () => {
               </a>
             </p>
             <span className={`px-3 py-1 text-xs font-semibold rounded-full ${theme === "black" ? "bg-green-500/20 text-green-400 border border-green-500/30" : "bg-green-100 text-green-700 border border-green-200"}`}>
-              Production
+              {locale === "id" ? "Production" : "Production"}
             </span>
           </div>
         </div>
@@ -174,7 +178,7 @@ const StraightDeal = () => {
             <Users size={24} />
           </div>
           <div className={`text-2xl font-bold ${theme === "black" ? "text-white" : "text-black"}`}>1,400+</div>
-          <div className={`text-xs uppercase tracking-widest ${theme === "black" ? "text-[#888]" : "text-slate-400"}`}>Registered Users</div>
+          <div className={`text-xs uppercase tracking-widest ${theme === "black" ? "text-[#888]" : "text-slate-400"}`}>{locale === "id" ? "User Terdaftar" : "Registered Users"}</div>
         </div>
         <div className="w-px h-12 bg-current opacity-10 hidden sm:block"></div>
         <div className="text-center">
@@ -190,7 +194,7 @@ const StraightDeal = () => {
             <Server size={24} />
           </div>
           <div className={`text-2xl font-bold ${theme === "black" ? "text-white" : "text-black"}`}>Live</div>
-          <div className={`text-xs uppercase tracking-widest ${theme === "black" ? "text-[#888]" : "text-slate-400"}`}>Production Status</div>
+          <div className={`text-xs uppercase tracking-widest ${theme === "black" ? "text-[#888]" : "text-slate-400"}`}>{locale === "id" ? "Status Production" : "Production Status"}</div>
         </div>
       </div>
 
@@ -201,7 +205,7 @@ const StraightDeal = () => {
             theme === "black" ? "text-white" : "text-black"
           }`}
         >
-          Project Access
+          {t.project.access}
         </h2>
         <div className="flex flex-wrap gap-3">
           <a
@@ -214,7 +218,7 @@ const StraightDeal = () => {
                 : "border-slate-300 text-slate-700 hover:bg-slate-100"
             }`}
           >
-            Visit Website
+            {t.project.visitWebsite}
             <ExternalLink size={16} />
           </a>
           <div className={`flex items-center gap-2 text-sm whitespace-nowrap border rounded-lg px-4 py-2 opacity-60 cursor-not-allowed ${
@@ -222,12 +226,14 @@ const StraightDeal = () => {
               ? "border-[#444] text-[#888]"
               : "border-slate-300 text-slate-500"
           }`}>
-            GitHub Repository
+            {t.project.github}
             <Lock size={16} />
           </div>
         </div>
         <p className={`italic text-sm opacity-80 ${theme === "black" ? "text-[#aaa]" : "text-slate-600"}`}>
-          *Code details are confidential and not publicly shared due to client and security restrictions.
+          {locale === "id"
+            ? "*Detail code bersifat confidential dan tidak dibuka publik karena batasan client serta keamanan."
+            : "*Code details are confidential and not publicly shared due to client and security restrictions."}
         </p>
       </div>
 
@@ -239,14 +245,36 @@ const StraightDeal = () => {
               theme === "black" ? "text-white" : "text-black"
             }`}
           >
-            About The Platform
+            {t.project.about}
           </h2>
           <p
             className={`text-base text-justify leading-relaxed ${
               theme === "black" ? "text-[#999999]" : "text-slate-500"
             }`}
           >
-            <b>Straight Deal</b> is a production-grade car-selling platform built to make vehicle transactions fast, secure, and transparent. As the <b>Full Backend Engineer</b> for this project, I worked directly with the client to translate complex business requirements into a robust infrastructure. The platform handles everything from vehicle data submission and automated valuation to a two-way negotiation flow between users and administrators.
+            {locale === "id" ? (
+              <>
+                <b>Straight Deal</b> adalah platform penjualan mobil level
+                production yang dibangun untuk membuat transaksi kendaraan lebih
+                cepat, aman, dan transparan. Sebagai{" "}
+                <b>Full Backend Engineer</b> untuk project ini, saya bekerja
+                langsung dengan client untuk menerjemahkan kebutuhan bisnis yang
+                kompleks menjadi infrastruktur yang robust. Platform ini
+                menangani submission data kendaraan, automated valuation, hingga
+                alur negosiasi dua arah antara user dan administrator.
+              </>
+            ) : (
+              <>
+                <b>Straight Deal</b> is a production-grade car-selling platform
+                built to make vehicle transactions fast, secure, and
+                transparent. As the <b>Full Backend Engineer</b> for this
+                project, I worked directly with the client to translate complex
+                business requirements into a robust infrastructure. The platform
+                handles everything from vehicle data submission and automated
+                valuation to a two-way negotiation flow between users and
+                administrators.
+              </>
+            )}
           </p>
         </section>
 
@@ -257,7 +285,9 @@ const StraightDeal = () => {
               theme === "black" ? "text-white" : "text-black"
             }`}
           >
-            Engineering Excellence: Backend Architecture
+            {locale === "id"
+              ? "Engineering Excellence: Arsitektur Backend"
+              : "Engineering Excellence: Backend Architecture"}
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -269,7 +299,20 @@ const StraightDeal = () => {
                 <h3 className={`text-xl font-medium ${theme === "black" ? "text-white" : "text-black"}`}>Express.js Backend</h3>
               </div>
               <p className={`text-sm ${theme === "black" ? "text-[#999999]" : "text-slate-500"}`}>
-                Monolith architecture with a clean <b>Layered Structure</b> (Controller → Service → Repository). Robustly handles 72 API endpoints with full TypeScript type safety.
+                {locale === "id" ? (
+                  <>
+                    Arsitektur monolith dengan <b>Layered Structure</b>{" "}
+                    (Controller - Service - Repository). Backend ini menangani
+                    72 API endpoint secara robust dengan TypeScript type safety.
+                  </>
+                ) : (
+                  <>
+                    Monolith architecture with a clean{" "}
+                    <b>Layered Structure</b> (Controller - Service -
+                    Repository). Robustly handles 72 API endpoints with full
+                    TypeScript type safety.
+                  </>
+                )}
               </p>
             </div>
 
@@ -278,31 +321,33 @@ const StraightDeal = () => {
                 <div className={`p-2 rounded-lg ${theme === "black" ? "bg-purple-500/10 text-purple-400" : "bg-purple-100 text-purple-600"}`}>
                   <Cpu size={24} />
                 </div>
-                <h3 className={`text-xl font-medium ${theme === "black" ? "text-white" : "text-black"}`}>Automated Cron Jobs</h3>
+                <h3 className={`text-xl font-medium ${theme === "black" ? "text-white" : "text-black"}`}>{locale === "id" ? "Automated Cron Jobs" : "Automated Cron Jobs"}</h3>
               </div>
               <p className={`text-sm ${theme === "black" ? "text-[#999999]" : "text-slate-500"}`}>
-                Scheduled workers manage automated follow-up emails, track offer expirations, and trigger system-wide notifications for both users and admins.
+                {locale === "id"
+                  ? "Scheduled worker mengelola follow-up email otomatis, melacak offer expiration, dan memicu notifikasi sistem untuk user maupun admin."
+                  : "Scheduled workers manage automated follow-up emails, track offer expirations, and trigger system-wide notifications for both users and admins."}
               </p>
             </div>
           </div>
 
           <div className={`mt-8 p-4 rounded-xl border border-dashed ${theme === "black" ? "border-[#444] text-[#888]" : "border-slate-300 text-slate-400"}`}>
-            <p className="text-center font-mono text-xs uppercase tracking-widest mb-4">Bidding Workflow</p>
+            <p className="text-center font-mono text-xs uppercase tracking-widest mb-4">{locale === "id" ? "Workflow Bidding" : "Bidding Workflow"}</p>
             <div className="flex flex-col items-center gap-2 text-sm md:text-base font-medium">
-              <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-white/5" : "bg-white shadow-sm border"}`}>User Submits Car Detail</div>
+              <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-white/5" : "bg-white shadow-sm border"}`}>{locale === "id" ? "User Submit Detail Mobil" : "User Submits Car Detail"}</div>
               <div className="h-4 w-px bg-current opacity-20"></div>
-              <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-blue-500/10 border-blue-500/20" : "bg-blue-50 border-blue-200"}`}>Admin Reviews & Sends Offer</div>
+              <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-blue-500/10 border-blue-500/20" : "bg-blue-50 border-blue-200"}`}>{locale === "id" ? "Admin Review dan Kirim Offer" : "Admin Reviews & Sends Offer"}</div>
               <div className="h-4 w-px bg-current opacity-20"></div>
               <div className="flex items-center gap-8">
                 <div className="flex flex-col items-center">
-                  <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-green-500/10 border-green-500/20" : "bg-green-50 border-green-200"}`}>Accept → Deal Closed</div>
+                  <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-green-500/10 border-green-500/20" : "bg-green-50 border-green-200"}`}>{locale === "id" ? "Accept -> Deal Closed" : "Accept -> Deal Closed"}</div>
                 </div>
                 <div className="flex flex-col items-center">
-                  <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-orange-500/10 border-orange-500/20" : "bg-orange-50 border-orange-200"}`}>Decline → User Counter-Offer</div>
+                  <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-orange-500/10 border-orange-500/20" : "bg-orange-50 border-orange-200"}`}>{locale === "id" ? "Decline -> User Counter-Offer" : "Decline -> User Counter-Offer"}</div>
                 </div>
               </div>
               <div className="h-4 w-px bg-current opacity-20"></div>
-              <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-purple-500/10 border-purple-500/20" : "bg-purple-50 border-purple-200"}`}>Admin Final Decision (Accept/Reject)</div>
+              <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-purple-500/10 border-purple-500/20" : "bg-purple-50 border-purple-200"}`}>{locale === "id" ? "Keputusan Final Admin (Accept/Reject)" : "Admin Final Decision (Accept/Reject)"}</div>
             </div>
           </div>
         </section>
@@ -313,18 +358,72 @@ const StraightDeal = () => {
               theme === "black" ? "text-white" : "text-black"
             }`}
           >
-            Key Features
+            {t.project.features}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {[
-              { title: "Bidding & Negotiation", desc: "A sophisticated two-way negotiation flow between users and admins with price locking." },
-              { title: "Automated Follow-up", desc: "7-stage automated pipeline managing emails, calls, and texts based on user activity." },
-              { title: "Identity Verification", desc: "Integration with Persona for automated KYC and ID verification of car owners." },
-              { title: "Advanced Car Valuation", desc: "Calculates prices based on VIN, mileage, accident history, and 20+ condition markers." },
-              { title: "Multi-View Media System", desc: "Structured car image upload pipeline for front, rear, and interior condition verification." },
-              { title: "Admin Internal Notes", desc: "Collaborative notes system for administrators to track submission progress and internal flags." },
-              { title: "Role-Based Access (RBAC)", desc: "Strict permission isolation between Users, Admins, and Visitors." },
-              { title: "OTP & Secure Auth", desc: "Hybrid authentication system with Google OAuth2 and secure Twilio SMS OTP." },
+              {
+                title:
+                  locale === "id" ? "Bidding dan Negosiasi" : "Bidding & Negotiation",
+                desc:
+                  locale === "id"
+                    ? "Alur negosiasi dua arah antara user dan admin dengan price locking."
+                    : "A sophisticated two-way negotiation flow between users and admins with price locking.",
+              },
+              {
+                title:
+                  locale === "id" ? "Follow-up Otomatis" : "Automated Follow-up",
+                desc:
+                  locale === "id"
+                    ? "Pipeline otomatis 7 tahap untuk email, call, dan text berdasarkan aktivitas user."
+                    : "7-stage automated pipeline managing emails, calls, and texts based on user activity.",
+              },
+              {
+                title:
+                  locale === "id" ? "Verifikasi Identitas" : "Identity Verification",
+                desc:
+                  locale === "id"
+                    ? "Integrasi Persona untuk KYC otomatis dan verifikasi identitas pemilik mobil."
+                    : "Integration with Persona for automated KYC and ID verification of car owners.",
+              },
+              {
+                title:
+                  locale === "id" ? "Valuasi Mobil Lanjutan" : "Advanced Car Valuation",
+                desc:
+                  locale === "id"
+                    ? "Menghitung harga berdasarkan VIN, mileage, accident history, dan 20+ condition marker."
+                    : "Calculates prices based on VIN, mileage, accident history, and 20+ condition markers.",
+              },
+              {
+                title:
+                  locale === "id" ? "Sistem Media Multi-View" : "Multi-View Media System",
+                desc:
+                  locale === "id"
+                    ? "Pipeline upload gambar mobil yang terstruktur untuk verifikasi bagian depan, belakang, dan interior."
+                    : "Structured car image upload pipeline for front, rear, and interior condition verification.",
+              },
+              {
+                title:
+                  locale === "id" ? "Catatan Internal Admin" : "Admin Internal Notes",
+                desc:
+                  locale === "id"
+                    ? "Sistem catatan kolaboratif untuk admin dalam memantau progress submission dan internal flag."
+                    : "Collaborative notes system for administrators to track submission progress and internal flags.",
+              },
+              {
+                title: "Role-Based Access (RBAC)",
+                desc:
+                  locale === "id"
+                    ? "Isolasi permission yang ketat antara User, Admin, dan Visitor."
+                    : "Strict permission isolation between Users, Admins, and Visitors.",
+              },
+              {
+                title: "OTP & Secure Auth",
+                desc:
+                  locale === "id"
+                    ? "Sistem authentication hybrid dengan Google OAuth2 dan Twilio SMS OTP yang aman."
+                    : "Hybrid authentication system with Google OAuth2 and secure Twilio SMS OTP.",
+              },
             ].map((feature, idx) => (
               <div key={idx} className="flex gap-4">
                 <div className={`mt-1 flex-shrink-0 w-2 h-2 rounded-full ${theme === "black" ? "bg-primary-dark" : "bg-primary-light"}`}></div>
@@ -343,14 +442,43 @@ const StraightDeal = () => {
               theme === "black" ? "text-white" : "text-black"
             }`}
           >
-            Challenges
+            {t.project.challenges}
           </h2>
           <p
             className={`text-base text-justify ${
               theme === "black" ? "text-[#999999]" : "text-slate-500"
             }`}
           >
-            The primary challenge was managing <b>shifting requirements</b> in a live production environment. Working directly with a client without a technical PM meant I had to handle technical translations and implement rapid schema changes while maintaining data integrity for 1,400+ users. I solved this by implementing a rigorous <b>Prisma migration strategy</b> and a layered backend architecture that allowed for modular changes without breaking existing flows. Additionally, optimizing database connections for <b>serverless deployment on Vercel</b> required careful connection pooling management to handle concurrent traffic spikes during bidding sessions.
+            {locale === "id" ? (
+              <>
+                Tantangan utama adalah mengelola{" "}
+                <b>requirement yang terus berubah</b> di environment production.
+                Bekerja langsung dengan client tanpa technical PM membuat saya
+                perlu menerjemahkan kebutuhan bisnis ke teknis dan melakukan
+                perubahan schema cepat sambil menjaga integritas data untuk
+                1.400+ user. Saya menyelesaikannya dengan{" "}
+                <b>strategi migrasi Prisma</b> yang disiplin dan arsitektur
+                backend layered sehingga perubahan bisa modular tanpa merusak
+                flow yang sudah berjalan. Selain itu, optimasi koneksi database
+                untuk <b>serverless deployment di Vercel</b> membutuhkan
+                pengelolaan connection pooling yang hati-hati.
+              </>
+            ) : (
+              <>
+                The primary challenge was managing{" "}
+                <b>shifting requirements</b> in a live production environment.
+                Working directly with a client without a technical PM meant I
+                had to handle technical translations and implement rapid schema
+                changes while maintaining data integrity for 1,400+ users. I
+                solved this by implementing a rigorous{" "}
+                <b>Prisma migration strategy</b> and a layered backend
+                architecture that allowed for modular changes without breaking
+                existing flows. Additionally, optimizing database connections
+                for <b>serverless deployment on Vercel</b> required careful
+                connection pooling management to handle concurrent traffic
+                spikes during bidding sessions.
+              </>
+            )}
           </p>
         </section>
 
@@ -360,7 +488,7 @@ const StraightDeal = () => {
               theme === "black" ? "text-white" : "text-black"
             }`}
           >
-            Technology Stack
+            {locale === "id" ? "Stack Teknologi" : "Technology Stack"}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
             <div className="space-y-3">
@@ -378,7 +506,7 @@ const StraightDeal = () => {
             <div className="space-y-3">
               <div className="flex items-center gap-2 font-medium">
                 <Lock size={18} className="text-primary-light dark:text-primary-dark" />
-                Auth & Comms
+                {locale === "id" ? "Auth dan Komunikasi" : "Auth & Comms"}
               </div>
               <ul className={`text-sm space-y-1 ${theme === "black" ? "text-[#999999]" : "text-slate-500"}`}>
                 <li>JWT / Google OAuth2</li>
@@ -408,7 +536,7 @@ const StraightDeal = () => {
               theme === "black" ? "text-white" : "text-black"
             }`}
           >
-            Key Stack
+            {t.project.keyStack}
           </h2>
           <p
             className={`text-base text-justify ${

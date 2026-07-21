@@ -12,11 +12,13 @@ import {
   Play,
 } from "lucide-react";
 import { DarkMode } from "../contexts/DarkMode";
+import { useLocale } from "../contexts/LocaleContext";
 
 const Stora = () => {
   const [showViewer, setShowViewer] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const { theme } = useContext(DarkMode);
+  const { locale, t } = useLocale();
   const router = useRouter();
 
   const media = [
@@ -70,7 +72,7 @@ const Stora = () => {
         }`}
       >
         <ArrowLeft size={18} />
-        Back
+        {t.common.back}
       </button>
 
       {/* Title */}
@@ -80,7 +82,9 @@ const Stora = () => {
             theme === "black" ? "text-white" : "text-black"
           }`}
         >
-          Stora – Storage Management
+          {locale === "id"
+            ? "Stora - Manajemen Penyimpanan"
+            : "Stora - Storage Management"}
         </h1>
       </div>
 
@@ -182,7 +186,7 @@ const Stora = () => {
             theme === "black" ? "text-white" : "text-black"
           }`}
         >
-          Try It Yourself
+          {t.project.try}
         </h2>
 
         <div className="flex flex-wrap gap-3">
@@ -195,7 +199,7 @@ const Stora = () => {
                 : "border-slate-300 text-slate-700 hover:bg-slate-100"
             }`}
           >
-            Visit Website
+            {t.project.visitWebsite}
             <ExternalLink size={16} />
           </a>
 
@@ -208,7 +212,7 @@ const Stora = () => {
                 : "border-slate-300 text-slate-700 hover:bg-slate-100"
             }`}
           >
-            GitHub Repository
+            {t.project.github}
             <Github size={16} />
           </a>
         </div>
@@ -223,19 +227,32 @@ const Stora = () => {
               theme === "black" ? "text-white" : "text-black"
             }`}
           >
-            About The Platform
+            {t.project.about}
           </h2>
           <p
             className={`text-base text-justify ${
               theme === "black" ? "text-[#999999]" : "text-slate-500"
             }`}
           >
-            <b>Stora</b> is a file-management system that helps users upload,
-            organize, preview, rename, and delete files with a clean and
-            intuitive interface. Users can create folders, navigate directories,
-            and manage files similar to cloud storage platforms. It is built as
-            a portfolio project to demonstrate scalable backend architecture and
-            structured frontend design.
+            {locale === "id" ? (
+              <>
+                <b>Stora</b> adalah sistem file-management yang membantu user
+                upload, mengatur, preview, rename, dan menghapus file lewat
+                interface yang bersih dan intuitif. User dapat membuat folder,
+                berpindah direktori, dan mengelola file seperti platform cloud
+                storage. Project ini dibuat untuk menunjukkan arsitektur backend
+                yang scalable dan desain frontend yang terstruktur.
+              </>
+            ) : (
+              <>
+                <b>Stora</b> is a file-management system that helps users
+                upload, organize, preview, rename, and delete files with a clean
+                and intuitive interface. Users can create folders, navigate
+                directories, and manage files similar to cloud storage
+                platforms. It is built as a portfolio project to demonstrate
+                scalable backend architecture and structured frontend design.
+              </>
+            )}
           </p>
         </section>
 
@@ -246,21 +263,36 @@ const Stora = () => {
               theme === "black" ? "text-white" : "text-black"
             }`}
           >
-            Technology
+            {t.project.technology}
           </h2>
           <p
             className={`text-base text-justify ${
               theme === "black" ? "text-[#999999]" : "text-slate-500"
             }`}
           >
-            The frontend uses <b>Next.js</b> with <b>TypeScript</b> and{" "}
-            <b>Tailwind CSS</b>. The backend integrates with{" "}
-            <b>Supabase PostgreSQL</b> for database storage and{" "}
-            <b>Supabase Storage</b> for file uploads.
-            <b>Prisma ORM</b> is used for schema and typed queries. The system
-            follows a multi-layer structure with{" "}
-            <b>Repository, Service, and Controller</b> to keep logic organized
-            and clean.
+            {locale === "id" ? (
+              <>
+                Frontend menggunakan <b>Next.js</b> dengan <b>TypeScript</b>{" "}
+                dan <b>Tailwind CSS</b>. Backend terintegrasi dengan{" "}
+                <b>Supabase PostgreSQL</b> untuk database dan{" "}
+                <b>Supabase Storage</b> untuk upload file. <b>Prisma ORM</b>{" "}
+                digunakan untuk schema dan typed query. Sistem mengikuti
+                struktur multi-layer dengan{" "}
+                <b>Repository, Service, dan Controller</b> agar logic tetap rapi
+                dan mudah dirawat.
+              </>
+            ) : (
+              <>
+                The frontend uses <b>Next.js</b> with <b>TypeScript</b> and{" "}
+                <b>Tailwind CSS</b>. The backend integrates with{" "}
+                <b>Supabase PostgreSQL</b> for database storage and{" "}
+                <b>Supabase Storage</b> for file uploads.
+                <b>Prisma ORM</b> is used for schema and typed queries. The
+                system follows a multi-layer structure with{" "}
+                <b>Repository, Service, and Controller</b> to keep logic
+                organized and clean.
+              </>
+            )}
           </p>
         </section>
 
@@ -271,17 +303,16 @@ const Stora = () => {
               theme === "black" ? "text-white" : "text-black"
             }`}
           >
-            The Goal
+            {locale === "id" ? "Tujuan" : "The Goal"}
           </h2>
           <p
             className={`text-base text-justify ${
               theme === "black" ? "text-[#999999]" : "text-slate-500"
             }`}
           >
-            The goal is to create a flexible, clean, and developer-friendly file
-            management platform that demonstrates backend structure and frontend
-            usability. It highlights skills in API design, database modeling, UI
-            architecture, and cloud integration.
+            {locale === "id"
+              ? "Tujuannya adalah membuat platform file management yang fleksibel, bersih, dan developer-friendly sekaligus menunjukkan struktur backend dan usability frontend. Project ini menonjolkan kemampuan desain API, modeling database, arsitektur UI, dan integrasi cloud."
+              : "The goal is to create a flexible, clean, and developer-friendly file management platform that demonstrates backend structure and frontend usability. It highlights skills in API design, database modeling, UI architecture, and cloud integration."}
           </p>
         </section>
 
@@ -292,18 +323,30 @@ const Stora = () => {
               theme === "black" ? "text-white" : "text-black"
             }`}
           >
-            User and Audience
+            {locale === "id" ? "User dan Audiens" : "User and Audience"}
           </h2>
           <p
             className={`text-base text-justify ${
               theme === "black" ? "text-[#999999]" : "text-slate-500"
             }`}
           >
-            Stora is designed as a <b>developer portfolio project</b> showcasing
-            structured architecture, Supabase integration, and modern Next.js
-            capabilities. It is ideal for developers who want to explore
-            reusable patterns or recruiters evaluating backend/frontend
-            engineering skills.
+            {locale === "id" ? (
+              <>
+                Stora dirancang sebagai <b>project portfolio developer</b> yang
+                menampilkan arsitektur terstruktur, integrasi Supabase, dan
+                kemampuan modern Next.js. Project ini cocok untuk developer yang
+                ingin melihat reusable pattern atau recruiter yang mengevaluasi
+                kemampuan backend/frontend engineering.
+              </>
+            ) : (
+              <>
+                Stora is designed as a <b>developer portfolio project</b>{" "}
+                showcasing structured architecture, Supabase integration, and
+                modern Next.js capabilities. It is ideal for developers who want
+                to explore reusable patterns or recruiters evaluating
+                backend/frontend engineering skills.
+              </>
+            )}
           </p>
         </section>
 
@@ -314,17 +357,16 @@ const Stora = () => {
               theme === "black" ? "text-white" : "text-black"
             }`}
           >
-            Challenges
+            {t.project.challenges}
           </h2>
           <p
             className={`text-base text-justify ${
               theme === "black" ? "text-[#999999]" : "text-slate-500"
             }`}
           >
-            Implementing recursive folder deletion, consistent file syncing
-            between database and Supabase storage, and handling preview
-            performance were key challenges. Ensuring stable directory
-            navigation and preventing redundant fetches was also crucial.
+            {locale === "id"
+              ? "Tantangan utamanya adalah recursive folder deletion, sinkronisasi file yang konsisten antara database dan Supabase Storage, serta performa preview. Menjaga navigasi direktori tetap stabil dan mencegah fetch berulang juga menjadi bagian penting."
+              : "Implementing recursive folder deletion, consistent file syncing between database and Supabase storage, and handling preview performance were key challenges. Ensuring stable directory navigation and preventing redundant fetches was also crucial."}
           </p>
         </section>
 
@@ -335,7 +377,7 @@ const Stora = () => {
               theme === "black" ? "text-white" : "text-black"
             }`}
           >
-            Next Features
+            {locale === "id" ? "Fitur Berikutnya" : "Next Features"}
           </h2>
 
           <ul
@@ -344,9 +386,21 @@ const Stora = () => {
             }`}
           >
             <li>
-              <b>File Sharing</b> – Users will be able to generate shareable
-              links, choose expiration time, assign permissions (view-only or
-              allow download), and optionally protect the link with a password.
+              {locale === "id" ? (
+                <>
+                  <b>File Sharing</b> - User akan bisa membuat link yang dapat
+                  dibagikan, memilih waktu kedaluwarsa, mengatur permission
+                  (view-only atau allow download), dan menambahkan password
+                  opsional.
+                </>
+              ) : (
+                <>
+                  <b>File Sharing</b> - Users will be able to generate
+                  shareable links, choose expiration time, assign permissions
+                  (view-only or allow download), and optionally protect the link
+                  with a password.
+                </>
+              )}
             </li>
           </ul>
         </section>
@@ -358,7 +412,7 @@ const Stora = () => {
               theme === "black" ? "text-white" : "text-black"
             }`}
           >
-            Key Stack
+            {t.project.keyStack}
           </h2>
           <p
             className={`text-base text-justify ${

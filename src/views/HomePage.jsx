@@ -1,7 +1,5 @@
 "use client";
 
-import ThemeIcon from "../components/Elements/ThemeIcon";
-import LocaleSwitcher from "../components/Elements/LocaleSwitcher";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useContext, useRef } from "react";
@@ -14,7 +12,6 @@ import AboutSection from "../components/Layouts/AboutSection.jsx";
 import SkillsSection from "../components/Layouts/SkillsSection.jsx";
 import PortfolioSection from "../components/Layouts/PortfolioSection.jsx";
 import ContactSection from "../components/Layouts/ContactSection/index.jsx";
-import CurrentTime from "../components/Elements/CurrentTime/index.jsx";
 import ResumeSection from "../components/Layouts/ResumeSection/index.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -53,15 +50,6 @@ function HomePage({ locale = "en" }) {
 
   return (
     <div className="lg:px-[100px] sm:px-[40px] px-[20px] lg:pr-[400px] ">
-      <div className="fixed top-10 right-10 z-[99] flex items-center gap-3">
-        <LocaleSwitcher />
-        <CurrentTime />
-      </div>
-
-      <div className="text-center fixed top-10 left-1/2 z-50 lg:blockden">
-        <ThemeIcon />
-      </div>
-
       <Navigation
         scrollToSection={scrollToSection}
         sections={{

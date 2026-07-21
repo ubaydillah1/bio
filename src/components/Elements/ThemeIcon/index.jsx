@@ -1,58 +1,17 @@
-import { useEffect, useRef, useState } from "react";
 import { useContext } from "react";
 import { DarkMode } from "../../../contexts/DarkMode";
-import gsap from "gsap";
 
 const ThemeIcon = () => {
   const { theme, handleTheme } = useContext(DarkMode);
 
-  const themeRef = useRef();
-  const [scrollDirection, setScrollDirection] = useState("down");
-
-  useEffect(() => {
-    let lastScrollY = window.scrollY;
-
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      console.log(currentScrollY);
-      if (currentScrollY > 0) {
-        if (currentScrollY > lastScrollY) {
-          setScrollDirection("down");
-        } else {
-          setScrollDirection("up");
-        }
-      } else {
-        setScrollDirection("up");
-      }
-      lastScrollY = currentScrollY;
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (scrollDirection === "down") {
-      gsap.fromTo(
-        themeRef.current,
-        { y: -100, opacity: 1 },
-        { y: 0, opacity: 1, duration: 0.5, ease: "bounce.out" }
-      );
-    } else if (scrollDirection === "up") {
-      gsap.to(themeRef.current, {
-        y: -100,
-        opacity: 1,
-        duration: 0.5,
-        ease: "power1.out",
-      });
-    }
-  }, [scrollDirection]);
-
   return (
-    <label className="swap swap-rotate" ref={themeRef}>
+    <label
+      className={`swap swap-rotate grid h-9 w-9 cursor-pointer place-items-center rounded-full border transition-colors duration-200 ${
+        theme === "black"
+          ? "border-white/20 bg-black/70 text-[#28e98c] hover:border-white/35 hover:bg-[#111]"
+          : "border-[#d8bea0] bg-[#fff7ed]/80 text-[#c46a2d] hover:bg-[#f3dfc5]"
+      }`}
+    >
       <input
         type="checkbox"
         className="theme-controller"
@@ -62,7 +21,7 @@ const ThemeIcon = () => {
       />
 
       <svg
-        className="swap-off h-7 w-7 fill-current neon-light"
+        className="swap-off h-[18px] w-[18px] fill-current"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
       >
@@ -70,7 +29,7 @@ const ThemeIcon = () => {
       </svg>
 
       <svg
-        className="swap-on h-7 w-7 fill-current neon-dark"
+        className="swap-on h-[18px] w-[18px] fill-current"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
       >

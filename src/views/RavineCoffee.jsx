@@ -18,11 +18,13 @@ import {
   CreditCard,
 } from "lucide-react";
 import { DarkMode } from "../contexts/DarkMode";
+import { useLocale } from "../contexts/LocaleContext";
 
 const RavineCoffee = () => {
   const [showViewer, setShowViewer] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const { theme } = useContext(DarkMode);
+  const { locale, t } = useLocale();
   const router = useRouter();
 
   const media = [
@@ -75,7 +77,7 @@ const RavineCoffee = () => {
         }`}
       >
         <ArrowLeft size={18} />
-        Back
+        {t.common.back}
       </button>
 
       {/* Title */}
@@ -86,11 +88,13 @@ const RavineCoffee = () => {
               theme === "black" ? "text-white" : "text-black"
             }`}
           >
-            Ravine Coffee – Cafe Order Management System
+            {locale === "id"
+              ? "Ravine Coffee - Sistem Manajemen Order Cafe"
+              : "Ravine Coffee - Cafe Order Management System"}
           </h1>
           <div className="flex items-center gap-2">
             <span className={`px-3 py-1 text-xs font-semibold rounded-full ${theme === "black" ? "bg-blue-500/20 text-blue-400 border border-blue-500/30" : "bg-blue-100 text-blue-700 border border-blue-200"}`}>
-              Portfolio Project
+              {locale === "id" ? "Project Portfolio" : "Portfolio Project"}
             </span>
           </div>
         </div>
@@ -156,8 +160,8 @@ const RavineCoffee = () => {
           <div className={`flex items-center justify-center mb-2 ${theme === "black" ? "text-blue-400" : "text-blue-600"}`}>
             <Users size={24} />
           </div>
-          <div className={`text-2xl font-bold ${theme === "black" ? "text-white" : "text-black"}`}>3 Roles</div>
-          <div className={`text-xs uppercase tracking-widest ${theme === "black" ? "text-[#888]" : "text-slate-400"}`}>Customer/Cashier/Admin</div>
+          <div className={`text-2xl font-bold ${theme === "black" ? "text-white" : "text-black"}`}>{locale === "id" ? "3 Role" : "3 Roles"}</div>
+          <div className={`text-xs uppercase tracking-widest ${theme === "black" ? "text-[#888]" : "text-slate-400"}`}>{locale === "id" ? "Customer/Kasir/Admin" : "Customer/Cashier/Admin"}</div>
         </div>
         <div className="w-px h-12 bg-current opacity-10 hidden sm:block"></div>
         <div className="text-center">
@@ -165,7 +169,7 @@ const RavineCoffee = () => {
             <CreditCard size={24} />
           </div>
           <div className={`text-2xl font-bold ${theme === "black" ? "text-white" : "text-black"}`}>QRIS</div>
-          <div className={`text-xs uppercase tracking-widest ${theme === "black" ? "text-[#888]" : "text-slate-400"}`}>Midtrans Integration</div>
+          <div className={`text-xs uppercase tracking-widest ${theme === "black" ? "text-[#888]" : "text-slate-400"}`}>{locale === "id" ? "Integrasi Midtrans" : "Midtrans Integration"}</div>
         </div>
         <div className="w-px h-12 bg-current opacity-10 hidden sm:block"></div>
         <div className="text-center">
@@ -173,7 +177,7 @@ const RavineCoffee = () => {
             <Server size={24} />
           </div>
           <div className={`text-2xl font-bold ${theme === "black" ? "text-white" : "text-black"}`}>Fullstack</div>
-          <div className={`text-xs uppercase tracking-widest ${theme === "black" ? "text-[#888]" : "text-slate-400"}`}>End-to-End Deploy</div>
+          <div className={`text-xs uppercase tracking-widest ${theme === "black" ? "text-[#888]" : "text-slate-400"}`}>{locale === "id" ? "Deploy End-to-End" : "End-to-End Deploy"}</div>
         </div>
       </div>
 
@@ -225,7 +229,7 @@ const RavineCoffee = () => {
             theme === "black" ? "text-white" : "text-black"
           }`}
         >
-          Try It Yourself
+          {t.project.try}
         </h2>
 
         <div className="flex flex-wrap gap-3">
@@ -239,7 +243,7 @@ const RavineCoffee = () => {
                 : "border-slate-300 text-slate-700 hover:bg-slate-100"
             }`}
           >
-            Visit Website (User)
+            {locale === "id" ? "Kunjungi Website (User)" : "Visit Website (User)"}
             <ExternalLink size={16} />
           </a>
 
@@ -253,7 +257,7 @@ const RavineCoffee = () => {
                 : "border-slate-300 text-slate-700 hover:bg-slate-100"
             }`}
           >
-            Visit Login (Admin/Cashier)
+            {locale === "id" ? "Kunjungi Login (Admin/Kasir)" : "Visit Login (Admin/Cashier)"}
             <ExternalLink size={16} />
           </a>
 
@@ -281,7 +285,7 @@ const RavineCoffee = () => {
                 : "border-slate-300 text-slate-700 hover:bg-slate-100"
             }`}
           >
-            Backend Repo
+            {locale === "id" ? "Repo Backend" : "Backend Repo"}
             <GithubIcon size={16} />
           </a>
 
@@ -307,17 +311,30 @@ const RavineCoffee = () => {
               : "border-slate-300 bg-slate-50 text-slate-700"
           }`}
         >
-          <p className="mb-1 font-semibold">🧑‍💻 Test Accounts</p>
+          <p className="mb-1 font-semibold">
+            {locale === "id" ? "Akun Test" : "Test Accounts"}
+          </p>
           <ul className="list-disc list-inside space-y-1">
             <li>
               <b>Admin:</b> admin@gmail.com / <b>admin123</b>
             </li>
             <li>
-              <b>Cashier:</b> cashier1@gmail.com / <b>cashier123</b>
+              <b>{locale === "id" ? "Kasir" : "Cashier"}:</b>{" "}
+              cashier1@gmail.com / <b>cashier123</b>
             </li>
           </ul>
           <p className="mt-2 italic opacity-80">
-            *Visit <b>/login</b> to test different user roles. WebSocket features are optimized for local environments.
+            {locale === "id" ? (
+              <>
+                *Kunjungi <b>/login</b> untuk mencoba role user yang berbeda.
+                Fitur WebSocket dioptimalkan untuk local environment.
+              </>
+            ) : (
+              <>
+                *Visit <b>/login</b> to test different user roles. WebSocket
+                features are optimized for local environments.
+              </>
+            )}
           </p>
         </div>
       </div>
@@ -330,14 +347,35 @@ const RavineCoffee = () => {
               theme === "black" ? "text-white" : "text-black"
             }`}
           >
-            About The Platform
+            {t.project.about}
           </h2>
           <p
             className={`text-base text-justify leading-relaxed ${
               theme === "black" ? "text-[#999999]" : "text-slate-500"
             }`}
           >
-            <b>Ravine Coffee</b> is a fullstack cafe management system built to digitize the entire in-store customer journey. As the <b>Solo Fullstack Developer</b>, I engineered an end-to-end solution where customers can scan a QR code at their table, browse the menu, and pay instantly via <b>QRIS Midtrans</b>. The system ensures that every order is synchronized in real-time between customers, cashiers, and kitchen staff, providing a seamless and paperless experience.
+            {locale === "id" ? (
+              <>
+                <b>Ravine Coffee</b> adalah sistem manajemen cafe fullstack yang
+                dibuat untuk mendigitalisasi seluruh perjalanan customer di
+                tempat. Sebagai <b>Solo Fullstack Developer</b>, saya membangun
+                solusi end-to-end di mana customer bisa scan QR di meja, melihat
+                menu, dan membayar langsung melalui <b>QRIS Midtrans</b>.
+                Sistem ini memastikan setiap order tersinkron real-time antara
+                customer, kasir, dan kitchen staff.
+              </>
+            ) : (
+              <>
+                <b>Ravine Coffee</b> is a fullstack cafe management system built
+                to digitize the entire in-store customer journey. As the{" "}
+                <b>Solo Fullstack Developer</b>, I engineered an end-to-end
+                solution where customers can scan a QR code at their table,
+                browse the menu, and pay instantly via <b>QRIS Midtrans</b>.
+                The system ensures that every order is synchronized in real-time
+                between customers, cashiers, and kitchen staff, providing a
+                seamless and paperless experience.
+              </>
+            )}
           </p>
         </section>
 
@@ -348,7 +386,9 @@ const RavineCoffee = () => {
               theme === "black" ? "text-white" : "text-black"
             }`}
           >
-            Engineering Excellence: Real-Time Architecture
+            {locale === "id"
+              ? "Engineering Excellence: Arsitektur Real-Time"
+              : "Engineering Excellence: Real-Time Architecture"}
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -357,10 +397,24 @@ const RavineCoffee = () => {
                 <div className={`p-2 rounded-lg ${theme === "black" ? "bg-blue-500/10 text-blue-400" : "bg-blue-100 text-blue-600"}`}>
                   <Layout size={24} />
                 </div>
-                <h3 className={`text-xl font-medium ${theme === "black" ? "text-white" : "text-black"}`}>Hybrid State Management</h3>
+                <h3 className={`text-xl font-medium ${theme === "black" ? "text-white" : "text-black"}`}>{locale === "id" ? "Hybrid State Management" : "Hybrid State Management"}</h3>
               </div>
               <p className={`text-sm ${theme === "black" ? "text-[#999999]" : "text-slate-500"}`}>
-                Combining <b>TanStack Query</b> for server state (caching & fetching) and <b>Zustand</b> for lightweight client state management. Ensures the UI remains responsive and synchronized during constant data updates.
+                {locale === "id" ? (
+                  <>
+                    Menggabungkan <b>TanStack Query</b> untuk server state
+                    (caching dan fetching) dan <b>Zustand</b> untuk client
+                    state yang ringan. Ini menjaga UI tetap responsif dan
+                    sinkron saat data terus berubah.
+                  </>
+                ) : (
+                  <>
+                    Combining <b>TanStack Query</b> for server state (caching &
+                    fetching) and <b>Zustand</b> for lightweight client state
+                    management. Ensures the UI remains responsive and
+                    synchronized during constant data updates.
+                  </>
+                )}
               </p>
             </div>
 
@@ -369,24 +423,39 @@ const RavineCoffee = () => {
                 <div className={`p-2 rounded-lg ${theme === "black" ? "bg-green-500/10 text-green-400" : "bg-green-100 text-green-600"}`}>
                   <Database size={24} />
                 </div>
-                <h3 className={`text-xl font-medium ${theme === "black" ? "text-white" : "text-black"}`}>Resilient DB Pattern</h3>
+                <h3 className={`text-xl font-medium ${theme === "black" ? "text-white" : "text-black"}`}>{locale === "id" ? "Pola DB yang Resilient" : "Resilient DB Pattern"}</h3>
               </div>
               <p className={`text-sm ${theme === "black" ? "text-[#999999]" : "text-slate-500"}`}>
-                Implemented a <b>Data Snapshotting</b> pattern on OrderItems. When an order is placed, product details (name, price) are copied to the transaction record, ensuring historical invoice accuracy even if products are later modified or deleted.
+                {locale === "id" ? (
+                  <>
+                    Menerapkan pola <b>Data Snapshotting</b> pada OrderItems.
+                    Saat order dibuat, detail produk seperti nama dan harga
+                    disalin ke record transaksi agar invoice historis tetap
+                    akurat meskipun produk diubah atau dihapus.
+                  </>
+                ) : (
+                  <>
+                    Implemented a <b>Data Snapshotting</b> pattern on
+                    OrderItems. When an order is placed, product details (name,
+                    price) are copied to the transaction record, ensuring
+                    historical invoice accuracy even if products are later
+                    modified or deleted.
+                  </>
+                )}
               </p>
             </div>
           </div>
 
           <div className={`mt-8 p-4 rounded-xl border border-dashed ${theme === "black" ? "border-[#444] text-[#888]" : "border-slate-300 text-slate-400"}`}>
-            <p className="text-center font-mono text-xs uppercase tracking-widest mb-4">Ordering & Payment Workflow</p>
+            <p className="text-center font-mono text-xs uppercase tracking-widest mb-4">{locale === "id" ? "Workflow Order dan Payment" : "Ordering & Payment Workflow"}</p>
             <div className="flex flex-col items-center gap-2 text-sm md:text-base font-medium">
-              <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-white/5" : "bg-white shadow-sm border"}`}>Customer Scans QR & Orders</div>
+              <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-white/5" : "bg-white shadow-sm border"}`}>{locale === "id" ? "Customer Scan QR dan Order" : "Customer Scans QR & Orders"}</div>
               <div className="h-4 w-px bg-current opacity-20"></div>
-              <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-blue-500/10 border-blue-500/20" : "bg-blue-50 border-blue-200"}`}>Midtrans QRIS Payment → Webhook</div>
+              <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-blue-500/10 border-blue-500/20" : "bg-blue-50 border-blue-200"}`}>{locale === "id" ? "Payment QRIS Midtrans -> Webhook" : "Midtrans QRIS Payment -> Webhook"}</div>
               <div className="h-4 w-px bg-current opacity-20"></div>
-              <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-green-500/10 border-green-500/20" : "bg-green-50 border-green-200"}`}>Backend Broadcasts via WebSocket</div>
+              <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-green-500/10 border-green-500/20" : "bg-green-50 border-green-200"}`}>{locale === "id" ? "Backend Broadcast via WebSocket" : "Backend Broadcasts via WebSocket"}</div>
               <div className="h-4 w-px bg-current opacity-20"></div>
-              <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-purple-500/10 border-purple-500/20" : "bg-purple-50 border-purple-200"}`}>Cashier & Kitchen Sync Instantly</div>
+              <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-purple-500/10 border-purple-500/20" : "bg-purple-50 border-purple-200"}`}>{locale === "id" ? "Kasir dan Kitchen Sinkron Instan" : "Cashier & Kitchen Sync Instantly"}</div>
             </div>
           </div>
         </section>
@@ -397,18 +466,72 @@ const RavineCoffee = () => {
               theme === "black" ? "text-white" : "text-black"
             }`}
           >
-            Key Features
+            {t.project.features}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {[
-              { title: "Contactless Ordering", desc: "Digital menu and ordering system via table-specific QR codes." },
-              { title: "Midtrans QRIS Integration", desc: "Automated payment workflow with real-time status updates via webhooks." },
-              { title: "Real-Time Sync", desc: "Instant order notification between cashier and kitchen screens using WebSockets." },
-              { title: "Historical Integrity", desc: "Prisma-backed snapshot system to preserve transaction accuracy across product changes." },
-              { title: "Voucher Management", desc: "Sophisticated discount engine supporting fixed and percentage-based coupons." },
-              { title: "Optimized Catalog", desc: "Infinite scrolling and efficient caching for large cafe menus." },
-              { title: "Multi-Role Dashboards", desc: "Dedicated interfaces for Customers, Cashiers, and Administrators." },
-              { title: "Order History & Logs", desc: "Comprehensive state tracking for every order from OPENBILL to COMPLETED." },
+              {
+                title:
+                  locale === "id" ? "Contactless Ordering" : "Contactless Ordering",
+                desc:
+                  locale === "id"
+                    ? "Menu digital dan sistem order melalui QR code khusus per meja."
+                    : "Digital menu and ordering system via table-specific QR codes.",
+              },
+              {
+                title: "Midtrans QRIS Integration",
+                desc:
+                  locale === "id"
+                    ? "Workflow pembayaran otomatis dengan update status real-time melalui webhook."
+                    : "Automated payment workflow with real-time status updates via webhooks.",
+              },
+              {
+                title: "Real-Time Sync",
+                desc:
+                  locale === "id"
+                    ? "Notifikasi order instan antara layar kasir dan kitchen menggunakan WebSockets."
+                    : "Instant order notification between cashier and kitchen screens using WebSockets.",
+              },
+              {
+                title:
+                  locale === "id" ? "Integritas Historis" : "Historical Integrity",
+                desc:
+                  locale === "id"
+                    ? "Sistem snapshot berbasis Prisma untuk menjaga akurasi transaksi meskipun data produk berubah."
+                    : "Prisma-backed snapshot system to preserve transaction accuracy across product changes.",
+              },
+              {
+                title:
+                  locale === "id" ? "Manajemen Voucher" : "Voucher Management",
+                desc:
+                  locale === "id"
+                    ? "Discount engine yang mendukung kupon fixed dan percentage-based."
+                    : "Sophisticated discount engine supporting fixed and percentage-based coupons.",
+              },
+              {
+                title:
+                  locale === "id" ? "Catalog Teroptimasi" : "Optimized Catalog",
+                desc:
+                  locale === "id"
+                    ? "Infinite scrolling dan caching efisien untuk menu cafe yang besar."
+                    : "Infinite scrolling and efficient caching for large cafe menus.",
+              },
+              {
+                title:
+                  locale === "id" ? "Dashboard Multi-Role" : "Multi-Role Dashboards",
+                desc:
+                  locale === "id"
+                    ? "Interface khusus untuk Customer, Kasir, dan Administrator."
+                    : "Dedicated interfaces for Customers, Cashiers, and Administrators.",
+              },
+              {
+                title:
+                  locale === "id" ? "Riwayat dan Log Order" : "Order History & Logs",
+                desc:
+                  locale === "id"
+                    ? "Tracking state lengkap untuk setiap order dari OPENBILL sampai COMPLETED."
+                    : "Comprehensive state tracking for every order from OPENBILL to COMPLETED.",
+              },
             ].map((feature, idx) => (
               <div key={idx} className="flex gap-4">
                 <div className={`mt-1 flex-shrink-0 w-2 h-2 rounded-full ${theme === "black" ? "bg-primary-dark" : "bg-primary-light"}`}></div>
@@ -427,14 +550,44 @@ const RavineCoffee = () => {
               theme === "black" ? "text-white" : "text-black"
             }`}
           >
-            Challenges
+            {t.project.challenges}
           </h2>
           <p
             className={`text-base text-justify ${
               theme === "black" ? "text-[#999999]" : "text-slate-500"
             }`}
           >
-            One of the primary engineering challenges was managing <b>WebSockets on Serverless Infrastructure</b>. Deploying to Vercel meant dealing with the stateless nature of serverless functions, which aren't natively designed for persistent connections. I addressed this by architecting the system to handle <b>reconnection strategies</b> and ensuring that Midtrans webhooks served as a reliable fallback for payment confirmation. Another major hurdle was <b>securing WebSocket connections</b>; ensuring that only authenticated Cashier and Kitchen roles could listen to sensitive broadcast events. Finally, I optimized the frontend using <b>TanStack Query</b> to prevent redundant re-renders when real-time order updates were received, maintaining a smooth 60fps experience even during peak activity.
+            {locale === "id" ? (
+              <>
+                Salah satu tantangan engineering utama adalah mengelola{" "}
+                <b>WebSockets di serverless infrastructure</b>. Deploy ke
+                Vercel berarti harus menghadapi sifat serverless function yang
+                stateless dan tidak dirancang untuk koneksi persisten. Saya
+                mengatasinya dengan merancang <b>reconnection strategies</b>{" "}
+                serta memastikan webhook Midtrans menjadi fallback reliable
+                untuk konfirmasi pembayaran. Tantangan lain adalah{" "}
+                <b>mengamankan koneksi WebSocket</b> agar hanya role Kasir dan
+                Kitchen yang terautentikasi yang bisa menerima broadcast event
+                sensitif. Di frontend, saya memakai <b>TanStack Query</b> untuk
+                mencegah re-render berulang saat update order real-time masuk.
+              </>
+            ) : (
+              <>
+                One of the primary engineering challenges was managing{" "}
+                <b>WebSockets on Serverless Infrastructure</b>. Deploying to
+                Vercel meant dealing with the stateless nature of serverless
+                functions, which aren't natively designed for persistent
+                connections. I addressed this by architecting the system to
+                handle <b>reconnection strategies</b> and ensuring that Midtrans
+                webhooks served as a reliable fallback for payment confirmation.
+                Another major hurdle was <b>securing WebSocket connections</b>;
+                ensuring that only authenticated Cashier and Kitchen roles could
+                listen to sensitive broadcast events. Finally, I optimized the
+                frontend using <b>TanStack Query</b> to prevent redundant
+                re-renders when real-time order updates were received,
+                maintaining a smooth 60fps experience even during peak activity.
+              </>
+            )}
           </p>
         </section>
 
@@ -444,7 +597,7 @@ const RavineCoffee = () => {
               theme === "black" ? "text-white" : "text-black"
             }`}
           >
-            Technology Stack
+            {locale === "id" ? "Stack Teknologi" : "Technology Stack"}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
             <div className="space-y-3">
@@ -462,7 +615,7 @@ const RavineCoffee = () => {
             <div className="space-y-3">
               <div className="flex items-center gap-2 font-medium">
                 <Server size={18} className="text-primary-light dark:text-primary-dark" />
-                Backend & API
+                {locale === "id" ? "Backend dan API" : "Backend & API"}
               </div>
               <ul className={`text-sm space-y-1 ${theme === "black" ? "text-[#999999]" : "text-slate-500"}`}>
                 <li>Express.js</li>
@@ -491,7 +644,7 @@ const RavineCoffee = () => {
               theme === "black" ? "text-white" : "text-black"
             }`}
           >
-            Key Stack
+            {t.project.keyStack}
           </h2>
           <p
             className={`text-base text-justify ${

@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { LocaleProvider } from "../../contexts/LocaleContext";
 import { isLocale } from "../../i18n";
+import SiteControls from "../../components/Elements/SiteControls";
 
 export function generateStaticParams() {
   return [{ locale: "en" }, { locale: "id" }];
@@ -11,5 +12,10 @@ export default async function LocaleLayout({ children, params }) {
 
   if (!isLocale(locale)) notFound();
 
-  return <LocaleProvider locale={locale}>{children}</LocaleProvider>;
+  return (
+    <LocaleProvider locale={locale}>
+      <SiteControls />
+      {children}
+    </LocaleProvider>
+  );
 }

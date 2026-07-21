@@ -22,7 +22,7 @@ export default function LocaleSwitcher() {
   const activeLocale = normalizeLocale(locale);
 
   return (
-    <div className="flex items-center gap-2 rounded-full border border-current/20 bg-base-100/60 px-3 py-2 text-xs font-semibold uppercase backdrop-blur">
+    <div className="flex h-9 items-center gap-2 rounded-full border border-current/20 bg-base-100/60 px-3 text-xs font-semibold uppercase backdrop-blur">
       <span className="sr-only">{t.common.language}</span>
       {locales.map((item) => (
         <Link

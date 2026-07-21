@@ -4,9 +4,11 @@ import { useContext } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { DarkMode } from "../contexts/DarkMode";
+import { useLocale } from "../contexts/LocaleContext";
 
 const Linea = () => {
   const { theme } = useContext(DarkMode);
+  const { locale, t } = useLocale();
   const router = useRouter();
 
   const coverImage = "/assets/img/linea.webp";
@@ -22,7 +24,7 @@ const Linea = () => {
         }`}
       >
         <ArrowLeft size={18} />
-        Back
+        {t.common.back}
       </button>
 
       {/* Title */}
@@ -33,15 +35,18 @@ const Linea = () => {
               theme === "black" ? "text-white" : "text-black"
             }`}
           >
-            Linea – Business Banking Made Simple
+            {locale === "id"
+              ? "Linea - Business Banking yang Lebih Simpel"
+              : "Linea - Business Banking Made Simple"}
           </h1>
           <p
             className={`text-base ${
               theme === "black" ? "text-[#999999]" : "text-slate-500"
             }`}
           >
-            A modern and responsive landing page concept built with HTML, CSS,
-            and JavaScript.
+            {locale === "id"
+              ? "Konsep landing page modern dan responsif yang dibangun dengan HTML, CSS, dan JavaScript."
+              : "A modern and responsive landing page concept built with HTML, CSS, and JavaScript."}
           </p>
         </div>
       </div>
@@ -62,7 +67,7 @@ const Linea = () => {
             theme === "black" ? "text-white" : "text-black"
           }`}
         >
-          Try It Yourself
+          {t.project.try}
         </h2>
 
         <div className="flex flex-wrap gap-3">
@@ -76,7 +81,7 @@ const Linea = () => {
                 : "border-slate-300 text-slate-700 hover:bg-slate-100"
             }`}
           >
-            Visit Website
+            {t.project.visitWebsite}
             <ExternalLink size={16} />
           </a>
         </div>
@@ -90,20 +95,37 @@ const Linea = () => {
               theme === "black" ? "text-white" : "text-black"
             }`}
           >
-            About The Project
+            {t.project.aboutProject}
           </h2>
           <p
             className={`text-base text-justify ${
               theme === "black" ? "text-[#999999]" : "text-slate-500"
             }`}
           >
-            <b>Linea</b> is a clean, minimal, and fully responsive landing page
-            built as part of my early front-end learning journey. The concept
-            showcases a <b>business banking platform</b> that helps freelancers,
-            startups, and small enterprises open and manage business accounts
-            effortlessly. The design focuses on <b>clarity, layout balance</b>,
-            and <b>user-friendly structure</b> while keeping the codebase simple
-            and semantic.
+            {locale === "id" ? (
+              <>
+                <b>Linea</b> adalah landing page yang bersih, minimal, dan
+                responsif, dibuat sebagai bagian dari perjalanan awal saya
+                belajar front-end. Konsepnya menampilkan{" "}
+                <b>platform business banking</b> yang membantu freelancer,
+                startup, dan usaha kecil membuka serta mengelola akun bisnis
+                dengan mudah. Desainnya fokus pada{" "}
+                <b>kejelasan, keseimbangan layout</b>, dan{" "}
+                <b>struktur yang ramah pengguna</b> sambil menjaga codebase
+                tetap sederhana dan semantic.
+              </>
+            ) : (
+              <>
+                <b>Linea</b> is a clean, minimal, and fully responsive landing
+                page built as part of my early front-end learning journey. The
+                concept showcases a <b>business banking platform</b> that helps
+                freelancers, startups, and small enterprises open and manage
+                business accounts effortlessly. The design focuses on{" "}
+                <b>clarity, layout balance</b>, and{" "}
+                <b>user-friendly structure</b> while keeping the codebase simple
+                and semantic.
+              </>
+            )}
           </p>
         </section>
 
@@ -113,7 +135,7 @@ const Linea = () => {
               theme === "black" ? "text-white" : "text-black"
             }`}
           >
-            Features
+            {t.project.features}
           </h2>
           <ul
             className={`list-disc list-inside space-y-2 text-base ${
@@ -121,19 +143,24 @@ const Linea = () => {
             }`}
           >
             <li>
-              Responsive landing layout for all screen sizes (HTML + CSS grid
-              system)
+              {locale === "id"
+                ? "Layout landing page responsif untuk semua ukuran layar (HTML + CSS grid system)"
+                : "Responsive landing layout for all screen sizes (HTML + CSS grid system)"}
             </li>
             <li>
-              Interactive feature and testimonial sections powered by native
-              JavaScript
+              {locale === "id"
+                ? "Section fitur dan testimonial interaktif dengan JavaScript native"
+                : "Interactive feature and testimonial sections powered by native JavaScript"}
             </li>
             <li>
-              Simple animations and transitions for a smooth browsing flow
+              {locale === "id"
+                ? "Animasi dan transisi sederhana untuk alur browsing yang mulus"
+                : "Simple animations and transitions for a smooth browsing flow"}
             </li>
             <li>
-              Focused on accessibility, readability, and front-end best
-              practices
+              {locale === "id"
+                ? "Fokus pada aksesibilitas, keterbacaan, dan praktik front-end yang rapi"
+                : "Focused on accessibility, readability, and front-end best practices"}
             </li>
           </ul>
         </section>
@@ -144,20 +171,34 @@ const Linea = () => {
               theme === "black" ? "text-white" : "text-black"
             }`}
           >
-            What I Learned
+            {locale === "id" ? "Yang Saya Pelajari" : "What I Learned"}
           </h2>
           <p
             className={`text-base text-justify ${
               theme === "black" ? "text-[#999999]" : "text-slate-500"
             }`}
           >
-            This project helped me strengthen my foundation in{" "}
-            <b>HTML structure, CSS layout design</b>, and{" "}
-            <b>JavaScript DOM manipulation</b>. I explored responsive design
-            principles, component alignment, and color contrast to deliver a
-            professional yet lightweight layout. It represents one of my early
-            steps toward mastering front-end development before transitioning
-            into frameworks like React and Next.js.
+            {locale === "id" ? (
+              <>
+                Project ini membantu saya memperkuat dasar{" "}
+                <b>struktur HTML, desain layout CSS</b>, dan{" "}
+                <b>manipulasi DOM JavaScript</b>. Saya mengeksplorasi prinsip
+                responsive design, alignment komponen, dan kontras warna untuk
+                menghasilkan layout yang profesional tetapi tetap ringan. Ini
+                menjadi salah satu langkah awal saya sebelum masuk lebih dalam
+                ke framework seperti React dan Next.js.
+              </>
+            ) : (
+              <>
+                This project helped me strengthen my foundation in{" "}
+                <b>HTML structure, CSS layout design</b>, and{" "}
+                <b>JavaScript DOM manipulation</b>. I explored responsive design
+                principles, component alignment, and color contrast to deliver a
+                professional yet lightweight layout. It represents one of my
+                early steps toward mastering front-end development before
+                transitioning into frameworks like React and Next.js.
+              </>
+            )}
           </p>
         </section>
 
@@ -167,7 +208,7 @@ const Linea = () => {
               theme === "black" ? "text-white" : "text-black"
             }`}
           >
-            Key Stack
+            {t.project.keyStack}
           </h2>
           <p
             className={`text-base ${
