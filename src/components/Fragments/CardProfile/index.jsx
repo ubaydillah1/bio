@@ -1,10 +1,12 @@
 import { useContext, useState } from "react";
 import Button from "../../Elements/Button";
 import { DarkMode } from "../../../contexts/DarkMode";
+import { useLocale } from "../../../contexts/LocaleContext";
 
 const CardProfile = (props) => {
   const { onClickToContact } = props;
   const { theme } = useContext(DarkMode);
+  const { t, href } = useLocale();
 
   const [isGithubHover, setIsGithubHover] = useState(false);
   const [isLikedinHover, setIslinkedinHover] = useState(false);
@@ -123,7 +125,7 @@ const CardProfile = (props) => {
           }`}
         >
           <p className="mb-2">
-            Know someone looking for a fullstack developer?
+            {t.common.sharePrompt}
           </p>
           <a
             href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.ubaydillah.tech%2F"
@@ -131,23 +133,23 @@ const CardProfile = (props) => {
             rel="noreferrer"
             className="font-medium transition hover:underline"
           >
-            Share this portfolio on LinkedIn
+            {t.common.shareLinkedIn}
           </a>
         </div>
 
         <div>
           <Button className="w-full" onClick={onClickToContact}>
-            WORK WITH ME
+            {t.common.workWithMe}
           </Button>
         </div>
 
         <a
-          href="/blog"
+          href={href("/blog")}
           className={`mt-4 block text-sm font-medium transition hover:underline ${
             theme == "black" ? "text-primary-dark" : "text-primary-light"
           }`}
         >
-          Read my blog
+          {t.common.blog}
         </a>
 
         <p

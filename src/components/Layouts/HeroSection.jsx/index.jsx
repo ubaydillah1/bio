@@ -2,11 +2,13 @@ import { useContext } from "react";
 import Badge from "../../Elements/Badge";
 import { DarkMode } from "../../../contexts/DarkMode";
 import CircleProject from "../../Elements/CircleProject";
+import { useLocale } from "../../../contexts/LocaleContext";
 
 const HeroSection = (props) => {
   const { onClickToProject } = props;
 
   const { theme } = useContext(DarkMode);
+  const { t } = useLocale();
   return (
     <section className="lg:ml-[300px] w-full">
       <Badge className="lg:my-10 my-5 px-3 gap-2">
@@ -19,18 +21,18 @@ const HeroSection = (props) => {
         >
           <path d="M219.31,108.68l-80-80a16,16,0,0,0-22.62,0l-80,80A15.87,15.87,0,0,0,32,120v96a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V160h32v56a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V120A15.87,15.87,0,0,0,219.31,108.68ZM208,208H160V152a8,8,0,0,0-8-8H104a8,8,0,0,0-8,8v56H48V120l80-80,80,80Z"></path>
         </svg>
-        INTRODUCE
+        {t.hero.badge}
       </Badge>
 
       <h1 className="lg:text-[72px] lg:leading-[90px] flex flex-col sm:text-[56px] text-[37px] sm:leading-[64px]">
         <span>
-          Say Hi from{" "}
+          {t.hero.titlePrefix}{" "}
           <span
             className={`${
               theme == "black" ? "text-primary-dark" : "text-primary-light"
             }`}
           >
-            Ubay Dillah,
+            {t.hero.name}
           </span>{" "}
         </span>
 
@@ -40,17 +42,17 @@ const HeroSection = (props) => {
               theme == "black" ? "text-primary-dark" : "text-primary-light"
             }`}
           >
-            Fullstack
+            {t.hero.roleStart}
           </span>{" "}
-          Developer and{" "}
+          {t.hero.roleRest}{" "}
           <span
             className={`${
               theme == "black" ? "text-primary-dark" : "text-primary-light"
             }`}
           >
-            AI
+            {t.hero.ai}
           </span>{" "}
-          Enthusiast
+          {t.hero.roleEnd}
         </span>
       </h1>
 
@@ -59,9 +61,7 @@ const HeroSection = (props) => {
           theme == "black" ? "text-[#999999]" : "text-[#7a5b42]"
         }`}
       >
-        Say hi from Ubay Dillah, a Fullstack Developer and AI Enthusiast who
-        crafts user-friendly web experiences with clean design and smooth
-        functionality.
+        {t.hero.description}
       </p>
 
       <div className="w-full h-full flex lg:justify-end">

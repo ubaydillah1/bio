@@ -1,24 +1,5 @@
-import MaduraKita from "../../views/MaduraKita";
-import StructuredData from "../structured-data";
-import {
-  breadcrumbJsonLd,
-  createMetadata,
-  projectJsonLd,
-  seoPages,
-} from "../../lib/seo";
-
-export const metadata = createMetadata(seoPages.maduraKita);
+import { redirect } from "next/navigation";
 
 export default function Page() {
-  return (
-    <>
-      <StructuredData
-        data={[
-          projectJsonLd(seoPages.maduraKita),
-          breadcrumbJsonLd(seoPages.maduraKita),
-        ]}
-      />
-      <MaduraKita />
-    </>
-  );
+  redirect("/en/madura-kita");
 }
