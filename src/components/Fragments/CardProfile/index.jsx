@@ -60,6 +60,7 @@ const CardProfile = (props) => {
           alt="Ubay Dillah, Fullstack Web Developer Indonesia"
           width={2500}
           height={2500}
+          unoptimized
           preload
           sizes="(min-width: 1024px) 230px, (min-width: 640px) 300px, calc(100vw - 100px)"
           className="mx-auto h-auto w-full rounded-[30px] object-cover lg:max-h-[230px]"

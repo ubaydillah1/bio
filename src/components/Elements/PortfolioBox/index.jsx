@@ -38,6 +38,7 @@ const PortfolioBox = (props) => {
           src="/assets/img/porto-bg.webp"
           alt=""
           fill
+          unoptimized
           loading="lazy"
           sizes="(min-width: 1280px) 800px, (min-width: 768px) 70vw, 90vw"
           className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-300"
@@ -48,6 +49,7 @@ const PortfolioBox = (props) => {
             src={src}
             alt={`${children} portfolio preview`}
             fill
+            unoptimized
             loading="lazy"
             sizes="(min-width: 1280px) 600px, (min-width: 768px) 52vw, 68vw"
             className="object-contain"
