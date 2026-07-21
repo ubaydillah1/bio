@@ -2,7 +2,7 @@
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useContext, useRef } from "react";
+import { useContext, useLayoutEffect, useRef } from "react";
 import { useLenis } from "lenis/react";
 import { DarkMode } from "../contexts/DarkMode";
 import CardProfile from "../components/Fragments/CardProfile";
@@ -26,6 +26,81 @@ function HomePage({ locale = "en" }) {
   const portfolioRef = useRef(null);
   const contactRef = useRef(null);
   const resumeRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const returnPosition = window.history.state?.portfolioReturn;
+    if (!returnPosition) return;
+
+    const portfolioCards = document.querySelectorAll("[data-portfolio-href]");
+    const target = Array.from(portfolioCards).find(
+      (card) => card.dataset.portfolioHref === returnPosition.href,
+    );
+
+    if (!target) {
+      window.history.scrollRestoration = "auto";
+      return;
+    }
+
+    let cancelled = false;
+    let userInteracted = false;
+    let secondFrame;
+
+    const restorePosition = () => {
+      if (cancelled || userInteracted) return;
+
+      const delta = target.getBoundingClientRect().top - returnPosition.viewportTop;
+      if (Math.abs(delta) < 1) return;
+
+      const targetScrollY = window.scrollY + delta;
+      window.scrollTo({ top: targetScrollY, left: 0, behavior: "instant" });
+      lenis?.scrollTo(targetScrollY, { immediate: true });
+    };
+
+    const resizeObserver = new ResizeObserver(restorePosition);
+    resizeObserver.observe(document.body);
+
+    const finishRestoration = () => {
+      resizeObserver.disconnect();
+      if (!cancelled) window.history.scrollRestoration = "auto";
+    };
+
+    const handleInteraction = () => {
+      userInteracted = true;
+      finishRestoration();
+    };
+
+    restorePosition();
+    const frame = requestAnimationFrame(() => {
+      restorePosition();
+      secondFrame = requestAnimationFrame(restorePosition);
+    });
+
+    document.fonts?.ready.then(() => {
+      restorePosition();
+    });
+
+    const restorationTimeout = window.setTimeout(() => {
+      restorePosition();
+      finishRestoration();
+    }, 2000);
+
+    const interactionEvents = ["wheel", "touchstart", "pointerdown", "keydown"];
+    interactionEvents.forEach((eventName) =>
+      window.addEventListener(eventName, handleInteraction, { once: true }),
+    );
+
+    return () => {
+      cancelled = true;
+      cancelAnimationFrame(frame);
+      cancelAnimationFrame(secondFrame);
+      clearTimeout(restorationTimeout);
+      resizeObserver.disconnect();
+      window.history.scrollRestoration = "auto";
+      interactionEvents.forEach((eventName) =>
+        window.removeEventListener(eventName, handleInteraction),
+      );
+    };
+  }, [lenis]);
 
   const scrollToSection = (ref, id) => {
     if (ref?.current) {

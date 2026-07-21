@@ -3,11 +3,26 @@ import Link from "next/link";
 const PortfolioBox = (props) => {
   const { children, src, href, onClick, underDev = false } = props;
 
+  const handleClick = (event) => {
+    const { top } = event.currentTarget.getBoundingClientRect();
+
+    window.history.replaceState(
+      {
+        ...window.history.state,
+        portfolioReturn: { href, viewportTop: top },
+      },
+      "",
+    );
+    window.history.scrollRestoration = "manual";
+    onClick?.(event);
+  };
+
   return (
     <Link
       href={href}
+      data-portfolio-href={href}
       className="w-full h-full relative group cursor-pointer"
-      onClick={onClick}
+      onClick={handleClick}
     >
       <div className="w-full aspect-video rounded-[20px] overflow-hidden relative bg-black/10">
         {underDev && (

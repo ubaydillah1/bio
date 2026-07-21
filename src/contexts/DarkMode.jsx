@@ -5,58 +5,43 @@ import { createContext, useEffect, useState } from "react";
 const DarkModeContext = createContext();
 
 function normalizeTheme(theme) {
-  return theme === "winter" ? "winter" : "black";
+  return theme === "black" ? "black" : "winter";
 }
 
-const DarkModeProvider = ({ children, initialTheme = "black" }) => {
-  const [theme, setTheme] = useState(() => {
-    if (typeof window === "undefined") return normalizeTheme(initialTheme);
+function applyTheme(theme) {
+  const normalizedTheme = normalizeTheme(theme);
+  document.documentElement.setAttribute("data-theme", normalizedTheme);
+  localStorage.setItem("data-theme", normalizedTheme);
+  document.cookie = `data-theme=${normalizedTheme}; path=/; max-age=31536000; SameSite=Lax`;
+}
 
-    return normalizeTheme(
-      localStorage.getItem("data-theme") ||
-        document.documentElement.getAttribute("data-theme") ||
-        initialTheme
-    );
-  });
+const DarkModeProvider = ({ children, initialTheme = "winter" }) => {
+  const [theme, setTheme] = useState(normalizeTheme(initialTheme));
 
   useEffect(() => {
-    const syncTheme = () => {
-      const savedTheme =
-        localStorage.getItem("data-theme") ||
-        document.documentElement.getAttribute("data-theme");
-
-      if (!savedTheme) return;
-
-      setTheme((currentTheme) => {
-        const normalizedTheme = normalizeTheme(savedTheme);
-        return normalizedTheme === currentTheme ? currentTheme : normalizedTheme;
-      });
-
-      document.documentElement.setAttribute(
-        "data-theme",
-        normalizeTheme(savedTheme)
-      );
+    const syncThemeAcrossTabs = (event) => {
+      if (event.key === "data-theme" && event.newValue) {
+        setTheme(normalizeTheme(event.newValue));
+      }
     };
 
-    syncTheme();
-    window.addEventListener("pageshow", syncTheme);
-    window.addEventListener("storage", syncTheme);
+    window.addEventListener("storage", syncThemeAcrossTabs);
 
     return () => {
-      window.removeEventListener("pageshow", syncTheme);
-      window.removeEventListener("storage", syncTheme);
+      window.removeEventListener("storage", syncThemeAcrossTabs);
     };
   }, []);
 
   useEffect(() => {
-    const root = document.documentElement;
-    root.setAttribute("data-theme", theme);
-    localStorage.setItem("data-theme", theme);
-    document.cookie = `data-theme=${theme}; path=/; max-age=31536000; SameSite=Lax`;
+    applyTheme(theme);
   }, [theme]);
 
   const handleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "winter" ? "black" : "winter"));
+    setTheme((prevTheme) => {
+      const nextTheme = prevTheme === "winter" ? "black" : "winter";
+      applyTheme(nextTheme);
+      return nextTheme;
+    });
   };
 
   return (

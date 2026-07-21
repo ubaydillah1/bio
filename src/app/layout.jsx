@@ -69,24 +69,6 @@ export default async function RootLayout({ children }) {
 
   return (
     <html lang="en" data-theme={initialTheme} suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function () {
-                try {
-                  var storedTheme = localStorage.getItem("data-theme");
-                  var theme = storedTheme || "${initialTheme}";
-                  if (theme !== "black" && theme !== "winter") theme = "winter";
-                  document.documentElement.setAttribute("data-theme", theme);
-                } catch (error) {
-                  document.documentElement.setAttribute("data-theme", "${initialTheme}");
-                }
-              })();
-            `,
-          }}
-        />
-      </head>
       <body>
         <Providers initialTheme={initialTheme}>{children}</Providers>
       </body>
