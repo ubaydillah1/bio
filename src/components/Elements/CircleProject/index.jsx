@@ -8,7 +8,7 @@ const CircleProject = (props) => {
   return (
     <div
       className={`w-[180px] h-[180px] border-[1px] rounded-full flex justify-center items-center cursor-pointer ${
-        theme === "black" ? "border-[#999999]" : "border-black"
+        theme === "black" ? "border-[#999999]" : "border-[#9a6b43]"
       }`}
       onClick={onClickToProject}
     >
@@ -27,7 +27,7 @@ const CircleProject = (props) => {
               d="M20,100 A80,80 0 1,1 180,100"
             />
             <text
-              fill={theme === "black" ? "white" : "black"}
+              fill={theme === "black" ? "white" : "#2f241a"}
               className="text-[20px]"
               style={{ letterSpacing: "5px" }}
             >
@@ -41,7 +41,7 @@ const CircleProject = (props) => {
               d="M180,100 A80,80 0 1,1 20,100"
             />
             <text
-              fill={theme === "black" ? "white" : "black"}
+              fill={theme === "black" ? "white" : "#2f241a"}
               className="text-[20px]"
               style={{ letterSpacing: "5px" }}
             >
@@ -53,13 +53,13 @@ const CircleProject = (props) => {
               cx="185"
               cy="100"
               r="5"
-              fill={theme === "black" ? "white" : "black"}
+              fill={theme === "black" ? "white" : "#2f241a"}
             />
             <circle
               cx="15"
               cy="100"
               r="5"
-              fill={theme === "black" ? "white" : "black"}
+              fill={theme === "black" ? "white" : "#2f241a"}
             />
           </svg>
         </div>
@@ -68,7 +68,7 @@ const CircleProject = (props) => {
           xmlns="http://www.w3.org/2000/svg"
           width="40"
           height="40"
-          fill={theme === "black" ? "white" : "black"}
+          fill={theme === "black" ? "white" : "#2f241a"}
           viewBox="0 0 256 256"
           className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2"
         >

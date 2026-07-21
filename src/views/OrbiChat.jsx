@@ -86,6 +86,18 @@ const OrbiChat = () => {
             >
               Under Development
             </span>
+            <a
+              href="https://www.linkedin.com/in/rafi-rohmat-a6a951215/"
+              target="_blank"
+              rel="noreferrer"
+              className={`px-3 py-1 text-xs font-semibold rounded-full transition ${
+                theme === "black"
+                  ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/20"
+                  : "bg-[#f3dfc5] text-[#8f5d2e] border border-[#d8bea0] hover:bg-[#ead7bd]"
+              }`}
+            >
+              Collaborated with Rafi Rohmat
+            </a>
           </div>
         </div>
       </div>

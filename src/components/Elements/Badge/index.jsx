@@ -7,7 +7,7 @@ const Badge = (props) => {
   return (
     <div
       className={`badge badge-outline rounded-full px-5 py-5 text-[12px] font-semibold ${
-        theme == "black" ? "border-[#FFFFFF66]" : "border-black"
+        theme == "black" ? "border-[#FFFFFF66]" : "border-[#9a6b43]"
       } ${className}`}
     >
       {children}

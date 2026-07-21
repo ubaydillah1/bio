@@ -7,7 +7,7 @@ const PortfolioBox = (props) => {
       className="w-full h-full relative group cursor-pointer"
       onClick={onClick}
     >
-      <div className="w-full h-full rounded-[20px] overflow-hidden relative">
+      <div className="w-full aspect-video rounded-[20px] overflow-hidden relative bg-black/10">
         {underDev && (
           <div className="absolute top-4 right-4 z-20">
             <span className="px-3 py-1 text-xs font-semibold bg-red-500 text-white rounded-full shadow-lg">
@@ -17,11 +17,11 @@ const PortfolioBox = (props) => {
         )}
 
         <img
-          src="/assets/img/porto-bg.png"
-          alt="Portfolio preview background"
+          src="/assets/img/porto-bg.webp"
+          alt=""
           loading="lazy"
           decoding="async"
-          className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+          className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-300"
         />
 
         <img
@@ -29,7 +29,7 @@ const PortfolioBox = (props) => {
           alt={`${children} portfolio preview`}
           loading="lazy"
           decoding="async"
-          className="absolute left-1/2 top-[45%] -translate-x-1/2 -translate-y-1/2 w-3/4 transition duration-300 group-hover:scale-110"
+          className="absolute left-1/2 top-[45%] -translate-x-1/2 -translate-y-1/2 w-3/4 max-h-[82%] object-contain transition duration-300 group-hover:scale-110"
         />
       </div>
 

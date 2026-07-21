@@ -14,7 +14,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        "primary-light": "#007aff",
+        "primary-light": "#c46a2d",
         "primary-dark": "#28e98c",
       },
       keyframes: {
@@ -29,5 +29,25 @@ export default {
     },
   },
   plugins: [daisyui],
-  daisyui: { themes: ["black", "winter"] },
+  daisyui: {
+    themes: [
+      "black",
+      {
+        winter: {
+          primary: "#c46a2d",
+          secondary: "#8f5d2e",
+          accent: "#256d85",
+          neutral: "#2f241a",
+          "base-100": "#fff7ed",
+          "base-200": "#f8ead8",
+          "base-300": "#ead7bd",
+          "base-content": "#2f241a",
+          info: "#256d85",
+          success: "#4f7f52",
+          warning: "#b7791f",
+          error: "#b42318",
+        },
+      },
+    ],
+  },
 };

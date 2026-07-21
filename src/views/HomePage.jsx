@@ -74,7 +74,7 @@ function HomePage() {
 
       <main
         className={`flex w-full lg:px-[80px] pt-[40px] sm:gap-[30px] gap-[20px] flex-col relative ${
-          theme != "black" ? "text-black" : "text-white"
+          theme != "black" ? "text-[#2f241a]" : "text-white"
         }`}
       >
         <CardProfile onClickToContact={handleToContact} />

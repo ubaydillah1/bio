@@ -46,9 +46,9 @@ const Navigation = ({ scrollToSection, sections }) => {
 
   const getIconColor = (sectionKey) => {
     if (activeSection === sectionKey) {
-      return theme === "black" ? "#28e98c" : "#007aff";
+      return theme === "black" ? "#28e98c" : "#c46a2d";
     }
-    return theme === "black" ? "white" : "black";
+    return theme === "black" ? "white" : "#2f241a";
   };
 
   const navItems = [
@@ -108,7 +108,7 @@ const Navigation = ({ scrollToSection, sections }) => {
         ${
           theme === "black"
             ? "border-[#FFFFFF33] text-white bg-black/60"
-            : "border-black/40 text-black bg-white/60"
+            : "border-[#b8895d]/50 text-[#2f241a] bg-[#fff7ed]/75"
         }
       `}
     >

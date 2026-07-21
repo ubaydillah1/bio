@@ -33,6 +33,13 @@
   body {
     font-family: "Inter", sans-serif;
   }
+
+  html[data-theme="winter"] body {
+    background:
+      radial-gradient(circle at 12% 8%, rgba(196, 106, 45, 0.12), transparent 28rem),
+      linear-gradient(180deg, #fff7ed 0%, #f8ead8 100%);
+    color: #2f241a;
+  }
 }
 
 @layer utilities {
@@ -42,7 +49,7 @@
   }
 
   .neon-light {
-    filter: drop-shadow(0 0 2px #007bff88) drop-shadow(0 0 2px #007bff2a);
-    fill: #007aff;
+    filter: drop-shadow(0 0 2px #c46a2d88) drop-shadow(0 0 2px #c46a2d2a);
+    fill: #c46a2d;
   }
 }

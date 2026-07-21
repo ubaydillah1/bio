@@ -11,7 +11,7 @@ const AboutSection = () => {
           xmlns="http://www.w3.org/2000/svg"
           width="20"
           height="20"
-          fill={theme === "black" ? "white" : "black"}
+          fill={theme === "black" ? "white" : "#2f241a"}
           viewBox="0 0 256 256"
         >
           <path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path>
@@ -32,12 +32,12 @@ const AboutSection = () => {
 
       <div
         className={`text-[17px] lg:text-[19px] leading-relaxed lg:my-10 my-8 space-y-6 ${
-          theme == "black" ? "text-[#999999]" : "text-slate-500"
+          theme == "black" ? "text-[#999999]" : "text-[#7a5b42]"
         }`}
       >
         <p>
           I’m a{" "}
-          <span className={theme === "black" ? "text-white" : "text-black"}>
+          <span className={theme === "black" ? "text-white" : "text-[#2f241a]"}>
             Fullstack Developer
           </span>{" "}
           with a backend focus, dedicated to building reliable, scalable systems
@@ -45,27 +45,27 @@ const AboutSection = () => {
         </p>
         <p>
           On the frontend, I craft responsive interfaces using{" "}
-          <span className={theme === "black" ? "text-white" : "text-black"}>
+          <span className={theme === "black" ? "text-white" : "text-[#2f241a]"}>
             React, Next.js, and TypeScript
           </span>{" "}
           paired with{" "}
-          <span className={theme === "black" ? "text-white" : "text-black"}>
+          <span className={theme === "black" ? "text-white" : "text-[#2f241a]"}>
             Tailwind CSS
           </span>
           . For the backend, I architect structured APIs and efficient data
           flows using{" "}
-          <span className={theme === "black" ? "text-white" : "text-black"}>
+          <span className={theme === "black" ? "text-white" : "text-[#2f241a]"}>
             NestJS, Express, Prisma ORM
           </span>
           , and databases like{" "}
-          <span className={theme === "black" ? "text-white" : "text-black"}>
+          <span className={theme === "black" ? "text-white" : "text-[#2f241a]"}>
             PostgreSQL & MongoDB
           </span>
           .
         </p>
         <p>
           Most recently, I engineered the backend for{" "}
-          <span className={theme === "black" ? "text-white" : "text-black"}>
+          <span className={theme === "black" ? "text-white" : "text-[#2f241a]"}>
             Straight Deal
           </span>
           , a live car-selling platform serving 1,400+ users, where I handled
@@ -75,7 +75,7 @@ const AboutSection = () => {
         <p>
           I’m always open to full-time roles, freelance projects, or just a good
           technical conversation. Reach me at:{" "}
-          <span className={theme === "black" ? "text-white" : "text-black"}>
+          <span className={theme === "black" ? "text-white" : "text-[#2f241a]"}>
             ubaydillah1737@gmail.com
           </span>
         </p>
@@ -89,7 +89,7 @@ const AboutSection = () => {
             1+
           </h3>
           <p
-            className={`text-xs uppercase tracking-widest mt-3 font-semibold ${theme === "black" ? "text-[#666]" : "text-slate-400"}`}
+            className={`text-xs uppercase tracking-widest mt-3 font-semibold ${theme === "black" ? "text-[#666]" : "text-[#9a6b43]"}`}
           >
             Years of Experience
           </p>
@@ -101,7 +101,7 @@ const AboutSection = () => {
             7+
           </h3>
           <p
-            className={`text-xs uppercase tracking-widest mt-3 font-semibold ${theme === "black" ? "text-[#666]" : "text-slate-400"}`}
+            className={`text-xs uppercase tracking-widest mt-3 font-semibold ${theme === "black" ? "text-[#666]" : "text-[#9a6b43]"}`}
           >
             Projects Completed
           </p>

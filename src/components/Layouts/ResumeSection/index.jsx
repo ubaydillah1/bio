@@ -142,12 +142,12 @@ const ResumeSection = () => {
           } ${
             theme === "black"
               ? "bg-gradient-to-b from-[#444] to-transparent"
-              : "bg-gradient-to-b from-gray-300 to-transparent"
+              : "bg-gradient-to-b from-[#d8bea0] to-transparent"
           } transition-all duration-500 ${
             isActive
               ? theme === "black"
                 ? "from-emerald-500"
-                : "from-blue-500"
+                : "from-[#c46a2d]"
               : ""
           }`}
         ></div>
@@ -157,12 +157,12 @@ const ResumeSection = () => {
           className={`absolute left-[0px] top-[8px] h-[16px] w-[16px] rounded-full z-10 border-4 transition-all duration-500 ${
             theme === "black"
               ? "bg-white border-[#1a1a1a]"
-              : "bg-black border-white"
+              : "bg-[#2f241a] border-[#fff7ed]"
           } ${isActive ? "scale-125" : "scale-100"} ${
             isActive
               ? theme === "black"
                 ? "bg-emerald-500"
-                : "bg-blue-500"
+                : "bg-[#c46a2d]"
               : ""
           }`}
         ></div>
@@ -174,7 +174,7 @@ const ResumeSection = () => {
               className={`text-[13px] font-medium px-3 py-0.5 rounded-full ${
                 theme === "black"
                   ? "bg-[#1a1a1a] text-[#888] border border-[#333]"
-                  : "bg-gray-100 text-gray-600 border border-gray-200"
+                  : "bg-[#f3dfc5] text-[#7a5b42] border border-[#d8bea0]"
               }`}
             >
               {item.date}
@@ -182,7 +182,7 @@ const ResumeSection = () => {
             {item.type && (
               <span
                 className={`text-[12px] font-bold uppercase tracking-widest ${
-                  theme === "black" ? "text-emerald-400" : "text-blue-600"
+                  theme === "black" ? "text-emerald-400" : "text-[#c46a2d]"
                 }`}
               >
                 • {item.type}
@@ -192,7 +192,7 @@ const ResumeSection = () => {
 
           <h3
             className={`text-[24px] font-bold ${
-              theme === "black" ? "text-white" : "text-gray-900"
+              theme === "black" ? "text-white" : "text-[#2f241a]"
             }`}
           >
             {item.company || item.institution}
@@ -200,7 +200,7 @@ const ResumeSection = () => {
           {item.location && (
             <p
               className={`text-[14px] mt-1 ${
-                theme === "black" ? "text-[#666]" : "text-gray-500"
+                theme === "black" ? "text-[#666]" : "text-[#8f6b50]"
               }`}
             >
               {item.location}
@@ -211,7 +211,7 @@ const ResumeSection = () => {
             <div key={index} className="mt-4">
               <h4
                 className={`text-[19px] font-semibold mb-3 ${
-                  theme === "black" ? "text-[#ddd]" : "text-gray-800"
+                  theme === "black" ? "text-[#ddd]" : "text-[#3d2e20]"
                 }`}
               >
                 {role.title}
@@ -225,12 +225,12 @@ const ResumeSection = () => {
                         className={`mt-2 h-1.5 w-1.5 rounded-full shrink-0 ${
                           theme === "black"
                             ? "bg-emerald-500/50"
-                            : "bg-blue-500/30"
+                            : "bg-[#c46a2d]/40"
                         }`}
                       ></span>
                       <p
                         className={`text-[15px] leading-relaxed ${
-                          theme === "black" ? "text-[#aaa]" : "text-gray-600"
+                          theme === "black" ? "text-[#aaa]" : "text-[#7a5b42]"
                         }`}
                       >
                         {point}
@@ -241,7 +241,7 @@ const ResumeSection = () => {
               ) : (
                 <p
                   className={`text-[15px] leading-relaxed whitespace-pre-line ${
-                    theme === "black" ? "text-[#aaa]" : "text-gray-600"
+                    theme === "black" ? "text-[#aaa]" : "text-[#7a5b42]"
                   }`}
                 >
                   {role.description}
@@ -258,8 +258,8 @@ const ResumeSection = () => {
                           ? `bg-[#0a0a0a] border-[#222] text-[#777] ${
                               isActive ? "border-emerald-500/50 text-[#999]" : ""
                             }`
-                          : `bg-white border-gray-100 text-gray-500 ${
-                              isActive ? "border-blue-300 text-gray-700" : ""
+                          : `bg-[#fff7ed]/70 border-[#ead7bd] text-[#8f6b50] ${
+                              isActive ? "border-[#c46a2d]/60 text-[#3d2e20]" : ""
                             }`
                       }`}
                     >
@@ -290,7 +290,7 @@ const ResumeSection = () => {
         <div>
           <h2
             className={`sm:text-[40px] text-[32px] mb-12 font-bold ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2f241a]"
             }`}
           >
             Experience
@@ -309,7 +309,7 @@ const ResumeSection = () => {
         <div>
           <h2
             className={`sm:text-[40px] text-[32px] mb-12 font-bold ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2f241a]"
             }`}
           >
             Education
@@ -328,7 +328,7 @@ const ResumeSection = () => {
         <div>
           <h2
             className={`sm:text-[40px] text-[32px] mb-12 font-bold ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2f241a]"
             }`}
           >
             Courses
