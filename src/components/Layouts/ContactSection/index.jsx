@@ -2,9 +2,11 @@ import Button from "../../Elements/Button";
 import Badge from "../../Elements/Badge";
 import { useContext, useState } from "react";
 import { DarkMode } from "../../../contexts/DarkMode";
+import { useLocale } from "../../../contexts/LocaleContext";
 
 const ContactSection = () => {
   const { theme } = useContext(DarkMode);
+  const { t } = useLocale();
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -45,17 +47,17 @@ const ContactSection = () => {
         >
           <path d="M116,120a12,12,0,1,1,12,12A12,12,0,0,1,116,120ZM84,132a12,12,0,1,0-12-12A12,12,0,0,0,84,132Zm88,0a12,12,0,1,0-12-12A12,12,0,0,0,172,132Zm60-76V184a16,16,0,0,1-16,16H155.57l-13.68,23.94a16,16,0,0,1-27.78,0L100.43,200H40a16,16,0,0,1-16-16V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56Zm-16,0H40V184h65.07a8,8,0,0,1,7,4l16,28,16-28a8,8,0,0,1,7-4H216Z"></path>
         </svg>
-        CONTACT
+        {t.contact.badge}
       </Badge>
 
       <div className="sm:text-[48px] text-[37px] lg:max-w-[800px]">
-        Let's Work{" "}
+        {t.contact.title}{" "}
         <span
           className={
             theme == "black" ? "text-primary-dark" : "text-primary-light"
           }
         >
-          Together!
+          {t.contact.titleHighlight}
         </span>
       </div>
 
@@ -67,54 +69,54 @@ const ContactSection = () => {
             <div className="flex flex-col gap-7 w-full">
               <div className="flex flex-col gap-1">
                 <label htmlFor="fullname" className="text-[12px]">
-                  FULL NAME
+                  {t.contact.fullName}
                 </label>
                 <input
                   id="fullname"
                   name="fullname"
                   type="text"
                   className="outline-none text-[18px] bg-transparent placeholder:text-[#757575]"
-                  placeholder="Your Full Name"
+                  placeholder={t.contact.fullNamePlaceholder}
                   required
                 />
               </div>
               <div className="flex flex-col gap-1">
                 <label htmlFor="phone" className="text-[12px]">
-                  PHONE
+                  {t.contact.phone}
                 </label>
                 <input
                   id="phone"
                   name="phone"
                   type="tel"
                   className="outline-none text-[18px] bg-transparent placeholder:text-[#757575]"
-                  placeholder="Optional"
+                  placeholder={t.contact.optional}
                 />
               </div>
             </div>
             <div className="flex flex-col gap-7 w-full">
               <div className="flex flex-col gap-1">
                 <label htmlFor="email" className="text-[12px]">
-                  EMAIL
+                  {t.contact.email}
                 </label>
                 <input
                   type="email"
                   id="email"
                   name="email"
                   className="outline-none text-[18px] bg-transparent placeholder:text-[#757575]"
-                  placeholder="Your Email"
+                  placeholder={t.contact.emailPlaceholder}
                   required
                 />
               </div>
               <div className="flex flex-col gap-1">
                 <label htmlFor="gender" className="text-[12px]">
-                  GENDER
+                  {t.contact.gender}
                 </label>
                 <input
                   id="gender"
                   name="gender"
                   type="text"
                   className="outline-none text-[18px] bg-transparent placeholder:text-[#757575]"
-                  placeholder="Optional"
+                  placeholder={t.contact.optional}
                 />
               </div>
             </div>
@@ -122,13 +124,13 @@ const ContactSection = () => {
 
           <div className="flex flex-col gap-1 mt-7">
             <label htmlFor="message" className="text-[12px]">
-              MESSAGE
+              {t.contact.message}
             </label>
             <textarea
               name="message"
               id="message"
               className="outline-none text-[18px] bg-transparent placeholder:text-[#757575] resize-none h-[150px]"
-              placeholder="Write Your Message here...."
+              placeholder={t.contact.messagePlaceholder}
               required
             ></textarea>
           </div>
@@ -139,7 +141,7 @@ const ContactSection = () => {
           type="submit"
           disabled={loading}
         >
-          {loading ? "Sending..." : "Send Message"}
+          {loading ? t.contact.sending : t.contact.send}
         </Button>
       </form>
 
@@ -147,13 +149,10 @@ const ContactSection = () => {
       {submitted && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
           <div className="bg-[#fff7ed] dark:bg-gray-900 rounded-lg p-8 max-w-sm text-center shadow-lg">
-            <h2 className="text-xl font-semibold mb-4">Thank You!</h2>
-            <p className="mb-6">
-              Your message has been sent successfully. We'll get back to you
-              soon.
-            </p>
+            <h2 className="text-xl font-semibold mb-4">{t.contact.thankTitle}</h2>
+            <p className="mb-6">{t.contact.thankBody}</p>
             <Button onClick={() => setSubmitted(false)} className="w-full">
-              Close
+              {t.contact.close}
             </Button>
           </div>
         </div>

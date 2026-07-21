@@ -3,112 +3,14 @@ import { Briefcase } from "lucide-react";
 import Badge from "../../Elements/Badge";
 import { DarkMode } from "../../../contexts/DarkMode";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLocale } from "../../../contexts/LocaleContext";
 
 const ResumeSection = () => {
   const { theme } = useContext(DarkMode);
-
-  const experiences = [
-    // ... (data experiences tetap sama)
-    {
-      company: "Molca Teknologi Nusantara",
-      location: "Surabaya, Jawa Timur, Indonesia · Hybrid",
-      date: "Jan 2026 - May 2026",
-      type: "Internship",
-      roles: [
-        {
-          title: "Full-stack Developer",
-          points: [
-            "Built and maintained scalable fullstack features across a monorepo architecture, shipping 50+ production-ready deliverables in Next.js and tRPC while consistently meeting sprint goals in an Agile environment.",
-            "Improved codebase maintainability by refactoring complex cross-module workflows, enforcing separation of concerns and reducing technical debt across shared services.",
-            "Designed an event-driven pipeline using Redis to support asynchronous processing, decoupling components and improving overall system scalability.",
-            "Adopted Drizzle ORM for end-to-end type safety between the database layer and API, and evaluated Hono.js as a lightweight option for high-performance microservice design.",
-            "Actively contributed in sprint ceremonies, code reviews, and cross-team collaboration to ensure consistent delivery cadence across multiple concurrent services.",
-          ],
-          skills: ["Next.js", "tRPC", "Redis", "Drizzle ORM", "Hono.js", "Agile"],
-        },
-      ],
-    },
-    {
-      company: "Odama Studio",
-      location: "Remote",
-      date: "Jan 2025 - Jun 2025",
-      type: "Contract",
-      roles: [
-        {
-          title: "Back End Developer",
-          points: [
-            "Designed and built the backend infrastructure for Straight Deal, a live car-selling platform serving 1,400+ registered users.",
-            "Architected the end-to-end car submission workflow, from initial user listing to final admin price offer, powered by Express.js and Prisma ORM on a Supabase database.",
-            "Developed 72 REST API endpoints, implementing Role-Based Access Control (RBAC) to manage distinct permission levels for users and administrators.",
-            "Secured the platform with a custom JWT authentication system and Google OAuth2 login integration.",
-            "Integrated Twilio for SMS notifications and SendGrid for transactional email. All endpoints documented in Postman to support efficient frontend collaboration.",
-          ],
-          skills: [
-            "Express.js",
-            "Prisma ORM",
-            "Supabase",
-            "RBAC",
-            "JWT",
-            "OAuth2",
-            "Twilio",
-            "SendGrid",
-          ],
-        },
-      ],
-    },
-    {
-      company: "Web Development Workshop",
-      date: "Aug 2024",
-      roles: [
-        {
-          title: "Instructor",
-          description:
-            "Delivered 4 interactive sessions on HTML, CSS, and JavaScript fundamentals during a campus event, and prepared tailored materials to enhance participants’ understanding of web development basics.",
-        },
-      ],
-    },
-  ];
-
-  const education = [
-    {
-      date: "2023 - Present",
-      institution: "University of Trunojoyo Madura",
-      roles: [
-        {
-          title: "Information Systems",
-          description: "Current GPA: 3.90/4.00",
-        },
-      ],
-    },
-  ];
-
-  const courses = [
-    {
-      date: "Oct 2023 - Feb 2024",
-      institution: "Harisenin.com",
-      roles: [
-        {
-          title: "Full Stack Developer Bootcamp",
-          points: [
-            "Completed an intensive 5-month bootcamp with a perfect GPA of 4.00.",
-            "Front-End: Mastered React.js, HTML & CSS, and JavaScript fundamentals.",
-            "Back-End: Built REST APIs with Node.js and implemented secure authentication systems.",
-            "Databases: Designed efficient database structures using ERD principles.",
-            "Version Control: Managed complex workflows and merge conflicts using Git and GitHub.",
-            "Soft Skills: Developed strong analytical thinking and problem-solving capabilities.",
-          ],
-          skills: [
-            "React.js",
-            "Express.js",
-            "Node.js",
-            "Git",
-            "GitHub",
-            "Database Design",
-          ],
-        },
-      ],
-    },
-  ];
+  const { t } = useLocale();
+  const experiences = t.resume.experiences;
+  const education = t.resume.educationItems;
+  const courses = t.resume.courseItems;
 
   const TimelineItem = ({ item, isLast }) => {
     const [isActive, setIsActive] = useState(false);
@@ -125,17 +27,14 @@ const ResumeSection = () => {
         onLeaveBack: () => setIsActive(false),
       });
 
-      return () => {
-        if (trigger) trigger.kill();
-      };
+      return () => trigger?.kill();
     }, []);
 
     return (
-      <div 
+      <div
         ref={elementRef}
         className={`relative pl-10 ${isLast ? "pb-0" : "pb-12"} group`}
       >
-        {/* Vertical Line */}
         <div
           className={`absolute left-[7px] top-[18px] w-[2px] ${
             isLast ? "h-0" : "bottom-0"
@@ -150,11 +49,10 @@ const ResumeSection = () => {
                 : "from-[#c46a2d]"
               : ""
           }`}
-        ></div>
+        />
 
-        {/* Dot */}
         <div
-          className={`absolute left-[0px] top-[8px] h-[16px] w-[16px] rounded-full z-10 border-4 transition-all duration-500 ${
+          className={`absolute left-0 top-2 h-4 w-4 rounded-full z-10 border-4 transition-all duration-500 ${
             theme === "black"
               ? "bg-white border-[#1a1a1a]"
               : "bg-[#2f241a] border-[#fff7ed]"
@@ -165,9 +63,8 @@ const ResumeSection = () => {
                 : "bg-[#c46a2d]"
               : ""
           }`}
-        ></div>
+        />
 
-        {/* Content */}
         <div className="transition-all duration-500">
           <div className="flex flex-wrap items-center gap-3 mb-2">
             <span
@@ -185,7 +82,7 @@ const ResumeSection = () => {
                   theme === "black" ? "text-emerald-400" : "text-[#c46a2d]"
                 }`}
               >
-                • {item.type}
+                &bull; {item.type}
               </span>
             )}
           </div>
@@ -197,6 +94,7 @@ const ResumeSection = () => {
           >
             {item.company || item.institution}
           </h3>
+
           {item.location && (
             <p
               className={`text-[14px] mt-1 ${
@@ -227,7 +125,7 @@ const ResumeSection = () => {
                             ? "bg-emerald-500/50"
                             : "bg-[#c46a2d]/40"
                         }`}
-                      ></span>
+                      />
                       <p
                         className={`text-[15px] leading-relaxed ${
                           theme === "black" ? "text-[#aaa]" : "text-[#7a5b42]"
@@ -275,74 +173,42 @@ const ResumeSection = () => {
     );
   };
 
+  const TimelineGroup = ({ title, items }) => (
+    <div>
+      <h2
+        className={`sm:text-[40px] text-[32px] mb-12 font-bold ${
+          theme === "black" ? "text-white" : "text-[#2f241a]"
+        }`}
+      >
+        {title}
+      </h2>
+      <div className="ml-1">
+        {items.map((item, index) => (
+          <TimelineItem
+            key={`${title}-${index}`}
+            item={item}
+            isLast={index === items.length - 1}
+          />
+        ))}
+      </div>
+    </div>
+  );
+
   return (
-    <section className=" lg:ml-[300px] w-full mt-[40px] pb-20">
+    <section className="lg:ml-[300px] w-full mt-[40px] pb-20">
       <Badge className="lg:my-10 my-5 px-3 gap-2">
         <Briefcase
           width="16"
           height="16"
           color={theme === "black" ? "white" : "black"}
         />
-        RESUME
+        {t.resume.badge}
       </Badge>
 
       <div className="space-y-20">
-        <div>
-          <h2
-            className={`sm:text-[40px] text-[32px] mb-12 font-bold ${
-              theme === "black" ? "text-white" : "text-[#2f241a]"
-            }`}
-          >
-            Experience
-          </h2>
-          <div className="ml-1">
-            {experiences.map((exp, index) => (
-              <TimelineItem
-                key={index}
-                item={exp}
-                isLast={index === experiences.length - 1}
-              />
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <h2
-            className={`sm:text-[40px] text-[32px] mb-12 font-bold ${
-              theme === "black" ? "text-white" : "text-[#2f241a]"
-            }`}
-          >
-            Education
-          </h2>
-          <div className="ml-1">
-            {education.map((edu, index) => (
-              <TimelineItem
-                key={index}
-                item={edu}
-                isLast={index === education.length - 1}
-              />
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <h2
-            className={`sm:text-[40px] text-[32px] mb-12 font-bold ${
-              theme === "black" ? "text-white" : "text-[#2f241a]"
-            }`}
-          >
-            Courses
-          </h2>
-          <div className="ml-1">
-            {courses.map((course, index) => (
-              <TimelineItem
-                key={index}
-                item={course}
-                isLast={index === courses.length - 1}
-              />
-            ))}
-          </div>
-        </div>
+        <TimelineGroup title={t.resume.experience} items={experiences} />
+        <TimelineGroup title={t.resume.education} items={education} />
+        <TimelineGroup title={t.resume.courses} items={courses} />
       </div>
     </section>
   );
