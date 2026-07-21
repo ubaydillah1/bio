@@ -3,16 +3,11 @@ import Link from "next/link";
 const PortfolioBox = (props) => {
   const { children, src, href, onClick, underDev = false } = props;
 
-  const handleClick = (event) => {
-    sessionStorage.setItem("portfolio-scroll-y", String(window.scrollY));
-    onClick?.(event);
-  };
-
   return (
     <Link
       href={href}
       className="w-full h-full relative group cursor-pointer"
-      onClick={handleClick}
+      onClick={onClick}
     >
       <div className="w-full aspect-video rounded-[20px] overflow-hidden relative bg-black/10">
         {underDev && (
