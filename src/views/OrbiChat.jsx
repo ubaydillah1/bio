@@ -94,11 +94,12 @@ const OrbiChat = () => {
       <div className="w-full h-[400px] sm:h-[500px] rounded-2xl overflow-hidden bg-black/5">
         <video
           src={media[0].src}
-          autoPlay
           muted
           loop
           playsInline
           controls
+          preload="metadata"
+          poster="/assets/img/orbi-front.webp"
           className="w-full h-full object-cover"
         />
       </div>
@@ -115,6 +116,8 @@ const OrbiChat = () => {
               <video
                 src={item.src}
                 muted
+                preload="metadata"
+                poster="/assets/img/orbi-front.webp"
                 className="rounded-lg object-cover w-full h-auto opacity-80 group-hover:opacity-60 transition"
               />
               <div className="absolute inset-0 flex items-center justify-center">
@@ -148,7 +151,8 @@ const OrbiChat = () => {
           <video
             src={media[currentIndex].src}
             controls
-            autoPlay
+            preload="metadata"
+            poster="/assets/img/orbi-front.webp"
             className="max-w-[90%] max-h-[80%] rounded-lg object-contain"
           />
 
@@ -241,7 +245,7 @@ const OrbiChat = () => {
             answering queries, understanding complex conversational context, and
             utilizing custom knowledge bases to provide 24/7 automated support.
             Beyond automation, OrbiChat also serves as a{" "}
-            <b>lead generation tool</b> — capturing potential customer emails
+            <b>lead generation tool</b>, capturing potential customer emails
             directly through the chat flow to help agencies grow their client
             pipeline.
           </p>
@@ -365,7 +369,7 @@ const OrbiChat = () => {
               },
               {
                 title: "Embeddable Widget",
-                desc: "Agencies can deploy their chatbot anywhere — just copy-paste a widget snippet into any website and it's live.",
+                desc: "Agencies can deploy their chatbot anywhere: just copy-paste a widget snippet into any website and it's live.",
               },
               {
                 title: "Session Management",
@@ -450,12 +454,12 @@ const OrbiChat = () => {
             sending full context to the LLM on every query leads to excessive
             token consumption and high costs, while being too aggressive with
             trimming causes hallucinations and loss of context. The solution was
-            implementing <b>Adaptive RAG</b> — an architecture where a
+            implementing <b>Adaptive RAG</b>, an architecture where a
             lightweight classifier AI first analyzes each incoming query to
             determine whether it requires knowledge base retrieval,
             conversational context, or can be answered directly. Only then is
             the query routed to the appropriate pipeline, ensuring the LLM
-            receives precisely the context it needs — nothing more, nothing
+            receives precisely the context it needs: nothing more, nothing
             less. This approach significantly reduced token waste while
             maintaining high response quality and contextual accuracy.
           </p>

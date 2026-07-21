@@ -1,56 +1,7 @@
 import PortfolioBox from "../../Elements/PortfolioBox";
 import Badge from "../../Elements/Badge";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext } from "react";
 import { DarkMode } from "../../../contexts/DarkMode";
-
-const LazyPortfolioVideo = ({ src }) => {
-  const containerRef = useRef(null);
-  const [shouldLoad, setShouldLoad] = useState(false);
-
-  useEffect(() => {
-    if (shouldLoad || !containerRef.current) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShouldLoad(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "500px 0px" }
-    );
-
-    observer.observe(containerRef.current);
-
-    return () => observer.disconnect();
-  }, [shouldLoad]);
-
-  return (
-    <div
-      ref={containerRef}
-      className="w-full aspect-video rounded-[20px] overflow-hidden relative bg-black"
-    >
-      <img
-        src="/assets/img/porto-bg.png"
-        alt=""
-        loading="lazy"
-        decoding="async"
-        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-300"
-      />
-      {shouldLoad && (
-        <video
-          src={src}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-300"
-        />
-      )}
-    </div>
-  );
-};
 
 const PortfolioSection = () => {
   const { theme } = useContext(DarkMode);
@@ -82,43 +33,36 @@ const PortfolioSection = () => {
       </div>
 
       <div className="my-[40px] flex flex-col gap-[60px]">
-        {/* OrbiChat - Video Card */}
-        <a
-          href="/orbichat"
-          className="w-full h-full relative group cursor-pointer"
-        >
-          <LazyPortfolioVideo src="/assets/video/orbi-video.mp4" />
-          <p className="mt-5 text-[24px]">
-            OrbiChat - AI Chatbot Platform for Business
-          </p>
-        </a>
+        <PortfolioBox src="/assets/img/orbi-front.webp" href="/orbichat">
+          OrbiChat - AI Chatbot Platform for Business
+        </PortfolioBox>
 
         <PortfolioBox
-          src="/assets/img/straight-deal.png"
+          src="/assets/img/straight-deal.webp"
           href="/straight-deal"
         >
           Straight Deal - Car Selling Workflow (Backend - Odama Studio)
         </PortfolioBox>
         <PortfolioBox
-          src="/assets/img/ravine-bg.png"
+          src="/assets/img/ravine-bg.webp"
           href="/ravine-coffee"
         >
           Ravine Coffee - Ravince Coffee – Cafe POS and Online Ordering System
         </PortfolioBox>
         <PortfolioBox
-          src="/assets/img/stora-bg.png"
+          src="/assets/img/stora-bg.webp"
           href="/stora"
         >
           Stora - Storage Management
         </PortfolioBox>
         <PortfolioBox
-          src="/assets/img/madura-bg.png"
+          src="/assets/img/madura-bg.webp"
           href="/madura-kita"
         >
           MaduraKita - Empowering Local MSMEs in Madura
         </PortfolioBox>
         <PortfolioBox
-          src="/assets/img/linea.png"
+          src="/assets/img/linea.webp"
           href="/linea"
         >
           Linea Studio - Landing Page with animation

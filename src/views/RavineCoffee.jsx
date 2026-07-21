@@ -26,7 +26,7 @@ const RavineCoffee = () => {
   const router = useRouter();
 
   const media = [
-    { type: "image", src: "/assets/img/ravine-bg.png" },
+    { type: "image", src: "/assets/img/ravine-bg.webp" },
     { type: "video", src: "/assets/video/ravine-1.mp4" },
     { type: "video", src: "/assets/video/ravine-2.mp4" },
     { type: "video", src: "/assets/video/ravine-3.mp4" },

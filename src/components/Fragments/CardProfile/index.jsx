@@ -117,29 +117,21 @@ const CardProfile = (props) => {
           </a>
         </div>
 
-        <div className="flex justify-center gap-3 mb-7 text-xs">
+        <div
+          className={`mb-7 text-xs leading-relaxed ${
+            theme == "black" ? "text-[#999999]" : "text-slate-500"
+          }`}
+        >
+          <p className="mb-2">
+            Know someone looking for a fullstack developer?
+          </p>
           <a
             href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.ubaydillah.tech%2F"
             target="_blank"
             rel="noreferrer"
-            className={`transition hover:underline ${
-              theme == "black" ? "text-[#999999]" : "text-slate-500"
-            }`}
+            className="font-medium transition hover:underline"
           >
-            Share on LinkedIn
-          </a>
-          <span className={theme == "black" ? "text-[#555]" : "text-slate-300"}>
-            /
-          </span>
-          <a
-            href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.ubaydillah.tech%2F&text=Ubay%20Dillah%20-%20Fullstack%20Web%20Developer"
-            target="_blank"
-            rel="noreferrer"
-            className={`transition hover:underline ${
-              theme == "black" ? "text-[#999999]" : "text-slate-500"
-            }`}
-          >
-            Share on X
+            Share this portfolio on LinkedIn
           </a>
         </div>
 

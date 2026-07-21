@@ -9,7 +9,7 @@ const Linea = () => {
   const { theme } = useContext(DarkMode);
   const router = useRouter();
 
-  const coverImage = "/assets/img/linea.png";
+  const coverImage = "/assets/img/linea.webp";
 
   return (
     <div className="max-w-[900px] mx-auto px-4 py-10">
