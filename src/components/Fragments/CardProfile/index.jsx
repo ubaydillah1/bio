@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import Image from "next/image";
 import Button from "../../Elements/Button";
 import { DarkMode } from "../../../contexts/DarkMode";
 import { useLocale } from "../../../contexts/LocaleContext";
@@ -54,13 +55,14 @@ const CardProfile = (props) => {
       </div>
 
       <div className="mt-7 w-full px-[10px]">
-        <img
+        <Image
           src="/assets/img/mySelf.webp"
           alt="Ubay Dillah, Fullstack Web Developer Indonesia"
-          fetchPriority="high"
-          loading="eager"
-          decoding="async"
-          className="rounded-[30px] object-cover h-full w-full mx-auto lg:max-h-[230px]"
+          width={2500}
+          height={2500}
+          preload
+          sizes="(min-width: 1024px) 230px, (min-width: 640px) 300px, calc(100vw - 100px)"
+          className="mx-auto h-auto w-full rounded-[30px] object-cover lg:max-h-[230px]"
         />
       </div>
 

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const PortfolioBox = (props) => {
   const { children, src, href, onClick, underDev = false } = props;
@@ -33,21 +34,25 @@ const PortfolioBox = (props) => {
           </div>
         )}
 
-        <img
+        <Image
           src="/assets/img/porto-bg.webp"
           alt=""
+          fill
           loading="lazy"
-          decoding="async"
+          sizes="(min-width: 1280px) 800px, (min-width: 768px) 70vw, 90vw"
           className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-300"
         />
 
-        <img
-          src={src}
-          alt={`${children} portfolio preview`}
-          loading="lazy"
-          decoding="async"
-          className="absolute left-1/2 top-[45%] -translate-x-1/2 -translate-y-1/2 w-3/4 max-h-[82%] object-contain transition duration-300 group-hover:scale-110"
-        />
+        <div className="absolute left-1/2 top-[45%] h-[82%] w-3/4 -translate-x-1/2 -translate-y-1/2 transition duration-300 group-hover:scale-110">
+          <Image
+            src={src}
+            alt={`${children} portfolio preview`}
+            fill
+            loading="lazy"
+            sizes="(min-width: 1280px) 600px, (min-width: 768px) 52vw, 68vw"
+            className="object-contain"
+          />
+        </div>
       </div>
 
       <p className="mt-5 text-[24px]">{children}</p>
