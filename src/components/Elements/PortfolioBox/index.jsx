@@ -19,12 +19,16 @@ const PortfolioBox = (props) => {
         <img
           src="/assets/img/porto-bg.png"
           alt="Portfolio preview background"
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
         />
 
         <img
           src={src}
           alt={`${children} portfolio preview`}
+          loading="lazy"
+          decoding="async"
           className="absolute left-1/2 top-[45%] -translate-x-1/2 -translate-y-1/2 w-3/4 transition duration-300 group-hover:scale-110"
         />
       </div>

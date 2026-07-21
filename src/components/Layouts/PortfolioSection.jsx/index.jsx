@@ -1,16 +1,62 @@
 import PortfolioBox from "../../Elements/PortfolioBox";
 import Badge from "../../Elements/Badge";
-import { useContext } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { DarkMode } from "../../../contexts/DarkMode";
+
+const LazyPortfolioVideo = ({ src }) => {
+  const containerRef = useRef(null);
+  const [shouldLoad, setShouldLoad] = useState(false);
+
+  useEffect(() => {
+    if (shouldLoad || !containerRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoad(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "500px 0px" }
+    );
+
+    observer.observe(containerRef.current);
+
+    return () => observer.disconnect();
+  }, [shouldLoad]);
+
+  return (
+    <div
+      ref={containerRef}
+      className="w-full aspect-video rounded-[20px] overflow-hidden relative bg-black"
+    >
+      <img
+        src="/assets/img/porto-bg.png"
+        alt=""
+        loading="lazy"
+        decoding="async"
+        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-300"
+      />
+      {shouldLoad && (
+        <video
+          src={src}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-300"
+        />
+      )}
+    </div>
+  );
+};
 
 const PortfolioSection = () => {
   const { theme } = useContext(DarkMode);
 
   return (
-    <section
-      className="lg:ml-[300px] w-full mt-[40px]"
-      id="portfolio"
-    >
+    <section className="lg:ml-[300px] w-full mt-[40px]">
       <Badge className="lg:my-10 my-5 px-3 gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -41,16 +87,7 @@ const PortfolioSection = () => {
           href="/orbichat"
           className="w-full h-full relative group cursor-pointer"
         >
-          <div className="w-full h-full rounded-[20px] overflow-hidden relative">
-            <video
-              src="/assets/video/orbi-video.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-            />
-          </div>
+          <LazyPortfolioVideo src="/assets/video/orbi-video.mp4" />
           <p className="mt-5 text-[24px]">
             OrbiChat - AI Chatbot Platform for Business
           </p>

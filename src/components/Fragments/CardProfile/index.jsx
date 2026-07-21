@@ -57,7 +57,7 @@ const CardProfile = (props) => {
           alt="Ubay Dillah, Fullstack Web Developer Indonesia"
           fetchPriority="high"
           loading="eager"
-          decoding="sync"
+          decoding="async"
           className="rounded-[30px] object-cover h-full w-full mx-auto lg:max-h-[230px]"
         />
       </div>

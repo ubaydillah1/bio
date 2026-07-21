@@ -4,6 +4,7 @@ import ThemeIcon from "../components/Elements/ThemeIcon";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useContext, useRef } from "react";
+import { useLenis } from "lenis/react";
 import { DarkMode } from "../contexts/DarkMode";
 import CardProfile from "../components/Fragments/CardProfile";
 import Navigation from "../components/Fragments/Navigation";
@@ -19,6 +20,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 function HomePage() {
   const { theme } = useContext(DarkMode);
+  const lenis = useLenis();
 
   const aboutRef = useRef(null);
   const heroRef = useRef(null);
@@ -27,18 +29,25 @@ function HomePage() {
   const contactRef = useRef(null);
   const resumeRef = useRef(null);
 
-  const scrollToSection = (ref) => {
-    if (ref && ref.current) {
-      ref.current.scrollIntoView({ behavior: "smooth" });
+  const scrollToSection = (ref, id) => {
+    if (ref?.current) {
+      window.history.pushState(null, "", `#${id}`);
+
+      if (lenis) {
+        lenis.scrollTo(ref.current);
+        return;
+      }
+
+      ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
   const handleToContact = () => {
-    contactRef.current.scrollIntoView({ behavior: "smooth" });
+    scrollToSection(contactRef, "contact");
   };
 
   const handleToProject = () => {
-    portfolioRef.current.scrollIntoView({ behavior: "smooth" });
+    scrollToSection(portfolioRef, "portfolio");
   };
 
   return (
@@ -69,23 +78,23 @@ function HomePage() {
         }`}
       >
         <CardProfile onClickToContact={handleToContact} />
-        <div ref={heroRef}>
+        <div ref={heroRef} id="hero" className="scroll-mt-8">
           <HeroSection onClickToProject={handleToProject} />
         </div>
-        <div ref={aboutRef}>
+        <div ref={aboutRef} id="about" className="scroll-mt-8">
           <AboutSection />
         </div>
-        <div ref={resumeRef}>
+        <div ref={resumeRef} id="resume" className="scroll-mt-8">
           <ResumeSection />
         </div>
-        <div ref={skillsRef}>
+        <div ref={skillsRef} id="skills" className="scroll-mt-8">
           <SkillsSection />
         </div>
-        <div ref={portfolioRef}>
+        <div ref={portfolioRef} id="portfolio" className="scroll-mt-8">
           <PortfolioSection />
         </div>
 
-        <div ref={contactRef}>
+        <div ref={contactRef} id="contact" className="scroll-mt-8">
           <ContactSection />
         </div>
       </main>

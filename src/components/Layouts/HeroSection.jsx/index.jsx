@@ -8,7 +8,7 @@ const HeroSection = (props) => {
 
   const { theme } = useContext(DarkMode);
   return (
-    <section className="lg:ml-[300px] w-full" id="hero">
+    <section className="lg:ml-[300px] w-full">
       <Badge className="lg:my-10 my-5 px-3 gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"

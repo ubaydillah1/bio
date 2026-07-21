@@ -55,32 +55,50 @@ const Navigation = ({ scrollToSection, sections }) => {
     {
       key: "hero",
       icon: <Home className="size-[18px] sm:size-[20px]" color={getIconColor("hero")} />,
-      action: () => scrollToSection(sections.hero),
+      action: (event) => {
+        event.preventDefault();
+        scrollToSection(sections.hero, "hero");
+      },
     },
     {
       key: "about",
       icon: <User className="size-[18px] sm:size-[20px]" color={getIconColor("about")} />,
-      action: () => scrollToSection(sections.about),
+      action: (event) => {
+        event.preventDefault();
+        scrollToSection(sections.about, "about");
+      },
     },
     {
       key: "resume",
       icon: <FileText className="size-[18px] sm:size-[20px]" color={getIconColor("resume")} />,
-      action: () => scrollToSection(sections.resume),
+      action: (event) => {
+        event.preventDefault();
+        scrollToSection(sections.resume, "resume");
+      },
     },
     {
       key: "skills",
       icon: <Wrench className="size-[18px] sm:size-[20px]" color={getIconColor("skills")} />,
-      action: () => scrollToSection(sections.skills),
+      action: (event) => {
+        event.preventDefault();
+        scrollToSection(sections.skills, "skills");
+      },
     },
     {
       key: "portfolio",
       icon: <Briefcase className="size-[18px] sm:size-[20px]" color={getIconColor("portfolio")} />,
-      action: () => scrollToSection(sections.portfolio),
+      action: (event) => {
+        event.preventDefault();
+        scrollToSection(sections.portfolio, "portfolio");
+      },
     },
     {
       key: "contact",
       icon: <MessageCircle className="size-[18px] sm:size-[20px]" color={getIconColor("contact")} />,
-      action: () => scrollToSection(sections.contact),
+      action: (event) => {
+        event.preventDefault();
+        scrollToSection(sections.contact, "contact");
+      },
     },
   ];
 
@@ -95,8 +113,9 @@ const Navigation = ({ scrollToSection, sections }) => {
       `}
     >
       {navItems.map((item, index) => (
-        <button
+        <a
           key={index}
+          href={`#${item.key}`}
           onClick={item.action}
           className={`transition-all duration-300 hover:scale-125 focus:outline-none ${
             activeSection === item.key ? "scale-110" : "opacity-70 hover:opacity-100"
@@ -104,7 +123,7 @@ const Navigation = ({ scrollToSection, sections }) => {
           aria-label={`Scroll to ${item.key} section`}
         >
           {item.icon}
-        </button>
+        </a>
       ))}
     </nav>
   );
