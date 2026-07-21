@@ -14,7 +14,7 @@ const AboutSection = () => {
           xmlns="http://www.w3.org/2000/svg"
           width="20"
           height="20"
-          fill={theme === "black" ? "white" : "#2f241a"}
+          fill={theme === "black" ? "white" : "#2d2a25"}
           viewBox="0 0 256 256"
         >
           <path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path>
@@ -35,7 +35,7 @@ const AboutSection = () => {
 
       <div
         className={`text-[17px] lg:text-[19px] leading-relaxed lg:my-10 my-8 space-y-6 ${
-          theme == "black" ? "text-[#999999]" : "text-[#7a5b42]"
+          theme == "black" ? "text-[#999999]" : "text-[#4f4a42]"
         }`}
       >
         {t.about.paragraphs.map((paragraph) => (
@@ -51,7 +51,7 @@ const AboutSection = () => {
             1+
           </h3>
           <p
-            className={`text-xs uppercase tracking-widest mt-3 font-semibold ${theme === "black" ? "text-[#666]" : "text-[#9a6b43]"}`}
+            className={`text-xs uppercase tracking-widest mt-3 font-semibold ${theme === "black" ? "text-[#666]" : "text-[#756f64]"}`}
           >
             {t.about.experience}
           </p>
@@ -63,7 +63,7 @@ const AboutSection = () => {
             7+
           </h3>
           <p
-            className={`text-xs uppercase tracking-widest mt-3 font-semibold ${theme === "black" ? "text-[#666]" : "text-[#9a6b43]"}`}
+            className={`text-xs uppercase tracking-widest mt-3 font-semibold ${theme === "black" ? "text-[#666]" : "text-[#756f64]"}`}
           >
             {t.about.projects}
           </p>

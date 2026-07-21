@@ -1,15 +1,15 @@
 "use client";
 
 import { useContext } from "react";
-import { useRouter } from "next/navigation";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { DarkMode } from "../contexts/DarkMode";
 import { useLocale } from "../contexts/LocaleContext";
+import { useProjectNavigation } from "../hooks/useProjectNavigation";
 
 const MaduraKita = () => {
   const { theme } = useContext(DarkMode);
   const { locale, t } = useLocale();
-  const router = useRouter();
+  const { backToPortfolio } = useProjectNavigation(theme);
 
   const coverImage = "/assets/img/madura-1.jpg";
 
@@ -17,11 +17,11 @@ const MaduraKita = () => {
     <div className="max-w-[900px] mx-auto px-4 py-10">
       {/* Back Button */}
       <button
-        onClick={() => router.back()}
+        onClick={backToPortfolio}
         className={`flex items-center gap-2 text-sm transition mb-6 ${
           theme === "black"
             ? "text-[#999999] hover:text-white"
-            : "text-slate-500 hover:text-black"
+            : "text-[#5a554c] hover:text-[#2d2a25]"
         }`}
       >
         <ArrowLeft size={18} />
@@ -33,7 +33,7 @@ const MaduraKita = () => {
         <div>
           <h1
             className={`text-[40px] font-semibold mb-2 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {locale === "id"
@@ -42,7 +42,7 @@ const MaduraKita = () => {
           </h1>
           <p
             className={`text-base ${
-              theme === "black" ? "text-[#999999]" : "text-slate-500"
+              theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"
             }`}
           >
             {locale === "id"
@@ -65,7 +65,7 @@ const MaduraKita = () => {
       <div className="mt-10 border-t pt-8 space-y-4">
         <h2
           className={`text-[26px] font-semibold ${
-            theme === "black" ? "text-white" : "text-black"
+            theme === "black" ? "text-white" : "text-[#2d2a25]"
           }`}
         >
           {t.project.try}
@@ -79,7 +79,7 @@ const MaduraKita = () => {
             className={`flex items-center gap-2 text-sm border rounded-lg px-4 py-2 transition ${
               theme === "black"
                 ? "border-[#444] text-[#ccc] hover:bg-[#1a1a1a]"
-                : "border-slate-300 text-slate-700 hover:bg-slate-100"
+                : "border-[#cfc3b0] text-[#3f3a33] hover:bg-[#e9e1d2]"
             }`}
           >
             {t.project.visitWebsite}
@@ -93,7 +93,7 @@ const MaduraKita = () => {
             className={`flex items-center gap-2 text-sm border rounded-lg px-4 py-2 transition ${
               theme === "black"
                 ? "border-[#444] text-[#ccc] hover:bg-[#1a1a1a]"
-                : "border-slate-300 text-slate-700 hover:bg-slate-100"
+                : "border-[#cfc3b0] text-[#3f3a33] hover:bg-[#e9e1d2]"
             }`}
           >
             {t.project.github}
@@ -107,14 +107,14 @@ const MaduraKita = () => {
         <section>
           <h2
             className={`text-[28px] font-semibold mb-2 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {t.project.about}
           </h2>
           <p
             className={`text-base text-justify ${
-              theme === "black" ? "text-[#999999]" : "text-slate-500"
+              theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"
             }`}
           >
             {locale === "id" ? (
@@ -146,14 +146,14 @@ const MaduraKita = () => {
         <section>
           <h2
             className={`text-[28px] font-semibold mb-2 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {t.project.technology}
           </h2>
           <p
             className={`text-base text-justify ${
-              theme === "black" ? "text-[#999999]" : "text-slate-500"
+              theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"
             }`}
           >
             {locale === "id" ? (
@@ -183,14 +183,14 @@ const MaduraKita = () => {
         <section>
           <h2
             className={`text-[28px] font-semibold mb-2 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {locale === "id" ? "Tujuan Project" : "Project Objective"}
           </h2>
           <p
             className={`text-base text-justify ${
-              theme === "black" ? "text-[#999999]" : "text-slate-500"
+              theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"
             }`}
           >
             {locale === "id" ? (
@@ -219,14 +219,14 @@ const MaduraKita = () => {
         <section>
           <h2
             className={`text-[28px] font-semibold mb-2 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {t.project.challenges}
           </h2>
           <p
             className={`text-base text-justify ${
-              theme === "black" ? "text-[#999999]" : "text-slate-500"
+              theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"
             }`}
           >
             {locale === "id" ? (
@@ -255,14 +255,14 @@ const MaduraKita = () => {
         <div>
           <h2
             className={`text-[28px] font-semibold mb-2 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {t.project.keyStack}
           </h2>
           <p
             className={`text-base ${
-              theme === "black" ? "text-[#999999]" : "text-slate-500"
+              theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"
             }`}
           >
             <b>Next.js, TypeScript, Tailwind CSS, Framer Motion, Vercel</b>

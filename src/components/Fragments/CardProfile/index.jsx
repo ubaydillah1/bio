@@ -26,23 +26,23 @@ const CardProfile = (props) => {
         : "border-primary-light"
       : theme === "black"
       ? "border-[#999]"
-      : "border-[#9a6b43]";
+      : "border-[#b8ad9c]";
   };
 
   const fillStroke = (bool) => {
     return bool
       ? theme === "black"
         ? "#28e98c"
-        : "#c46a2d"
+        : "#496e66"
       : theme === "black"
       ? "#94a3b8"
-      : "#2f241a";
+      : "#2d2a25";
   };
 
   return (
     <div
       className={`bio-card border-[1px] lg:max-w-[350px] w-full px-8 py-7 rounded-[30px] lg:fixed sticky lg:left-[80px] ${
-        theme == "black" ? "border-[#FFFFFF66]" : "border-[#9a6b43]/80 bg-[#fff7ed]/35"
+        theme == "black" ? "border-[#FFFFFF66]" : "border-[#b8ad9c]/75 bg-[#f7f2e9]/55"
       }`}
     >
       <div className="flex justify-between">
@@ -121,7 +121,7 @@ const CardProfile = (props) => {
 
         <div
           className={`mb-7 text-xs leading-relaxed ${
-            theme == "black" ? "text-[#999999]" : "text-[#7a5b42]"
+            theme == "black" ? "text-[#999999]" : "text-[#4f4a42]"
           }`}
         >
           <p className="mb-2">
@@ -154,7 +154,7 @@ const CardProfile = (props) => {
 
         <p
           className={`text-sm mt-7 w-[90%] mx-auto ${
-            theme == "black" ? "text-[#999999]" : "text-[#7a5b42]"
+            theme == "black" ? "text-[#999999]" : "text-[#5a554c]"
           }`}
         >
           © 2026 Ubay Dillah. All Rights Reserved

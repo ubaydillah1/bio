@@ -42,10 +42,8 @@
   }
 
   html[data-theme="winter"] body {
-    background:
-      radial-gradient(circle at 12% 8%, rgba(196, 106, 45, 0.12), transparent 28rem),
-      linear-gradient(180deg, #fff7ed 0%, #f8ead8 100%);
-    color: #2f241a;
+    background: linear-gradient(180deg, #f7f2e9 0%, #eee6d8 100%);
+    color: #2d2a25;
   }
 }
 
@@ -56,8 +54,8 @@
   }
 
   .neon-light {
-    filter: drop-shadow(0 0 2px #c46a2d88) drop-shadow(0 0 2px #c46a2d2a);
-    fill: #c46a2d;
+    filter: drop-shadow(0 0 2px #496e6655);
+    fill: #496e66;
   }
 
   .font-blog-sans {

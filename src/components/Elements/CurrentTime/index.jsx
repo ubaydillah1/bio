@@ -22,7 +22,7 @@ const CurrentTime = () => {
   return (
     <div
       className={`flex gap-3 items-center ${
-        theme != "black" && "text-[#2f241a]"
+        theme != "black" && "text-[#2d2a25]"
       }  lg:flex hidden`}
     >
       <span className="font-mono text-xl">

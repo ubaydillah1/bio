@@ -14,7 +14,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        "primary-light": "#c46a2d",
+        "primary-light": "#496e66",
         "primary-dark": "#28e98c",
       },
       keyframes: {
@@ -34,14 +34,14 @@ export default {
       "black",
       {
         winter: {
-          primary: "#c46a2d",
-          secondary: "#8f5d2e",
+          primary: "#496e66",
+          secondary: "#5f7f78",
           accent: "#256d85",
-          neutral: "#2f241a",
-          "base-100": "#fff7ed",
-          "base-200": "#f8ead8",
-          "base-300": "#ead7bd",
-          "base-content": "#2f241a",
+          neutral: "#2d2a25",
+          "base-100": "#f7f2e9",
+          "base-200": "#eee6d8",
+          "base-300": "#d9cebd",
+          "base-content": "#2d2a25",
           info: "#256d85",
           success: "#4f7f52",
           warning: "#b7791f",

@@ -41,12 +41,12 @@ const ResumeSection = () => {
           } ${
             theme === "black"
               ? "bg-gradient-to-b from-[#444] to-transparent"
-              : "bg-gradient-to-b from-[#d8bea0] to-transparent"
+              : "bg-gradient-to-b from-[#cfc3b0] to-transparent"
           } transition-all duration-500 ${
             isActive
               ? theme === "black"
                 ? "from-emerald-500"
-                : "from-[#c46a2d]"
+                : "from-[#496e66]"
               : ""
           }`}
         />
@@ -55,12 +55,12 @@ const ResumeSection = () => {
           className={`absolute left-0 top-2 h-4 w-4 rounded-full z-10 border-4 transition-all duration-500 ${
             theme === "black"
               ? "bg-white border-[#1a1a1a]"
-              : "bg-[#2f241a] border-[#fff7ed]"
+              : "bg-[#2d2a25] border-[#f7f2e9]"
           } ${isActive ? "scale-125" : "scale-100"} ${
             isActive
               ? theme === "black"
                 ? "bg-emerald-500"
-                : "bg-[#c46a2d]"
+                : "bg-[#496e66]"
               : ""
           }`}
         />
@@ -71,7 +71,7 @@ const ResumeSection = () => {
               className={`text-[13px] font-medium px-3 py-0.5 rounded-full ${
                 theme === "black"
                   ? "bg-[#1a1a1a] text-[#888] border border-[#333]"
-                  : "bg-[#f3dfc5] text-[#7a5b42] border border-[#d8bea0]"
+                  : "bg-[#e9e1d2] text-[#4f4a42] border border-[#cfc3b0]"
               }`}
             >
               {item.date}
@@ -79,7 +79,7 @@ const ResumeSection = () => {
             {item.type && (
               <span
                 className={`text-[12px] font-bold uppercase tracking-widest ${
-                  theme === "black" ? "text-emerald-400" : "text-[#c46a2d]"
+                  theme === "black" ? "text-emerald-400" : "text-[#496e66]"
                 }`}
               >
                 &bull; {item.type}
@@ -89,7 +89,7 @@ const ResumeSection = () => {
 
           <h3
             className={`text-[24px] font-bold ${
-              theme === "black" ? "text-white" : "text-[#2f241a]"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {item.company || item.institution}
@@ -98,7 +98,7 @@ const ResumeSection = () => {
           {item.location && (
             <p
               className={`text-[14px] mt-1 ${
-                theme === "black" ? "text-[#666]" : "text-[#8f6b50]"
+                theme === "black" ? "text-[#666]" : "text-[#5a554c]"
               }`}
             >
               {item.location}
@@ -109,7 +109,7 @@ const ResumeSection = () => {
             <div key={index} className="mt-4">
               <h4
                 className={`text-[19px] font-semibold mb-3 ${
-                  theme === "black" ? "text-[#ddd]" : "text-[#3d2e20]"
+                  theme === "black" ? "text-[#ddd]" : "text-[#2f2b25]"
                 }`}
               >
                 {role.title}
@@ -123,12 +123,12 @@ const ResumeSection = () => {
                         className={`mt-2 h-1.5 w-1.5 rounded-full shrink-0 ${
                           theme === "black"
                             ? "bg-emerald-500/50"
-                            : "bg-[#c46a2d]/40"
+                            : "bg-[#496e66]/45"
                         }`}
                       />
                       <p
                         className={`text-[15px] leading-relaxed ${
-                          theme === "black" ? "text-[#aaa]" : "text-[#7a5b42]"
+                          theme === "black" ? "text-[#aaa]" : "text-[#4f4a42]"
                         }`}
                       >
                         {point}
@@ -139,7 +139,7 @@ const ResumeSection = () => {
               ) : (
                 <p
                   className={`text-[15px] leading-relaxed whitespace-pre-line ${
-                    theme === "black" ? "text-[#aaa]" : "text-[#7a5b42]"
+                    theme === "black" ? "text-[#aaa]" : "text-[#4f4a42]"
                   }`}
                 >
                   {role.description}
@@ -156,8 +156,8 @@ const ResumeSection = () => {
                           ? `bg-[#0a0a0a] border-[#222] text-[#777] ${
                               isActive ? "border-emerald-500/50 text-[#999]" : ""
                             }`
-                          : `bg-[#fff7ed]/70 border-[#ead7bd] text-[#8f6b50] ${
-                              isActive ? "border-[#c46a2d]/60 text-[#3d2e20]" : ""
+                          : `bg-[#f7f2e9]/75 border-[#d9cebd] text-[#5a554c] ${
+                              isActive ? "border-[#496e66]/60 text-[#2d2a25]" : ""
                             }`
                       }`}
                     >
@@ -177,7 +177,7 @@ const ResumeSection = () => {
     <div>
       <h2
         className={`sm:text-[40px] text-[32px] mb-12 font-bold ${
-          theme === "black" ? "text-white" : "text-[#2f241a]"
+          theme === "black" ? "text-white" : "text-[#2d2a25]"
         }`}
       >
         {title}

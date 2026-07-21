@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useContext, useEffect, useCallback } from "react";
-import { useRouter } from "next/navigation";
 import {
   ArrowLeft,
   ChevronLeft,
@@ -19,13 +18,14 @@ import {
 } from "lucide-react";
 import { DarkMode } from "../contexts/DarkMode";
 import { useLocale } from "../contexts/LocaleContext";
+import { useProjectNavigation } from "../hooks/useProjectNavigation";
 
 const RavineCoffee = () => {
   const [showViewer, setShowViewer] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const { theme } = useContext(DarkMode);
   const { locale, t } = useLocale();
-  const router = useRouter();
+  const { backToPortfolio } = useProjectNavigation(theme);
 
   const media = [
     { type: "image", src: "/assets/img/ravine-bg.webp" },
@@ -69,11 +69,11 @@ const RavineCoffee = () => {
     <div className="max-w-[900px] mx-auto px-4 py-10">
       {/* Back Button */}
       <button
-        onClick={() => router.back()}
+        onClick={backToPortfolio}
         className={`flex items-center gap-2 text-sm transition mb-6 ${
           theme === "black"
             ? "text-[#999999] hover:text-white"
-            : "text-slate-500 hover:text-black"
+            : "text-[#5a554c] hover:text-[#2d2a25]"
         }`}
       >
         <ArrowLeft size={18} />
@@ -85,7 +85,7 @@ const RavineCoffee = () => {
         <div>
           <h1
             className={`text-[40px] font-semibold mb-2 max-w-[90%] ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {locale === "id"
@@ -93,7 +93,7 @@ const RavineCoffee = () => {
               : "Ravine Coffee - Cafe Order Management System"}
           </h1>
           <div className="flex items-center gap-2">
-            <span className={`px-3 py-1 text-xs font-semibold rounded-full ${theme === "black" ? "bg-blue-500/20 text-blue-400 border border-blue-500/30" : "bg-blue-100 text-blue-700 border border-blue-200"}`}>
+            <span className={`px-3 py-1 text-xs font-semibold rounded-full ${theme === "black" ? "bg-blue-500/20 text-blue-400 border border-blue-500/30" : "bg-[#e3edf0] text-[#3d6874] border border-[#bfd0d5]"}`}>
               {locale === "id" ? "Project Portfolio" : "Portfolio Project"}
             </span>
           </div>
@@ -155,29 +155,29 @@ const RavineCoffee = () => {
       </div>
 
       {/* Quick Stats Box */}
-      <div className={`mt-10 p-6 rounded-2xl border flex flex-wrap gap-8 justify-around ${theme === "black" ? "border-[#333] bg-[#121212]" : "border-slate-200 bg-slate-50"}`}>
+      <div className={`mt-10 p-6 rounded-2xl border flex flex-wrap gap-8 justify-around ${theme === "black" ? "border-[#333] bg-[#121212]" : "border-[#cfc3b0] bg-[#f1eadf]"}`}>
         <div className="text-center">
-          <div className={`flex items-center justify-center mb-2 ${theme === "black" ? "text-blue-400" : "text-blue-600"}`}>
+          <div className={`flex items-center justify-center mb-2 ${theme === "black" ? "text-blue-400" : "text-[#3d6874]"}`}>
             <Users size={24} />
           </div>
-          <div className={`text-2xl font-bold ${theme === "black" ? "text-white" : "text-black"}`}>{locale === "id" ? "3 Role" : "3 Roles"}</div>
-          <div className={`text-xs uppercase tracking-widest ${theme === "black" ? "text-[#888]" : "text-slate-400"}`}>{locale === "id" ? "Customer/Kasir/Admin" : "Customer/Cashier/Admin"}</div>
+          <div className={`text-2xl font-bold ${theme === "black" ? "text-white" : "text-[#2d2a25]"}`}>{locale === "id" ? "3 Role" : "3 Roles"}</div>
+          <div className={`text-xs uppercase tracking-widest ${theme === "black" ? "text-[#888]" : "text-[#756f64]"}`}>{locale === "id" ? "Customer/Kasir/Admin" : "Customer/Cashier/Admin"}</div>
         </div>
         <div className="w-px h-12 bg-current opacity-10 hidden sm:block"></div>
         <div className="text-center">
-          <div className={`flex items-center justify-center mb-2 ${theme === "black" ? "text-green-400" : "text-green-600"}`}>
+          <div className={`flex items-center justify-center mb-2 ${theme === "black" ? "text-green-400" : "text-[#496e66]"}`}>
             <CreditCard size={24} />
           </div>
-          <div className={`text-2xl font-bold ${theme === "black" ? "text-white" : "text-black"}`}>QRIS</div>
-          <div className={`text-xs uppercase tracking-widest ${theme === "black" ? "text-[#888]" : "text-slate-400"}`}>{locale === "id" ? "Integrasi Midtrans" : "Midtrans Integration"}</div>
+          <div className={`text-2xl font-bold ${theme === "black" ? "text-white" : "text-[#2d2a25]"}`}>QRIS</div>
+          <div className={`text-xs uppercase tracking-widest ${theme === "black" ? "text-[#888]" : "text-[#756f64]"}`}>{locale === "id" ? "Integrasi Midtrans" : "Midtrans Integration"}</div>
         </div>
         <div className="w-px h-12 bg-current opacity-10 hidden sm:block"></div>
         <div className="text-center">
-          <div className={`flex items-center justify-center mb-2 ${theme === "black" ? "text-purple-400" : "text-purple-600"}`}>
+          <div className={`flex items-center justify-center mb-2 ${theme === "black" ? "text-purple-400" : "text-[#6b5d7c]"}`}>
             <Server size={24} />
           </div>
-          <div className={`text-2xl font-bold ${theme === "black" ? "text-white" : "text-black"}`}>Fullstack</div>
-          <div className={`text-xs uppercase tracking-widest ${theme === "black" ? "text-[#888]" : "text-slate-400"}`}>{locale === "id" ? "Deploy End-to-End" : "End-to-End Deploy"}</div>
+          <div className={`text-2xl font-bold ${theme === "black" ? "text-white" : "text-[#2d2a25]"}`}>Fullstack</div>
+          <div className={`text-xs uppercase tracking-widest ${theme === "black" ? "text-[#888]" : "text-[#756f64]"}`}>{locale === "id" ? "Deploy End-to-End" : "End-to-End Deploy"}</div>
         </div>
       </div>
 
@@ -226,7 +226,7 @@ const RavineCoffee = () => {
       <div className="mt-10 border-t pt-8 space-y-4">
         <h2
           className={`text-[26px] font-semibold ${
-            theme === "black" ? "text-white" : "text-black"
+            theme === "black" ? "text-white" : "text-[#2d2a25]"
           }`}
         >
           {t.project.try}
@@ -240,7 +240,7 @@ const RavineCoffee = () => {
             className={`flex items-center gap-2 text-sm whitespace-nowrap border rounded-lg px-4 py-2 transition w-fit ${
               theme === "black"
                 ? "border-[#444] text-[#ccc] hover:bg-[#1a1a1a]"
-                : "border-slate-300 text-slate-700 hover:bg-slate-100"
+                : "border-[#cfc3b0] text-[#3f3a33] hover:bg-[#e9e1d2]"
             }`}
           >
             {locale === "id" ? "Kunjungi Website (User)" : "Visit Website (User)"}
@@ -254,7 +254,7 @@ const RavineCoffee = () => {
             className={`flex items-center gap-2 text-sm whitespace-nowrap border rounded-lg px-4 py-2 transition w-fit ${
               theme === "black"
                 ? "border-[#444] text-[#ccc] hover:bg-[#1a1a1a]"
-                : "border-slate-300 text-slate-700 hover:bg-slate-100"
+                : "border-[#cfc3b0] text-[#3f3a33] hover:bg-[#e9e1d2]"
             }`}
           >
             {locale === "id" ? "Kunjungi Login (Admin/Kasir)" : "Visit Login (Admin/Cashier)"}
@@ -268,7 +268,7 @@ const RavineCoffee = () => {
             className={`flex items-center gap-2 text-sm whitespace-nowrap border rounded-lg px-4 py-2 transition w-fit ${
               theme === "black"
                 ? "border-[#444] text-[#ccc] hover:bg-[#1a1a1a]"
-                : "border-slate-300 text-slate-700 hover:bg-slate-100"
+                : "border-[#cfc3b0] text-[#3f3a33] hover:bg-[#e9e1d2]"
             }`}
           >
             Frontend Repo
@@ -282,7 +282,7 @@ const RavineCoffee = () => {
             className={`flex items-center gap-2 text-sm whitespace-nowrap border rounded-lg px-4 py-2 transition w-fit ${
               theme === "black"
                 ? "border-[#444] text-[#ccc] hover:bg-[#1a1a1a]"
-                : "border-slate-300 text-slate-700 hover:bg-slate-100"
+                : "border-[#cfc3b0] text-[#3f3a33] hover:bg-[#e9e1d2]"
             }`}
           >
             {locale === "id" ? "Repo Backend" : "Backend Repo"}
@@ -296,7 +296,7 @@ const RavineCoffee = () => {
             className={`flex items-center gap-2 text-sm whitespace-nowrap border rounded-lg px-4 py-2 transition w-fit ${
               theme === "black"
                 ? "border-[#444] text-[#ccc] hover:bg-[#1a1a1a]"
-                : "border-slate-300 text-slate-700 hover:bg-slate-100"
+                : "border-[#cfc3b0] text-[#3f3a33] hover:bg-[#e9e1d2]"
             }`}
           >
             Postman API Docs
@@ -308,7 +308,7 @@ const RavineCoffee = () => {
           className={`mt-4 p-4 rounded-xl border text-sm ${
             theme === "black"
               ? "border-[#333] bg-[#121212] text-[#aaa]"
-              : "border-slate-300 bg-slate-50 text-slate-700"
+              : "border-[#cfc3b0] bg-[#f1eadf] text-[#3f3a33]"
           }`}
         >
           <p className="mb-1 font-semibold">
@@ -344,14 +344,14 @@ const RavineCoffee = () => {
         <section>
           <h2
             className={`text-[28px] font-semibold mb-4 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {t.project.about}
           </h2>
           <p
             className={`text-base text-justify leading-relaxed ${
-              theme === "black" ? "text-[#999999]" : "text-slate-500"
+              theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"
             }`}
           >
             {locale === "id" ? (
@@ -380,10 +380,10 @@ const RavineCoffee = () => {
         </section>
 
         {/* Technical Architecture */}
-        <section className={`p-8 rounded-2xl border ${theme === "black" ? "border-[#333] bg-[#121212]" : "border-slate-200 bg-slate-50"}`}>
+        <section className={`p-8 rounded-2xl border ${theme === "black" ? "border-[#333] bg-[#121212]" : "border-[#cfc3b0] bg-[#f1eadf]"}`}>
           <h2
             className={`text-[28px] font-semibold mb-6 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {locale === "id"
@@ -394,12 +394,12 @@ const RavineCoffee = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <div className={`p-2 rounded-lg ${theme === "black" ? "bg-blue-500/10 text-blue-400" : "bg-blue-100 text-blue-600"}`}>
+                <div className={`p-2 rounded-lg ${theme === "black" ? "bg-blue-500/10 text-blue-400" : "bg-[#e3edf0] text-[#3d6874]"}`}>
                   <Layout size={24} />
                 </div>
-                <h3 className={`text-xl font-medium ${theme === "black" ? "text-white" : "text-black"}`}>{locale === "id" ? "Hybrid State Management" : "Hybrid State Management"}</h3>
+                <h3 className={`text-xl font-medium ${theme === "black" ? "text-white" : "text-[#2d2a25]"}`}>{locale === "id" ? "Hybrid State Management" : "Hybrid State Management"}</h3>
               </div>
-              <p className={`text-sm ${theme === "black" ? "text-[#999999]" : "text-slate-500"}`}>
+              <p className={`text-sm ${theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"}`}>
                 {locale === "id" ? (
                   <>
                     Menggabungkan <b>TanStack Query</b> untuk server state
@@ -420,12 +420,12 @@ const RavineCoffee = () => {
 
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <div className={`p-2 rounded-lg ${theme === "black" ? "bg-green-500/10 text-green-400" : "bg-green-100 text-green-600"}`}>
+                <div className={`p-2 rounded-lg ${theme === "black" ? "bg-green-500/10 text-green-400" : "bg-[#e4eee7] text-[#496e66]"}`}>
                   <Database size={24} />
                 </div>
-                <h3 className={`text-xl font-medium ${theme === "black" ? "text-white" : "text-black"}`}>{locale === "id" ? "Pola DB yang Resilient" : "Resilient DB Pattern"}</h3>
+                <h3 className={`text-xl font-medium ${theme === "black" ? "text-white" : "text-[#2d2a25]"}`}>{locale === "id" ? "Pola DB yang Resilient" : "Resilient DB Pattern"}</h3>
               </div>
-              <p className={`text-sm ${theme === "black" ? "text-[#999999]" : "text-slate-500"}`}>
+              <p className={`text-sm ${theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"}`}>
                 {locale === "id" ? (
                   <>
                     Menerapkan pola <b>Data Snapshotting</b> pada OrderItems.
@@ -446,16 +446,16 @@ const RavineCoffee = () => {
             </div>
           </div>
 
-          <div className={`mt-8 p-4 rounded-xl border border-dashed ${theme === "black" ? "border-[#444] text-[#888]" : "border-slate-300 text-slate-400"}`}>
+          <div className={`mt-8 p-4 rounded-xl border border-dashed ${theme === "black" ? "border-[#444] text-[#888]" : "border-[#cfc3b0] text-[#756f64]"}`}>
             <p className="text-center font-mono text-xs uppercase tracking-widest mb-4">{locale === "id" ? "Workflow Order dan Payment" : "Ordering & Payment Workflow"}</p>
             <div className="flex flex-col items-center gap-2 text-sm md:text-base font-medium">
-              <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-white/5" : "bg-white shadow-sm border"}`}>{locale === "id" ? "Customer Scan QR dan Order" : "Customer Scans QR & Orders"}</div>
+              <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-white/5" : "bg-[#f7f2e9] border border-[#cfc3b0] shadow-none"}`}>{locale === "id" ? "Customer Scan QR dan Order" : "Customer Scans QR & Orders"}</div>
               <div className="h-4 w-px bg-current opacity-20"></div>
-              <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-blue-500/10 border-blue-500/20" : "bg-blue-50 border-blue-200"}`}>{locale === "id" ? "Payment QRIS Midtrans -> Webhook" : "Midtrans QRIS Payment -> Webhook"}</div>
+              <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-blue-500/10 border-blue-500/20" : "bg-[#e3edf0] border-[#bfd0d5] text-[#3d6874]"}`}>{locale === "id" ? "Payment QRIS Midtrans -> Webhook" : "Midtrans QRIS Payment -> Webhook"}</div>
               <div className="h-4 w-px bg-current opacity-20"></div>
-              <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-green-500/10 border-green-500/20" : "bg-green-50 border-green-200"}`}>{locale === "id" ? "Backend Broadcast via WebSocket" : "Backend Broadcasts via WebSocket"}</div>
+              <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-green-500/10 border-green-500/20" : "bg-[#e4eee7] border-[#bdcfbf] text-[#496e66]"}`}>{locale === "id" ? "Backend Broadcast via WebSocket" : "Backend Broadcasts via WebSocket"}</div>
               <div className="h-4 w-px bg-current opacity-20"></div>
-              <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-purple-500/10 border-purple-500/20" : "bg-purple-50 border-purple-200"}`}>{locale === "id" ? "Kasir dan Kitchen Sinkron Instan" : "Cashier & Kitchen Sync Instantly"}</div>
+              <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-purple-500/10 border-purple-500/20" : "bg-[#ebe5ef] border-[#cec2d8] text-[#6b5d7c]"}`}>{locale === "id" ? "Kasir dan Kitchen Sinkron Instan" : "Cashier & Kitchen Sync Instantly"}</div>
             </div>
           </div>
         </section>
@@ -463,7 +463,7 @@ const RavineCoffee = () => {
         <section>
           <h2
             className={`text-[28px] font-semibold mb-6 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {t.project.features}
@@ -536,8 +536,8 @@ const RavineCoffee = () => {
               <div key={idx} className="flex gap-4">
                 <div className={`mt-1 flex-shrink-0 w-2 h-2 rounded-full ${theme === "black" ? "bg-primary-dark" : "bg-primary-light"}`}></div>
                 <div>
-                  <h4 className={`font-semibold mb-1 ${theme === "black" ? "text-white" : "text-black"}`}>{feature.title}</h4>
-                  <p className={`text-sm ${theme === "black" ? "text-[#999999]" : "text-slate-500"}`}>{feature.desc}</p>
+                  <h4 className={`font-semibold mb-1 ${theme === "black" ? "text-white" : "text-[#2d2a25]"}`}>{feature.title}</h4>
+                  <p className={`text-sm ${theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"}`}>{feature.desc}</p>
                 </div>
               </div>
             ))}
@@ -547,14 +547,14 @@ const RavineCoffee = () => {
         <section>
           <h2
             className={`text-[28px] font-semibold mb-2 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {t.project.challenges}
           </h2>
           <p
             className={`text-base text-justify ${
-              theme === "black" ? "text-[#999999]" : "text-slate-500"
+              theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"
             }`}
           >
             {locale === "id" ? (
@@ -591,10 +591,10 @@ const RavineCoffee = () => {
           </p>
         </section>
 
-        <div className="pt-10 border-t border-slate-200 dark:border-white/10">
+        <div className="pt-10 border-t border-[#cfc3b0] dark:border-white/10">
           <h2
             className={`text-[28px] font-semibold mb-6 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {locale === "id" ? "Stack Teknologi" : "Technology Stack"}
@@ -605,7 +605,7 @@ const RavineCoffee = () => {
                 <Layout size={18} className="text-primary-light dark:text-primary-dark" />
                 Frontend
               </div>
-              <ul className={`text-sm space-y-1 ${theme === "black" ? "text-[#999999]" : "text-slate-500"}`}>
+              <ul className={`text-sm space-y-1 ${theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"}`}>
                 <li>Next.js</li>
                 <li>TypeScript</li>
                 <li>TanStack Query</li>
@@ -617,7 +617,7 @@ const RavineCoffee = () => {
                 <Server size={18} className="text-primary-light dark:text-primary-dark" />
                 {locale === "id" ? "Backend dan API" : "Backend & API"}
               </div>
-              <ul className={`text-sm space-y-1 ${theme === "black" ? "text-[#999999]" : "text-slate-500"}`}>
+              <ul className={`text-sm space-y-1 ${theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"}`}>
                 <li>Express.js</li>
                 <li>Prisma ORM</li>
                 <li>Socket.io / ws</li>
@@ -629,7 +629,7 @@ const RavineCoffee = () => {
                 <Database size={18} className="text-primary-light dark:text-primary-dark" />
                 Infrastructure
               </div>
-              <ul className={`text-sm space-y-1 ${theme === "black" ? "text-[#999999]" : "text-slate-500"}`}>
+              <ul className={`text-sm space-y-1 ${theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"}`}>
                 <li>Supabase (PostgreSQL)</li>
                 <li>Vercel Deployment</li>
                 <li>Postman Docs</li>
@@ -641,14 +641,14 @@ const RavineCoffee = () => {
         <div>
           <h2
             className={`text-[28px] font-semibold mb-2 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {t.project.keyStack}
           </h2>
           <p
             className={`text-base text-justify ${
-              theme === "black" ? "text-[#999999]" : "text-slate-500"
+              theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"
             }`}
           >
             <b>

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useContext, useEffect, useCallback } from "react";
-import { useRouter } from "next/navigation";
 import {
   ArrowLeft,
   ChevronLeft,
@@ -18,13 +17,14 @@ import {
 } from "lucide-react";
 import { DarkMode } from "../contexts/DarkMode";
 import { useLocale } from "../contexts/LocaleContext";
+import { useProjectNavigation } from "../hooks/useProjectNavigation";
 
 const StraightDeal = () => {
   const [showViewer, setShowViewer] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const { theme } = useContext(DarkMode);
   const { locale, t } = useLocale();
-  const router = useRouter();
+  const { backToPortfolio } = useProjectNavigation(theme);
 
   const images = [
     "/assets/img/straight-deal-cover.png",
@@ -71,11 +71,11 @@ const StraightDeal = () => {
     <div className="max-w-[900px] mx-auto px-4 py-10">
       {/* Back Button */}
       <button
-        onClick={() => router.back()}
+        onClick={backToPortfolio}
         className={`flex items-center gap-2 text-sm transition mb-6 ${
           theme === "black"
             ? "text-[#999999] hover:text-white"
-            : "text-slate-500 hover:text-black"
+            : "text-[#5a554c] hover:text-[#2d2a25]"
         }`}
       >
         <ArrowLeft size={18} />
@@ -87,7 +87,7 @@ const StraightDeal = () => {
         <div>
           <h1
             className={`text-[40px] font-semibold mb-2 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {locale === "id"
@@ -97,7 +97,7 @@ const StraightDeal = () => {
           <div className="flex items-center gap-3">
             <p
               className={`text-base ${
-                theme === "black" ? "text-[#999999]" : "text-slate-500"
+                theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"
               }`}
             >
               {locale === "id" ? "Infrastruktur Backend oleh " : "Backend Infrastructure by "}
@@ -110,7 +110,7 @@ const StraightDeal = () => {
                 Odama
               </a>
             </p>
-            <span className={`px-3 py-1 text-xs font-semibold rounded-full ${theme === "black" ? "bg-green-500/20 text-green-400 border border-green-500/30" : "bg-green-100 text-green-700 border border-green-200"}`}>
+            <span className={`px-3 py-1 text-xs font-semibold rounded-full ${theme === "black" ? "bg-green-500/20 text-green-400 border border-green-500/30" : "bg-[#e4eee7] text-[#496e66] border border-[#bdcfbf]"}`}>
               {locale === "id" ? "Production" : "Production"}
             </span>
           </div>
@@ -172,29 +172,29 @@ const StraightDeal = () => {
       )}
 
       {/* Production Stats Box */}
-      <div className={`mt-10 p-6 rounded-2xl border flex flex-wrap gap-8 justify-around ${theme === "black" ? "border-[#333] bg-[#121212]" : "border-slate-200 bg-slate-50"}`}>
+      <div className={`mt-10 p-6 rounded-2xl border flex flex-wrap gap-8 justify-around ${theme === "black" ? "border-[#333] bg-[#121212]" : "border-[#cfc3b0] bg-[#f1eadf]"}`}>
         <div className="text-center">
-          <div className={`flex items-center justify-center mb-2 ${theme === "black" ? "text-blue-400" : "text-blue-600"}`}>
+          <div className={`flex items-center justify-center mb-2 ${theme === "black" ? "text-blue-400" : "text-[#3d6874]"}`}>
             <Users size={24} />
           </div>
-          <div className={`text-2xl font-bold ${theme === "black" ? "text-white" : "text-black"}`}>1,400+</div>
-          <div className={`text-xs uppercase tracking-widest ${theme === "black" ? "text-[#888]" : "text-slate-400"}`}>{locale === "id" ? "User Terdaftar" : "Registered Users"}</div>
+          <div className={`text-2xl font-bold ${theme === "black" ? "text-white" : "text-[#2d2a25]"}`}>1,400+</div>
+          <div className={`text-xs uppercase tracking-widest ${theme === "black" ? "text-[#888]" : "text-[#756f64]"}`}>{locale === "id" ? "User Terdaftar" : "Registered Users"}</div>
         </div>
         <div className="w-px h-12 bg-current opacity-10 hidden sm:block"></div>
         <div className="text-center">
-          <div className={`flex items-center justify-center mb-2 ${theme === "black" ? "text-green-400" : "text-green-600"}`}>
+          <div className={`flex items-center justify-center mb-2 ${theme === "black" ? "text-green-400" : "text-[#496e66]"}`}>
             <Activity size={24} />
           </div>
-          <div className={`text-2xl font-bold ${theme === "black" ? "text-white" : "text-black"}`}>72</div>
-          <div className={`text-xs uppercase tracking-widest ${theme === "black" ? "text-[#888]" : "text-slate-400"}`}>API Endpoints</div>
+          <div className={`text-2xl font-bold ${theme === "black" ? "text-white" : "text-[#2d2a25]"}`}>72</div>
+          <div className={`text-xs uppercase tracking-widest ${theme === "black" ? "text-[#888]" : "text-[#756f64]"}`}>API Endpoints</div>
         </div>
         <div className="w-px h-12 bg-current opacity-10 hidden sm:block"></div>
         <div className="text-center">
-          <div className={`flex items-center justify-center mb-2 ${theme === "black" ? "text-orange-400" : "text-orange-600"}`}>
+          <div className={`flex items-center justify-center mb-2 ${theme === "black" ? "text-orange-400" : "text-[#8b5f3d]"}`}>
             <Server size={24} />
           </div>
-          <div className={`text-2xl font-bold ${theme === "black" ? "text-white" : "text-black"}`}>Live</div>
-          <div className={`text-xs uppercase tracking-widest ${theme === "black" ? "text-[#888]" : "text-slate-400"}`}>{locale === "id" ? "Status Production" : "Production Status"}</div>
+          <div className={`text-2xl font-bold ${theme === "black" ? "text-white" : "text-[#2d2a25]"}`}>Live</div>
+          <div className={`text-xs uppercase tracking-widest ${theme === "black" ? "text-[#888]" : "text-[#756f64]"}`}>{locale === "id" ? "Status Production" : "Production Status"}</div>
         </div>
       </div>
 
@@ -202,7 +202,7 @@ const StraightDeal = () => {
       <div className="mt-10 border-t pt-8 space-y-4">
         <h2
           className={`text-[26px] font-semibold ${
-            theme === "black" ? "text-white" : "text-black"
+            theme === "black" ? "text-white" : "text-[#2d2a25]"
           }`}
         >
           {t.project.access}
@@ -215,7 +215,7 @@ const StraightDeal = () => {
             className={`flex items-center gap-2 text-sm whitespace-nowrap border rounded-lg px-4 py-2 transition w-fit ${
               theme === "black"
                 ? "border-[#444] text-[#ccc] hover:bg-[#1a1a1a]"
-                : "border-slate-300 text-slate-700 hover:bg-slate-100"
+                : "border-[#cfc3b0] text-[#3f3a33] hover:bg-[#e9e1d2]"
             }`}
           >
             {t.project.visitWebsite}
@@ -224,13 +224,13 @@ const StraightDeal = () => {
           <div className={`flex items-center gap-2 text-sm whitespace-nowrap border rounded-lg px-4 py-2 opacity-60 cursor-not-allowed ${
             theme === "black"
               ? "border-[#444] text-[#888]"
-              : "border-slate-300 text-slate-500"
+              : "border-[#cfc3b0] text-[#4f4a42]"
           }`}>
             {t.project.github}
             <Lock size={16} />
           </div>
         </div>
-        <p className={`italic text-sm opacity-80 ${theme === "black" ? "text-[#aaa]" : "text-slate-600"}`}>
+        <p className={`italic text-sm opacity-80 ${theme === "black" ? "text-[#aaa]" : "text-[#5a554c]"}`}>
           {locale === "id"
             ? "*Detail code bersifat confidential dan tidak dibuka publik karena batasan client serta keamanan."
             : "*Code details are confidential and not publicly shared due to client and security restrictions."}
@@ -242,14 +242,14 @@ const StraightDeal = () => {
         <section>
           <h2
             className={`text-[28px] font-semibold mb-4 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {t.project.about}
           </h2>
           <p
             className={`text-base text-justify leading-relaxed ${
-              theme === "black" ? "text-[#999999]" : "text-slate-500"
+              theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"
             }`}
           >
             {locale === "id" ? (
@@ -279,10 +279,10 @@ const StraightDeal = () => {
         </section>
 
         {/* Technical Architecture */}
-        <section className={`p-8 rounded-2xl border ${theme === "black" ? "border-[#333] bg-[#121212]" : "border-slate-200 bg-slate-50"}`}>
+        <section className={`p-8 rounded-2xl border ${theme === "black" ? "border-[#333] bg-[#121212]" : "border-[#cfc3b0] bg-[#f1eadf]"}`}>
           <h2
             className={`text-[28px] font-semibold mb-6 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {locale === "id"
@@ -293,12 +293,12 @@ const StraightDeal = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <div className={`p-2 rounded-lg ${theme === "black" ? "bg-blue-500/10 text-blue-400" : "bg-blue-100 text-blue-600"}`}>
+                <div className={`p-2 rounded-lg ${theme === "black" ? "bg-blue-500/10 text-blue-400" : "bg-[#e3edf0] text-[#3d6874]"}`}>
                   <Server size={24} />
                 </div>
-                <h3 className={`text-xl font-medium ${theme === "black" ? "text-white" : "text-black"}`}>Express.js Backend</h3>
+                <h3 className={`text-xl font-medium ${theme === "black" ? "text-white" : "text-[#2d2a25]"}`}>Express.js Backend</h3>
               </div>
-              <p className={`text-sm ${theme === "black" ? "text-[#999999]" : "text-slate-500"}`}>
+              <p className={`text-sm ${theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"}`}>
                 {locale === "id" ? (
                   <>
                     Arsitektur monolith dengan <b>Layered Structure</b>{" "}
@@ -318,12 +318,12 @@ const StraightDeal = () => {
 
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <div className={`p-2 rounded-lg ${theme === "black" ? "bg-purple-500/10 text-purple-400" : "bg-purple-100 text-purple-600"}`}>
+                <div className={`p-2 rounded-lg ${theme === "black" ? "bg-purple-500/10 text-purple-400" : "bg-[#ebe5ef] text-[#6b5d7c]"}`}>
                   <Cpu size={24} />
                 </div>
-                <h3 className={`text-xl font-medium ${theme === "black" ? "text-white" : "text-black"}`}>{locale === "id" ? "Automated Cron Jobs" : "Automated Cron Jobs"}</h3>
+                <h3 className={`text-xl font-medium ${theme === "black" ? "text-white" : "text-[#2d2a25]"}`}>{locale === "id" ? "Automated Cron Jobs" : "Automated Cron Jobs"}</h3>
               </div>
-              <p className={`text-sm ${theme === "black" ? "text-[#999999]" : "text-slate-500"}`}>
+              <p className={`text-sm ${theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"}`}>
                 {locale === "id"
                   ? "Scheduled worker mengelola follow-up email otomatis, melacak offer expiration, dan memicu notifikasi sistem untuk user maupun admin."
                   : "Scheduled workers manage automated follow-up emails, track offer expirations, and trigger system-wide notifications for both users and admins."}
@@ -331,23 +331,23 @@ const StraightDeal = () => {
             </div>
           </div>
 
-          <div className={`mt-8 p-4 rounded-xl border border-dashed ${theme === "black" ? "border-[#444] text-[#888]" : "border-slate-300 text-slate-400"}`}>
+          <div className={`mt-8 p-4 rounded-xl border border-dashed ${theme === "black" ? "border-[#444] text-[#888]" : "border-[#cfc3b0] text-[#756f64]"}`}>
             <p className="text-center font-mono text-xs uppercase tracking-widest mb-4">{locale === "id" ? "Workflow Bidding" : "Bidding Workflow"}</p>
             <div className="flex flex-col items-center gap-2 text-sm md:text-base font-medium">
-              <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-white/5" : "bg-white shadow-sm border"}`}>{locale === "id" ? "User Submit Detail Mobil" : "User Submits Car Detail"}</div>
+              <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-white/5" : "bg-[#f7f2e9] border border-[#cfc3b0] shadow-none"}`}>{locale === "id" ? "User Submit Detail Mobil" : "User Submits Car Detail"}</div>
               <div className="h-4 w-px bg-current opacity-20"></div>
-              <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-blue-500/10 border-blue-500/20" : "bg-blue-50 border-blue-200"}`}>{locale === "id" ? "Admin Review dan Kirim Offer" : "Admin Reviews & Sends Offer"}</div>
+              <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-blue-500/10 border-blue-500/20" : "bg-[#e3edf0] border-[#bfd0d5] text-[#3d6874]"}`}>{locale === "id" ? "Admin Review dan Kirim Offer" : "Admin Reviews & Sends Offer"}</div>
               <div className="h-4 w-px bg-current opacity-20"></div>
               <div className="flex items-center gap-8">
                 <div className="flex flex-col items-center">
-                  <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-green-500/10 border-green-500/20" : "bg-green-50 border-green-200"}`}>{locale === "id" ? "Accept -> Deal Closed" : "Accept -> Deal Closed"}</div>
+                  <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-green-500/10 border-green-500/20" : "bg-[#e4eee7] border-[#bdcfbf] text-[#496e66]"}`}>{locale === "id" ? "Accept -> Deal Closed" : "Accept -> Deal Closed"}</div>
                 </div>
                 <div className="flex flex-col items-center">
-                  <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-orange-500/10 border-orange-500/20" : "bg-orange-50 border-orange-200"}`}>{locale === "id" ? "Decline -> User Counter-Offer" : "Decline -> User Counter-Offer"}</div>
+                  <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-orange-500/10 border-orange-500/20" : "bg-[#efe4d6] border-[#d9c3a8] text-[#8b5f3d]"}`}>{locale === "id" ? "Decline -> User Counter-Offer" : "Decline -> User Counter-Offer"}</div>
                 </div>
               </div>
               <div className="h-4 w-px bg-current opacity-20"></div>
-              <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-purple-500/10 border-purple-500/20" : "bg-purple-50 border-purple-200"}`}>{locale === "id" ? "Keputusan Final Admin (Accept/Reject)" : "Admin Final Decision (Accept/Reject)"}</div>
+              <div className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-purple-500/10 border-purple-500/20" : "bg-[#ebe5ef] border-[#cec2d8] text-[#6b5d7c]"}`}>{locale === "id" ? "Keputusan Final Admin (Accept/Reject)" : "Admin Final Decision (Accept/Reject)"}</div>
             </div>
           </div>
         </section>
@@ -355,7 +355,7 @@ const StraightDeal = () => {
         <section>
           <h2
             className={`text-[28px] font-semibold mb-6 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {t.project.features}
@@ -428,8 +428,8 @@ const StraightDeal = () => {
               <div key={idx} className="flex gap-4">
                 <div className={`mt-1 flex-shrink-0 w-2 h-2 rounded-full ${theme === "black" ? "bg-primary-dark" : "bg-primary-light"}`}></div>
                 <div>
-                  <h4 className={`font-semibold mb-1 ${theme === "black" ? "text-white" : "text-black"}`}>{feature.title}</h4>
-                  <p className={`text-sm ${theme === "black" ? "text-[#999999]" : "text-slate-500"}`}>{feature.desc}</p>
+                  <h4 className={`font-semibold mb-1 ${theme === "black" ? "text-white" : "text-[#2d2a25]"}`}>{feature.title}</h4>
+                  <p className={`text-sm ${theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"}`}>{feature.desc}</p>
                 </div>
               </div>
             ))}
@@ -439,14 +439,14 @@ const StraightDeal = () => {
         <section>
           <h2
             className={`text-[28px] font-semibold mb-2 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {t.project.challenges}
           </h2>
           <p
             className={`text-base text-justify ${
-              theme === "black" ? "text-[#999999]" : "text-slate-500"
+              theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"
             }`}
           >
             {locale === "id" ? (
@@ -482,10 +482,10 @@ const StraightDeal = () => {
           </p>
         </section>
 
-        <div className="pt-10 border-t border-slate-200 dark:border-white/10">
+        <div className="pt-10 border-t border-[#cfc3b0] dark:border-white/10">
           <h2
             className={`text-[28px] font-semibold mb-6 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {locale === "id" ? "Stack Teknologi" : "Technology Stack"}
@@ -496,7 +496,7 @@ const StraightDeal = () => {
                 <Layout size={18} className="text-primary-light dark:text-primary-dark" />
                 Backend
               </div>
-              <ul className={`text-sm space-y-1 ${theme === "black" ? "text-[#999999]" : "text-slate-500"}`}>
+              <ul className={`text-sm space-y-1 ${theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"}`}>
                 <li>Express.js</li>
                 <li>TypeScript</li>
                 <li>Prisma ORM</li>
@@ -508,7 +508,7 @@ const StraightDeal = () => {
                 <Lock size={18} className="text-primary-light dark:text-primary-dark" />
                 {locale === "id" ? "Auth dan Komunikasi" : "Auth & Comms"}
               </div>
-              <ul className={`text-sm space-y-1 ${theme === "black" ? "text-[#999999]" : "text-slate-500"}`}>
+              <ul className={`text-sm space-y-1 ${theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"}`}>
                 <li>JWT / Google OAuth2</li>
                 <li>Twilio SMS (OTP)</li>
                 <li>SendGrid Email</li>
@@ -520,7 +520,7 @@ const StraightDeal = () => {
                 <Database size={18} className="text-primary-light dark:text-primary-dark" />
                 Infrastructure
               </div>
-              <ul className={`text-sm space-y-1 ${theme === "black" ? "text-[#999999]" : "text-slate-500"}`}>
+              <ul className={`text-sm space-y-1 ${theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"}`}>
                 <li>Supabase (PostgreSQL)</li>
                 <li>Vercel Serverless</li>
                 <li>Cron Jobs</li>
@@ -533,14 +533,14 @@ const StraightDeal = () => {
         <div>
           <h2
             className={`text-[28px] font-semibold mb-2 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {t.project.keyStack}
           </h2>
           <p
             className={`text-base text-justify ${
-              theme === "black" ? "text-[#999999]" : "text-slate-500"
+              theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"
             }`}
           >
             <b>

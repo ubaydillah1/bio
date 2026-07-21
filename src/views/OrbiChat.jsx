@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useContext, useEffect, useCallback } from "react";
-import { useRouter } from "next/navigation";
 import {
   ArrowLeft,
   ChevronLeft,
@@ -17,13 +16,14 @@ import {
 } from "lucide-react";
 import { DarkMode } from "../contexts/DarkMode";
 import { useLocale } from "../contexts/LocaleContext";
+import { useProjectNavigation } from "../hooks/useProjectNavigation";
 
 const OrbiChat = () => {
   const [showViewer, setShowViewer] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const { theme } = useContext(DarkMode);
   const { locale, t } = useLocale();
-  const router = useRouter();
+  const { backToPortfolio } = useProjectNavigation(theme);
 
   const media = [{ type: "video", src: "/assets/video/orbi-video.mp4" }];
 
@@ -61,11 +61,11 @@ const OrbiChat = () => {
     <div className="max-w-[900px] mx-auto px-4 py-10">
       {/* Back Button */}
       <button
-        onClick={() => router.back()}
+        onClick={backToPortfolio}
         className={`flex items-center gap-2 text-sm transition mb-6 ${
           theme === "black"
             ? "text-[#999999] hover:text-white"
-            : "text-slate-500 hover:text-black"
+            : "text-[#5a554c] hover:text-[#2d2a25]"
         }`}
       >
         <ArrowLeft size={18} />
@@ -77,7 +77,7 @@ const OrbiChat = () => {
         <div>
           <h1
             className={`text-[40px] font-semibold mb-2 max-w-[90%] ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {locale === "id"
@@ -86,7 +86,7 @@ const OrbiChat = () => {
           </h1>
           <div className="flex items-center gap-2">
             <span
-              className={`px-3 py-1 text-xs font-semibold rounded-full ${theme === "black" ? "bg-orange-500/20 text-orange-400 border border-orange-500/30" : "bg-orange-100 text-orange-700 border border-orange-200"}`}
+              className={`px-3 py-1 text-xs font-semibold rounded-full ${theme === "black" ? "bg-orange-500/20 text-orange-400 border border-orange-500/30" : "bg-[#efe4d6] text-[#8b5f3d] border border-[#d9c3a8]"}`}
             >
               {t.project.underDevelopment}
             </span>
@@ -97,7 +97,7 @@ const OrbiChat = () => {
               className={`px-3 py-1 text-xs font-semibold rounded-full transition ${
                 theme === "black"
                   ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/20"
-                  : "bg-[#f3dfc5] text-[#8f5d2e] border border-[#d8bea0] hover:bg-[#ead7bd]"
+                  : "bg-[#e9e1d2] text-[#496e66] border border-[#cfc3b0] hover:bg-[#d9cebd]"
               }`}
             >
               {t.project.collaboratedWith}
@@ -185,7 +185,7 @@ const OrbiChat = () => {
       <div className="mt-10 border-t pt-8 space-y-4">
         <h2
           className={`text-[26px] font-semibold ${
-            theme === "black" ? "text-white" : "text-black"
+            theme === "black" ? "text-white" : "text-[#2d2a25]"
           }`}
         >
           {t.project.try}
@@ -199,7 +199,7 @@ const OrbiChat = () => {
             className={`flex items-center gap-2 text-sm whitespace-nowrap border rounded-lg px-4 py-2 transition w-fit ${
               theme === "black"
                 ? "border-[#444] text-[#ccc] hover:bg-[#1a1a1a]"
-                : "border-slate-300 text-slate-700 hover:bg-slate-100"
+                : "border-[#cfc3b0] text-[#3f3a33] hover:bg-[#e9e1d2]"
             }`}
           >
             {locale === "id" ? "Kunjungi Dashboard" : "Visit Dashboard"}
@@ -210,7 +210,7 @@ const OrbiChat = () => {
             className={`flex items-center gap-2 text-sm whitespace-nowrap border rounded-lg px-4 py-2 opacity-60 cursor-not-allowed ${
               theme === "black"
                 ? "border-[#444] text-[#888]"
-                : "border-slate-300 text-slate-500"
+                : "border-[#cfc3b0] text-[#4f4a42]"
             }`}
           >
             {t.project.github}
@@ -222,7 +222,7 @@ const OrbiChat = () => {
           className={`mt-4 p-4 rounded-xl border text-sm ${
             theme === "black"
               ? "border-[#333] bg-[#121212] text-[#aaa]"
-              : "border-slate-300 bg-slate-50 text-slate-700"
+              : "border-[#cfc3b0] bg-[#f1eadf] text-[#3f3a33]"
           }`}
         >
           <p className="mb-1 font-semibold">
@@ -246,14 +246,14 @@ const OrbiChat = () => {
         <section>
           <h2
             className={`text-[28px] font-semibold mb-4 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {t.project.about}
           </h2>
           <p
             className={`text-base text-justify leading-relaxed ${
-              theme === "black" ? "text-[#999999]" : "text-slate-500"
+              theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"
             }`}
           >
             {locale === "id" ? (
@@ -290,11 +290,11 @@ const OrbiChat = () => {
 
         {/* Technical Architecture */}
         <section
-          className={`p-8 rounded-2xl border ${theme === "black" ? "border-[#333] bg-[#121212]" : "border-slate-200 bg-slate-50"}`}
+          className={`p-8 rounded-2xl border ${theme === "black" ? "border-[#333] bg-[#121212]" : "border-[#cfc3b0] bg-[#f1eadf]"}`}
         >
           <h2
             className={`text-[28px] font-semibold mb-6 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {locale === "id"
@@ -306,18 +306,18 @@ const OrbiChat = () => {
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <div
-                  className={`p-2 rounded-lg ${theme === "black" ? "bg-blue-500/10 text-blue-400" : "bg-blue-100 text-blue-600"}`}
+                  className={`p-2 rounded-lg ${theme === "black" ? "bg-blue-500/10 text-blue-400" : "bg-[#e3edf0] text-[#3d6874]"}`}
                 >
                   <Server size={24} />
                 </div>
                 <h3
-                  className={`text-xl font-medium ${theme === "black" ? "text-white" : "text-black"}`}
+                  className={`text-xl font-medium ${theme === "black" ? "text-white" : "text-[#2d2a25]"}`}
                 >
                   NestJS Backend
                 </h3>
               </div>
               <p
-                className={`text-sm ${theme === "black" ? "text-[#999999]" : "text-slate-500"}`}
+                className={`text-sm ${theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"}`}
               >
                 {locale === "id" ? (
                   <>
@@ -340,18 +340,18 @@ const OrbiChat = () => {
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <div
-                  className={`p-2 rounded-lg ${theme === "black" ? "bg-green-500/10 text-green-400" : "bg-green-100 text-green-600"}`}
+                  className={`p-2 rounded-lg ${theme === "black" ? "bg-green-500/10 text-green-400" : "bg-[#e4eee7] text-[#496e66]"}`}
                 >
                   <Cpu size={24} />
                 </div>
                 <h3
-                  className={`text-xl font-medium ${theme === "black" ? "text-white" : "text-black"}`}
+                  className={`text-xl font-medium ${theme === "black" ? "text-white" : "text-[#2d2a25]"}`}
                 >
                   FastAPI AI Service
                 </h3>
               </div>
               <p
-                className={`text-sm ${theme === "black" ? "text-[#999999]" : "text-slate-500"}`}
+                className={`text-sm ${theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"}`}
               >
                 {locale === "id" ? (
                   <>
@@ -381,32 +381,32 @@ const OrbiChat = () => {
           </div>
 
           <div
-            className={`mt-8 p-4 rounded-xl border border-dashed ${theme === "black" ? "border-[#444] text-[#888]" : "border-slate-300 text-slate-400"}`}
+            className={`mt-8 p-4 rounded-xl border border-dashed ${theme === "black" ? "border-[#444] text-[#888]" : "border-[#cfc3b0] text-[#756f64]"}`}
           >
             <p className="text-center font-mono text-xs uppercase tracking-widest mb-4">
               {locale === "id" ? "Alur Arsitektur" : "Architecture Flow"}
             </p>
             <div className="flex flex-col items-center gap-2 text-sm md:text-base font-medium">
               <div
-                className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-white/5" : "bg-white shadow-sm border"}`}
+                className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-white/5" : "bg-[#f7f2e9] border border-[#cfc3b0] shadow-none"}`}
               >
                 {locale === "id" ? "User -> Next.js Frontend" : "User -> Next.js Frontend"}
               </div>
               <div className="h-4 w-px bg-current opacity-20"></div>
               <div
-                className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-blue-500/10 border-blue-500/20" : "bg-blue-50 border-blue-200"}`}
+                className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-blue-500/10 border-blue-500/20" : "bg-[#e3edf0] border-[#bfd0d5] text-[#3d6874]"}`}
               >
                 NestJS Backend (Orchestrator)
               </div>
               <div className="h-4 w-px bg-current opacity-20"></div>
               <div
-                className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-green-500/10 border-green-500/20" : "bg-green-50 border-green-200"}`}
+                className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-green-500/10 border-green-500/20" : "bg-[#e4eee7] border-[#bdcfbf] text-[#496e66]"}`}
               >
                 FastAPI AI Service (Python)
               </div>
               <div className="h-4 w-px bg-current opacity-20"></div>
               <div
-                className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-purple-500/10 border-purple-500/20" : "bg-purple-50 border-purple-200"}`}
+                className={`px-4 py-2 rounded-lg ${theme === "black" ? "bg-purple-500/10 border-purple-500/20" : "bg-[#ebe5ef] border-[#cec2d8] text-[#6b5d7c]"}`}
               >
                 {locale === "id"
                   ? "LLM Provider / Knowledge Base"
@@ -419,7 +419,7 @@ const OrbiChat = () => {
         <section>
           <h2
             className={`text-[28px] font-semibold mb-6 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {t.project.features}
@@ -491,12 +491,12 @@ const OrbiChat = () => {
                 ></div>
                 <div>
                   <h4
-                    className={`font-semibold mb-1 ${theme === "black" ? "text-white" : "text-black"}`}
+                    className={`font-semibold mb-1 ${theme === "black" ? "text-white" : "text-[#2d2a25]"}`}
                   >
                     {feature.title}
                   </h4>
                   <p
-                    className={`text-sm ${theme === "black" ? "text-[#999999]" : "text-slate-500"}`}
+                    className={`text-sm ${theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"}`}
                   >
                     {feature.desc}
                   </p>
@@ -509,14 +509,14 @@ const OrbiChat = () => {
         <section>
           <h2
             className={`text-[28px] font-semibold mb-2 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {locale === "id" ? "Nilai Engineering" : "Engineering Value"}
           </h2>
           <p
             className={`text-base text-justify ${
-              theme === "black" ? "text-[#999999]" : "text-slate-500"
+              theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"
             }`}
           >
             {locale === "id" ? (
@@ -547,14 +547,14 @@ const OrbiChat = () => {
         <section>
           <h2
             className={`text-[28px] font-semibold mb-2 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {t.project.challenges}
           </h2>
           <p
             className={`text-base text-justify ${
-              theme === "black" ? "text-[#999999]" : "text-slate-500"
+              theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"
             }`}
           >
             {locale === "id" ? (
@@ -591,10 +591,10 @@ const OrbiChat = () => {
           </p>
         </section>
 
-        <div className="pt-10 border-t border-slate-200 dark:border-white/10">
+        <div className="pt-10 border-t border-[#cfc3b0] dark:border-white/10">
           <h2
             className={`text-[28px] font-semibold mb-6 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {locale === "id" ? "Stack Teknologi" : "Technology Stack"}
@@ -609,7 +609,7 @@ const OrbiChat = () => {
                 Frontend
               </div>
               <ul
-                className={`text-sm space-y-1 ${theme === "black" ? "text-[#999999]" : "text-slate-500"}`}
+                className={`text-sm space-y-1 ${theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"}`}
               >
                 <li>Next.js</li>
                 <li>React</li>
@@ -626,7 +626,7 @@ const OrbiChat = () => {
                 {locale === "id" ? "Backend dan AI" : "Backend & AI"}
               </div>
               <ul
-                className={`text-sm space-y-1 ${theme === "black" ? "text-[#999999]" : "text-slate-500"}`}
+                className={`text-sm space-y-1 ${theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"}`}
               >
                 <li>NestJS (Orchestrator)</li>
                 <li>FastAPI (RAG & Ingestion)</li>
@@ -643,7 +643,7 @@ const OrbiChat = () => {
                 Infrastructure
               </div>
               <ul
-                className={`text-sm space-y-1 ${theme === "black" ? "text-[#999999]" : "text-slate-500"}`}
+                className={`text-sm space-y-1 ${theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"}`}
               >
                 <li>Supabase (PostgreSQL)</li>
                 <li>Redis (Caching)</li>
@@ -657,14 +657,14 @@ const OrbiChat = () => {
         <div>
           <h2
             className={`text-[28px] font-semibold mb-2 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {t.project.keyStack}
           </h2>
           <p
             className={`text-base text-justify ${
-              theme === "black" ? "text-[#999999]" : "text-slate-500"
+              theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"
             }`}
           >
             <b>

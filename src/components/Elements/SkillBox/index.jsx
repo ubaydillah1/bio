@@ -29,7 +29,7 @@ const SkillBoxes = (props) => {
   };
 
   const colorHover = () => {
-    return theme === "black" ? "#28e98c" : "#c46a2d";
+    return theme === "black" ? "#28e98c" : "#496e66";
   };
 
   const borderHover = () => {
@@ -46,15 +46,15 @@ const SkillBoxes = (props) => {
           ? borderHover()
           : theme === "black"
           ? "border-[#565656]"
-          : "border-[#9a6b43]"
+          : "border-[#b8ad9c]"
       } rounded-[20px] flex justify-center items-center flex-col gap-[5px] aspect-square transition-all duration-300`}
     >
       <svg
         stroke={
-          hovered ? colorHover() : theme === "black" ? "#BCBCBC" : "#7a5b42"
+          hovered ? colorHover() : theme === "black" ? "#BCBCBC" : "#4f4a42"
         }
         fill={
-          hovered ? colorHover() : theme === "black" ? "#BCBCBC" : "#7a5b42"
+          hovered ? colorHover() : theme === "black" ? "#BCBCBC" : "#4f4a42"
         }
         role="img"
         viewBox={viewBox}
@@ -72,7 +72,7 @@ const SkillBoxes = (props) => {
             ? textColorHover()
             : theme === "black"
             ? "text-[#BCBCBC]"
-            : "text-[#7a5b42]"
+            : "text-[#4f4a42]"
         }`}
       >
         {text}

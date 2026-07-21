@@ -1,6 +1,7 @@
 import "./globals.css";
 import Providers from "./providers";
 import { absoluteUrl, siteConfig } from "../lib/seo";
+import { cookies } from "next/headers";
 
 export const metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -57,11 +58,37 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }) {
+function normalizeTheme(theme) {
+  if (theme === "black" || theme === "winter") return theme;
+  return "winter";
+}
+
+export default async function RootLayout({ children }) {
+  const cookieStore = await cookies();
+  const initialTheme = normalizeTheme(cookieStore.get("data-theme")?.value);
+
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body >
-        <Providers>{children}</Providers>
+    <html lang="en" data-theme={initialTheme} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function () {
+                try {
+                  var storedTheme = localStorage.getItem("data-theme");
+                  var theme = storedTheme || "${initialTheme}";
+                  if (theme !== "black" && theme !== "winter") theme = "winter";
+                  document.documentElement.setAttribute("data-theme", theme);
+                } catch (error) {
+                  document.documentElement.setAttribute("data-theme", "${initialTheme}");
+                }
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body>
+        <Providers initialTheme={initialTheme}>{children}</Providers>
       </body>
     </html>
   );

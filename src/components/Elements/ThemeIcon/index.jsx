@@ -9,12 +9,11 @@ const ThemeIcon = () => {
       className={`swap swap-rotate grid h-9 w-9 cursor-pointer place-items-center rounded-full border transition-colors duration-200 ${
         theme === "black"
           ? "border-white/20 bg-black/70 text-[#28e98c] hover:border-white/35 hover:bg-[#111]"
-          : "border-[#d8bea0] bg-[#fff7ed]/80 text-[#c46a2d] hover:bg-[#f3dfc5]"
+          : "border-[#cfc3b0] bg-[#f7f2e9]/80 text-[#496e66] hover:bg-[#e9e1d2]"
       }`}
     >
       <input
         type="checkbox"
-        className="theme-controller"
         checked={theme === "black"}
         onChange={handleTheme}
         aria-label="Toggle theme"

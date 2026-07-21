@@ -42,7 +42,7 @@ const ContactSection = () => {
           xmlns="http://www.w3.org/2000/svg"
           width="20"
           height="20"
-          className={`${theme == "black" ? "fill-white" : "fill-[#2f241a]"}`}
+          className={`${theme == "black" ? "fill-white" : "fill-[#2d2a25]"}`}
           viewBox="0 0 256 256"
         >
           <path d="M116,120a12,12,0,1,1,12,12A12,12,0,0,1,116,120ZM84,132a12,12,0,1,0-12-12A12,12,0,0,0,84,132Zm88,0a12,12,0,1,0-12-12A12,12,0,0,0,172,132Zm60-76V184a16,16,0,0,1-16,16H155.57l-13.68,23.94a16,16,0,0,1-27.78,0L100.43,200H40a16,16,0,0,1-16-16V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56Zm-16,0H40V184h65.07a8,8,0,0,1,7,4l16,28,16-28a8,8,0,0,1,7-4H216Z"></path>
@@ -148,7 +148,7 @@ const ContactSection = () => {
       {/* Popup Thank You */}
       {submitted && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
-          <div className="bg-[#fff7ed] dark:bg-gray-900 rounded-lg p-8 max-w-sm text-center shadow-lg">
+          <div className="bg-[#f7f2e9] dark:bg-gray-900 rounded-lg p-8 max-w-sm text-center shadow-lg">
             <h2 className="text-xl font-semibold mb-4">{t.contact.thankTitle}</h2>
             <p className="mb-6">{t.contact.thankBody}</p>
             <Button onClick={() => setSubmitted(false)} className="w-full">

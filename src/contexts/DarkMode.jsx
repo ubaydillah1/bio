@@ -4,21 +4,55 @@ import { createContext, useEffect, useState } from "react";
 
 const DarkModeContext = createContext();
 
-const DarkModeProvider = ({ children }) => {
-  const [theme, setTheme] = useState("black");
+function normalizeTheme(theme) {
+  return theme === "winter" ? "winter" : "black";
+}
+
+const DarkModeProvider = ({ children, initialTheme = "black" }) => {
+  const [theme, setTheme] = useState(() => {
+    if (typeof window === "undefined") return normalizeTheme(initialTheme);
+
+    return normalizeTheme(
+      localStorage.getItem("data-theme") ||
+        document.documentElement.getAttribute("data-theme") ||
+        initialTheme
+    );
+  });
 
   useEffect(() => {
-    const localTheme = localStorage.getItem("data-theme");
+    const syncTheme = () => {
+      const savedTheme =
+        localStorage.getItem("data-theme") ||
+        document.documentElement.getAttribute("data-theme");
 
-    if (localTheme) {
-      setTheme(localTheme);
-    }
+      if (!savedTheme) return;
+
+      setTheme((currentTheme) => {
+        const normalizedTheme = normalizeTheme(savedTheme);
+        return normalizedTheme === currentTheme ? currentTheme : normalizedTheme;
+      });
+
+      document.documentElement.setAttribute(
+        "data-theme",
+        normalizeTheme(savedTheme)
+      );
+    };
+
+    syncTheme();
+    window.addEventListener("pageshow", syncTheme);
+    window.addEventListener("storage", syncTheme);
+
+    return () => {
+      window.removeEventListener("pageshow", syncTheme);
+      window.removeEventListener("storage", syncTheme);
+    };
   }, []);
 
   useEffect(() => {
     const root = document.documentElement;
     root.setAttribute("data-theme", theme);
     localStorage.setItem("data-theme", theme);
+    document.cookie = `data-theme=${theme}; path=/; max-age=31536000; SameSite=Lax`;
   }, [theme]);
 
   const handleTheme = () => {

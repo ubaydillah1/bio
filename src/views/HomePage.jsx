@@ -2,7 +2,7 @@
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useContext, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { useLenis } from "lenis/react";
 import { DarkMode } from "../contexts/DarkMode";
 import CardProfile from "../components/Fragments/CardProfile";
@@ -26,6 +26,34 @@ function HomePage({ locale = "en" }) {
   const portfolioRef = useRef(null);
   const contactRef = useRef(null);
   const resumeRef = useRef(null);
+
+  useEffect(() => {
+    const savedScrollY = sessionStorage.getItem("portfolio-scroll-y");
+    if (!savedScrollY) return;
+
+    sessionStorage.removeItem("portfolio-scroll-y");
+    const targetScrollY = Number(savedScrollY);
+    if (Number.isNaN(targetScrollY)) return;
+
+    const restoreScroll = () => {
+      if (lenis) {
+        lenis.scrollTo(targetScrollY, { immediate: true });
+        return;
+      }
+
+      window.scrollTo({ top: targetScrollY, behavior: "instant" });
+    };
+
+    const frame = requestAnimationFrame(() => {
+      requestAnimationFrame(restoreScroll);
+    });
+    const timeout = setTimeout(restoreScroll, 80);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      clearTimeout(timeout);
+    };
+  }, [lenis]);
 
   const scrollToSection = (ref, id) => {
     if (ref?.current) {
@@ -64,7 +92,7 @@ function HomePage({ locale = "en" }) {
 
       <main
         className={`flex w-full lg:px-[80px] pt-[40px] sm:gap-[30px] gap-[20px] flex-col relative ${
-          theme != "black" ? "text-[#2f241a]" : "text-white"
+          theme != "black" ? "text-[#2d2a25]" : "text-white"
         }`}
       >
         <CardProfile onClickToContact={handleToContact} />

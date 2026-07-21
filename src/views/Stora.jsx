@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useContext, useEffect, useCallback } from "react";
-import { useRouter } from "next/navigation";
 import {
   ArrowLeft,
   ChevronLeft,
@@ -13,13 +12,14 @@ import {
 } from "lucide-react";
 import { DarkMode } from "../contexts/DarkMode";
 import { useLocale } from "../contexts/LocaleContext";
+import { useProjectNavigation } from "../hooks/useProjectNavigation";
 
 const Stora = () => {
   const [showViewer, setShowViewer] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const { theme } = useContext(DarkMode);
   const { locale, t } = useLocale();
-  const router = useRouter();
+  const { backToPortfolio } = useProjectNavigation(theme);
 
   const media = [
     { type: "image", src: "/assets/img/stora-cover.png" },
@@ -64,11 +64,11 @@ const Stora = () => {
     <div className="max-w-[900px] mx-auto px-4 py-10">
       {/* Back Button */}
       <button
-        onClick={() => router.back()}
+        onClick={backToPortfolio}
         className={`flex items-center gap-2 text-sm transition mb-6 ${
           theme === "black"
             ? "text-[#999999] hover:text-white"
-            : "text-slate-500 hover:text-black"
+            : "text-[#5a554c] hover:text-[#2d2a25]"
         }`}
       >
         <ArrowLeft size={18} />
@@ -79,7 +79,7 @@ const Stora = () => {
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-8">
         <h1
           className={`text-[40px] font-semibold ${
-            theme === "black" ? "text-white" : "text-black"
+            theme === "black" ? "text-white" : "text-[#2d2a25]"
           }`}
         >
           {locale === "id"
@@ -183,7 +183,7 @@ const Stora = () => {
       <div className="mt-10 border-t pt-8 space-y-4">
         <h2
           className={`text-[26px] font-semibold ${
-            theme === "black" ? "text-white" : "text-black"
+            theme === "black" ? "text-white" : "text-[#2d2a25]"
           }`}
         >
           {t.project.try}
@@ -196,7 +196,7 @@ const Stora = () => {
             className={`flex items-center gap-2 text-sm border rounded-lg px-4 py-2 transition ${
               theme === "black"
                 ? "border-[#444] text-[#ccc] hover:bg-[#1a1a1a]"
-                : "border-slate-300 text-slate-700 hover:bg-slate-100"
+                : "border-[#cfc3b0] text-[#3f3a33] hover:bg-[#e9e1d2]"
             }`}
           >
             {t.project.visitWebsite}
@@ -209,7 +209,7 @@ const Stora = () => {
             className={`flex items-center gap-2 text-sm border rounded-lg px-4 py-2 transition ${
               theme === "black"
                 ? "border-[#444] text-[#ccc] hover:bg-[#1a1a1a]"
-                : "border-slate-300 text-slate-700 hover:bg-slate-100"
+                : "border-[#cfc3b0] text-[#3f3a33] hover:bg-[#e9e1d2]"
             }`}
           >
             {t.project.github}
@@ -224,14 +224,14 @@ const Stora = () => {
         <section>
           <h2
             className={`text-[28px] font-semibold mb-2 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {t.project.about}
           </h2>
           <p
             className={`text-base text-justify ${
-              theme === "black" ? "text-[#999999]" : "text-slate-500"
+              theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"
             }`}
           >
             {locale === "id" ? (
@@ -260,14 +260,14 @@ const Stora = () => {
         <section>
           <h2
             className={`text-[28px] font-semibold mb-2 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {t.project.technology}
           </h2>
           <p
             className={`text-base text-justify ${
-              theme === "black" ? "text-[#999999]" : "text-slate-500"
+              theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"
             }`}
           >
             {locale === "id" ? (
@@ -300,14 +300,14 @@ const Stora = () => {
         <section>
           <h2
             className={`text-[28px] font-semibold mb-2 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {locale === "id" ? "Tujuan" : "The Goal"}
           </h2>
           <p
             className={`text-base text-justify ${
-              theme === "black" ? "text-[#999999]" : "text-slate-500"
+              theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"
             }`}
           >
             {locale === "id"
@@ -320,14 +320,14 @@ const Stora = () => {
         <section>
           <h2
             className={`text-[28px] font-semibold mb-2 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {locale === "id" ? "User dan Audiens" : "User and Audience"}
           </h2>
           <p
             className={`text-base text-justify ${
-              theme === "black" ? "text-[#999999]" : "text-slate-500"
+              theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"
             }`}
           >
             {locale === "id" ? (
@@ -354,14 +354,14 @@ const Stora = () => {
         <section>
           <h2
             className={`text-[28px] font-semibold mb-2 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {t.project.challenges}
           </h2>
           <p
             className={`text-base text-justify ${
-              theme === "black" ? "text-[#999999]" : "text-slate-500"
+              theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"
             }`}
           >
             {locale === "id"
@@ -374,7 +374,7 @@ const Stora = () => {
         <section>
           <h2
             className={`text-[28px] font-semibold mb-2 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {locale === "id" ? "Fitur Berikutnya" : "Next Features"}
@@ -382,7 +382,7 @@ const Stora = () => {
 
           <ul
             className={`list-disc pl-6 space-y-2 text-base ${
-              theme === "black" ? "text-[#999999]" : "text-slate-500"
+              theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"
             }`}
           >
             <li>
@@ -409,14 +409,14 @@ const Stora = () => {
         <div>
           <h2
             className={`text-[28px] font-semibold mb-2 ${
-              theme === "black" ? "text-white" : "text-black"
+              theme === "black" ? "text-white" : "text-[#2d2a25]"
             }`}
           >
             {t.project.keyStack}
           </h2>
           <p
             className={`text-base text-justify ${
-              theme === "black" ? "text-[#999999]" : "text-slate-500"
+              theme === "black" ? "text-[#999999]" : "text-[#4f4a42]"
             }`}
           >
             <b>
